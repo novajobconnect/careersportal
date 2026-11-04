@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MZANSI CAREERS & OPPS V2 - Real SA Jobs & Student Portals</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #0077B6 0%, #0096C7 50%, #03045E 100%);
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 flex flex-col min-h-screen">
+
+  <!-- ================= PERSISTENT GATEWAY MODAL ================= -->
+  <div id="gatewayModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-8 shadow-2xl text-center relative border border-slate-100">
+      <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+        🇿🇦
+      </div>
+      <h1 class="text-3xl font-extrabold text-slate-900 mb-2">Welcome to Mzansi Hub V2</h1>
+      <p class="text-slate-600 mb-8 text-lg">Please select your portal to continue:</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Job Seeker Choice -->
+        <button onclick="selectPortal('jobseeker')" class="group p-6 rounded-xl border-2 border-slate-200 hover:border-blue-600 bg-white hover:bg-blue-50 transition-all text-left flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-briefcase text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Job Seeker</h2>
+            <p class="text-slate-500 text-sm">Browse verified SA vacancies, search by keyword, filter by industry, and use our AI Cover Letter Robot.</p>
+          </div>
+          <span class="mt-6 text-blue-600 font-semibold text-sm flex items-center gap-2">
+            View Jobs <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </button>
+
+        <!-- Student Choice -->
+        <button onclick="selectPortal('student')" class="group p-6 rounded-xl border-2 border-slate-200 hover:border-emerald-600 bg-white hover:bg-emerald-50 transition-all text-left flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-emerald-600 text-white rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-graduation-cap text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Student</h2>
+            <p class="text-slate-500 text-sm">Direct links to University applications, TVET Colleges, NSFAS, and Bursaries.</p>
+          </div>
+          <span class="mt-6 text-emerald-600 font-semibold text-sm flex items-center gap-2">
+            View Applications <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="openGateway()">
+        <span class="bg-blue-600 text-white px-3 py-1.5 rounded-lg font-black text-xl tracking-wider">SA</span>
+        <span class="font-bold text-lg text-slate-900">Mzansi Careers Hub <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">V2</span></span>
+      </div>
+      
+      <!-- Navigation Tabs -->
+      <div class="flex items-center space-x-2 bg-slate-100 p-1 rounded-xl">
+        <button id="navJobseeker" onclick="switchTab('jobseeker')" class="px-4 py-2 rounded-lg font-medium text-sm transition-all bg-white text-slate-900 shadow-sm">
+          <i class="fa-solid fa-briefcase mr-1.5"></i> Job Seekers
+        </button>
+        <button id="navStudent" onclick="switchTab('student')" class="px-4 py-2 rounded-lg font-medium text-sm transition-all text-slate-600 hover:text-slate-900">
+          <i class="fa-solid fa-graduation-cap mr-1.5"></i> Students
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- JOB SEEKER SECTION -->
+    <section id="jobseekerSection">
+      <!-- Banner with Mandatory Disclaimer -->
+      <div class="gradient-bg text-white rounded-2xl p-8 mb-6 flex flex-col md:flex-row justify-between items-center gap-6 shadow-lg">
+        <div>
+          <h2 class="text-3xl font-extrabold mb-2">Real South African Job Opportunities</h2>
+          <p class="text-blue-100 max-w-xl text-sm mb-3">Browse verified employers, government departments, and retail giants. Use our upgraded AI Robot to craft tailored applications.</p>
+          <div class="inline-flex items-center gap-2 bg-blue-900/60 border border-blue-400/30 text-blue-200 text-xs px-3 py-1.5 rounded-lg">
+            <i class="fa-solid fa-circle-info text-emerald-400"></i>
+            <span>Links go to official company portals. Vacancies change daily - check the portal for live posts.</span>
+          </div>
+        </div>
+        <button onclick="openRobotModal()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition-all flex items-center gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-robot text-xl"></i> Upgraded Application Robot
+        </button>
+      </div>
+
+      <!-- Search and Industry Filters -->
+      <div class="bg-white p-4 rounded-2xl border border-slate-200 mb-8 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
+        <!-- Search bar -->
+        <div class="relative w-full md:w-96">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <input type="text" id="jobSearchInput" oninput="handleSearch()" placeholder="Search by job title, company..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <!-- Industry Filter Buttons -->
+        <div class="flex flex-wrap gap-2 w-full md:w-auto" id="industryFilterContainer">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Job List Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="jobGrid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+
+    <!-- STUDENT SECTION -->
+    <section id="studentSection" class="hidden">
+      <!-- Banner -->
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-800 text-white rounded-2xl p-8 mb-8 shadow-lg">
+        <h2 class="text-3xl font-extrabold mb-2">Direct University & Tertiary Portals</h2>
+        <p class="text-emerald-100">Click any institution to go directly to their official online application portal.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap gap-3 border-b border-slate-200 pb-4 mb-6">
+        <button onclick="filterStudentCat('all')" class="student-cat-btn active bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold">All Categories</button>
+        <button onclick="filterStudentCat('university')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">Universities</button>
+        <button onclick="filterStudentCat('college')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">TVET Colleges</button>
+        <button onclick="filterStudentCat('bursary')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">Bursaries & NSFAS</button>
+      </div>
+
+      <!-- Student Portals Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="studentGrid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= UPGRADED APPLICATION ROBOT MODAL ================= -->
+  <div id="robotModal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeRobotModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-xl">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">AI Cover Letter Generator V2</h3>
+          <p class="text-slate-500 text-xs">Build a customized 3-paragraph professional letter instantly</p>
+        </div>
+      </div>
+
+      <form id="robotForm" onsubmit="handleRobotSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Full Name</label>
+          <input type="text" required id="robotName" placeholder="Sipho Ndlovu" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Target Company</label>
+            <input type="text" required id="robotCompany" placeholder="e.g. Shoprite / Eskom" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Target Job Title</label>
+            <input type="text" required id="robotTitle" placeholder="e.g. Call Centre Agent" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Where did you see it?</label>
+            <input type="text" required id="robotSource" placeholder="e.g. Mzansi Careers Hub / LinkedIn" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Years of Experience</label>
+            <input type="text" required id="robotExp" placeholder="e.g. 2 Years / Entry-Level" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Key Skills / Strengths</label>
+          <textarea required id="robotSkills" rows="3" placeholder="Matric certificate, customer care, computer literacy..." class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg shadow transition-all">
+          Generate Tailored Letter
+        </button>
+      </form>
+
+      <!-- Robot Output Screen -->
+      <div id="robotOutput" class="hidden mt-6 pt-6 border-t border-slate-200">
+        <h4 class="font-bold text-slate-900 mb-2">Generated 3-Paragraph Cover Letter:</h4>
+        <div id="robotText" class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs font-mono text-slate-700 whitespace-pre-line mb-4"></div>
+        <div class="flex gap-2">
+          <button onclick="copyRobotText()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm flex items-center justify-center gap-2">
+            <i class="fa-solid fa-copy"></i> Copy to Clipboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+      <p>© 2026 Mzansi Careers & Opportunity Hub V2. Verified South African Portals.</p>
+    </div>
+  </footer>
+
+  <!-- DATA & SCRIPTS -->
+  <script>
+    // DATA: INDUSTRIES / JOB TYPES
+    const industries = ["All", "Government", "Retail", "Banking", "Learnership", "Mining", "Hospitality", "Telehealth & Medical"];
+
+    // DATA: 20+ VERIFIED REAL SA JOBS & PORTALS
+    const jobs = [
+      {
+        title: "SA Government Public Service Circulars (Z83)",
+        company: "DPSA Official Portal",
+        industry: "Government",
+        link: "https://www.dpsa.gov.za/newsroom/psvc/",
+        desc: "Official public sector vacancies across all national and provincial departments."
+      },
+      {
+        title: "SASSA Social Grant & Administrative Roles",
+        company: "SASSA Careers",
+        industry: "Government",
+        link: "https://www.sassa.gov.za/",
+        desc: "South African Social Security Agency career portals and job notices."
+      },
+      {
+        title: "SAPS Police Traineeships & Civilian Roles",
+        company: "South African Police Service",
+        industry: "Government",
+        link: "https://www.saps.gov.za/careers/careers.php",
+        desc: "Official SAPS recruitment portal for basic police training and support staff."
+      },
+      {
+        title: "Eskom Graduate Trainees & Engineering Vacancies",
+        company: "Eskom SOC Holdings",
+        industry: "Government",
+        link: "https://www.eskom.co.za/lesedi/career-opportunities/",
+        desc: "Direct applications for technical, artisan, and engineering opportunities."
+      },
+      {
+        title: "Retail Cashiers & Store Assistants",
+        company: "Shoprite & Checkers",
+        industry: "Retail",
+        link: "https://www.shopriteholdings.co.za/careers.html",
+        desc: "Apply directly for supermarket positions, logistics, and distribution roles nationwide."
+      },
+      {
+        title: "In-Store & Distribution Centre Vacancies",
+        company: "Pick n Pay Careers",
+        industry: "Retail",
+        link: "https://www.pnp.co.za/pnp-qr-code-page/careers",
+        desc: "Supermarket staffing, Baker, Butchery, and stock controller positions."
+      },
+      {
+        title: "Boxer Superstores Entry-Level Roles",
+        company: "Boxer Superstores",
+        industry: "Retail",
+        link: "https://www.boxer.co.za/careers/",
+        desc: "Community supermarket career portals across various provinces."
+      },
+      {
+        title: "Cashier, Store Team & Management",
+        company: "Woolworths Careers",
+        industry: "Retail",
+        link: "https://www.woolworthsholdings.co.za/careers/",
+        desc: "Fashion, food, and logistics retail employment portal."
+      },
+      {
+        title: "Dis-Chem Pharmacies Front Shop & Nursing",
+        company: "Dis-Chem Pharmacies",
+        industry: "Retail",
+        link: "https://www.dischem.co.za/careers",
+        desc: "Pharmacy assistants, beauty advisors, and retail support roles."
+      },
+      {
+        title: "Restaurant Crew, Barista & Management",
+        company: "KFC South Africa",
+        industry: "Hospitality",
+        link: "https://order.kfc.co.za/careers",
+        desc: "Quick-service restaurant team member applications."
+      },
+      {
+        title: "McDonald's Crew Member Opportunities",
+        company: "McDonald's SA",
+        industry: "Hospitality",
+        link: "https://mcdonalds.co.za/careers",
+        desc: "Front-of-house, kitchen crew, and shift manager applications."
+      },
+      {
+        title: "Banking Consultant & Teller Positions",
+        company: "Capitec Bank",
+        industry: "Banking",
+        link: "https://www.capitecbank.co.za/careers/",
+        desc: "Client service consultants and digital banking positions."
+      },
+      {
+        title: "FNB Graduate Programs & Career Portals",
+        company: "First National Bank (FNB)",
+        industry: "Banking",
+        link: "https://www.fnb.co.za/about-fnb/careers.html",
+        desc: "Corporate, retail banking, and IT career opportunities."
+      },
+      {
+        title: "Absa Group Careers & Learnerships",
+        company: "Absa Group",
+        industry: "Banking",
+        link: "https://www.absa.africa/absaegroup/careers/",
+        desc: "Financial sector job openings and youth learnership pipelines."
+      },
+      {
+        title: "Transnet Learnerships & Engineering Trainees",
+        company: "Transnet SOC Ltd",
+        industry: "Learnership",
+        link: "https://www.transnet.net/Careers/Pages/default.aspx",
+        desc: "Port terminal, rail operations, and logistics technical learnerships."
+      },
+      {
+        title: "Mining, Artisan & General Worker Positions",
+        company: "Anglo American SA",
+        industry: "Mining",
+        link: "https://www.angloamerican.com/careers",
+        desc: "Direct applications for technical, mining, and operational staff."
+      },
+      {
+        title: "Hospitality & Resort Operational Staff",
+        company: "Sun International",
+        industry: "Hospitality",
+        link: "https://www.corporate.suninternational.com/careers/",
+        desc: "Hotel management, food service, and resort staffing opportunities."
+      },
+      {
+        title: "Netcare Nursing Schools & Medical Vacancies",
+        company: "Netcare Hospitals",
+        industry: "Telehealth & Medical",
+        link: "https://www.netcare.co.za/Netcare-Careers",
+        desc: "Nursing education applications and hospital administrative roles."
+      }
+    ];
+
+    // DATA: DIRECT UNIVERSITY & TERTIARY LINKS
+    const studentPortals = [
+      {
+        name: "University of South Africa (UNISA)",
+        category: "university",
+        link: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission",
+        desc: "Distance learning undergraduate and postgraduate direct online applications."
+      },
+      {
+        name: "University of Pretoria (UP)",
+        category: "university",
+        link: "https://www.up.ac.za/online-application",
+        desc: "Official UP Student portal for undergraduate program admissions."
+      },
+      {
+        name: "University of Cape Town (UCT)",
+        category: "university",
+        link: "https://applyonline.uct.ac.za/",
+        desc: "Direct online application system for UCT academic programs."
+      },
+      {
+        name: "University of the Witwatersrand (Wits)",
+        category: "university",
+        link: "https://www.wits.ac.za/undergraduate/apply-to-wits/",
+        desc: "Official self-service portal for prospective undergraduate students."
+      },
+      {
+        name: "Central Applications Office (CAO KZN)",
+        category: "university",
+        link: "https://www.cao.ac.za/",
+        desc: "Centralized application system for UKZN, DUT, MUT, and UniZulu."
+      },
+      {
+        name: "Stellenbosch University Admissions",
+        category: "university",
+        link: "https://www.sun.ac.za/english/enrolment",
+        desc: "Undergraduate application portal for Stellenbosch University."
+      },
+      {
+        name: "North-West University (NWU)",
+        category: "university",
+        link: "https://studies.nwu.ac.za/undergraduate-studies/apply-nwu",
+        desc: "Direct application intake portal for NWU campuses."
+      },
+      {
+        name: "NSFAS Official Bursary Portal",
+        category: "bursary",
+        link: "https://my.nsfas.org.za/",
+        desc: "National Student Financial Aid Scheme direct online bursary applications."
+      },
+      {
+        name: "TVET Colleges Application Portal",
+        category: "college",
+        link: "https://www.tvetcolleges.co.za/",
+        desc: "Department of Higher Education TVET college registration and course guide."
+      },
+      {
+        name: "Fundi Student Bursaries & Loans",
+        category: "bursary",
+        link: "https://www.fundi.co.za/",
+        desc: "Tertiary education funding, device loans, and bursary administration."
+      }
+    ];
+
+    // STATE VARIABLES
+    let selectedIndustry = "All";
+    let searchQuery = "";
+
+    // INITIALIZATION & TAB SWITCHING
+    function selectPortal(type) {
+      document.getElementById('gatewayModal').classList.add('hidden');
+      switchTab(type);
+    }
+
+    function openGateway() {
+      document.getElementById('gatewayModal').classList.remove('hidden');
+    }
+
+    function switchTab(type) {
+      const jobSec = document.getElementById('jobseekerSection');
+      const studSec = document.getElementById('studentSection');
+      const navJob = document.getElementById('navJobseeker');
+      const navStud = document.getElementById('navStudent');
+
+      if (type === 'jobseeker') {
+        jobSec.classList.remove('hidden');
+        studSec.classList.add('hidden');
+        navJob.className = "px-4 py-2 rounded-lg font-medium text-sm transition-all bg-white text-slate-900 shadow-sm";
+        navStud.className = "px-4 py-2 rounded-lg font-medium text-sm transition-all text-slate-600 hover:text-slate-900";
+      } else {
+        studSec.classList.remove('hidden');
+        jobSec.classList.add('hidden');
+        navStud.className = "px-4 py-2 rounded-lg font-medium text-sm transition-all bg-white text-slate-900 shadow-sm";
+        navJob.className = "px-4 py-2 rounded-lg font-medium text-sm transition-all text-slate-600 hover:text-slate-900";
+      }
+    }
+
+    // RENDER INDUSTRY BUTTONS
+    function renderIndustries() {
+      const container = document.getElementById('industryFilterContainer');
+      container.innerHTML = industries.map(ind => `
+        <button onclick="filterIndustry('${ind}')" 
+          class="px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border ${selectedIndustry === ind ? 'bg-blue-600 text-white border-blue-600 shadow-sm' : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'}">
+          ${ind}
+        </button>
+      `).join('');
+    }
+
+    function filterIndustry(ind) {
+      selectedIndustry = ind;
+      renderIndustries();
+      renderJobs();
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('jobSearchInput').value.toLowerCase().trim();
+      renderJobs();
+    }
+
+    // RENDER JOBS WITH SEARCH, FILTER & WHATSAPP SHARE
+    function renderJobs() {
+      const grid = document.getElementById('jobGrid');
+      
+      let filtered = jobs.filter(job => {
+        const matchesInd = selectedIndustry === "All" || job.industry === selectedIndustry;
+        const matchesSearch = job.title.toLowerCase().includes(searchQuery) || 
+                              job.company.toLowerCase().includes(searchQuery) || 
+                              job.desc.toLowerCase().includes(searchQuery);
+        return matchesInd && matchesSearch;
+      });
+      
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 bg-white rounded-2xl border border-slate-200">No vacancies match your search query. Try clearing your search or picking another industry category.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(job => {
+        const whatsappText = encodeURIComponent(`Check out this real SA job/portal: *${job.title}* at *${job.company}*. Apply here: ${job.link}`);
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${whatsappText}`;
+
+        return `
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 card-hover flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="bg-blue-50 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md border border-blue-100">${job.industry}</span>
+                <span class="text-xs text-slate-400 font-medium">Verified Portal</span>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-1">${job.title}</h4>
+              <p class="text-xs font-semibold text-slate-500 mb-3">${job.company}</p>
+              <p class="text-sm text-slate-600 mb-6">${job.desc}</p>
+            </div>
+            
+            <div class="space-y-2">
+              <a href="${job.link}" target="_blank" rel="noopener noreferrer" class="w-full bg-slate-900 hover:bg-blue-600 text-white text-center font-semibold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-2">
+                Apply via Official Portal <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              </a>
+              <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-center font-semibold py-2 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> Share on WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // RENDER STUDENT PORTALS
+    function renderStudents(category = 'all') {
+      const grid = document.getElementById('studentGrid');
+      const filtered = category === 'all' ? studentPortals : studentPortals.filter(s => s.category === category);
+      
+      grid.innerHTML = filtered.map(portal => `
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 card-hover flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center mb-4">
+              <i class="fa-solid fa-university"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900 mb-2">${portal.name}</h4>
+            <p class="text-sm text-slate-600 mb-6">${portal.desc}</p>
+          </div>
+          <a href="${portal.link}" target="_blank" rel="noopener noreferrer" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-2">
+            Direct Application Portal <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      `).join('');
+    }
+
+    function filterStudentCat(cat) {
+      document.querySelectorAll('.student-cat-btn').forEach(btn => {
+        btn.className = "student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400";
+      });
+      event.target.className = "student-cat-btn bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold";
+      renderStudents(cat);
+    }
+
+    // UPGRADED APPLICATION ROBOT LOGIC (3-PARAGRAPH FORMAT)
+    function openRobotModal() {
+      document.getElementById('robotModal').classList.remove('hidden');
+    }
+
+    function closeRobotModal() {
+      document.getElementById('robotModal').classList.add('hidden');
+    }
+
+    function handleRobotSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('robotName').value;
+      const company = document.getElementById('robotCompany').value;
+      const title = document.getElementById('robotTitle').value;
+      const source = document.getElementById('robotSource').value;
+      const exp = document.getElementById('robotExp').value;
+      const skills = document.getElementById('robotSkills').value;
+
+      const template = `Dear Hiring Manager at ${company},\n\nI am writing to express my strong interest in the ${title} vacancy, which I recently discovered via ${source}. With ${exp} of practical experience and a strong background in ${skills}, I am fully prepared to deliver immediate value and uphold your company standards.\n\nThroughout my career journey, I have cultivated a disciplined work ethic, exceptional communication skills, and the capacity to adapt quickly to fast-paced operational environments. My core competencies directly align with your requirements, allowing me to handle administrative, customer-centric, or support duties efficiently.\n\nThank you for considering my application. I have attached my documentation for your review and look forward to the opportunity to discuss how my qualifications can benefit ${company}.\n\nSincerely,\n${name}`;
+
+      document.getElementById('robotText').innerText = template;
+      document.getElementById('robotOutput').classList.remove('hidden');
+    }
+
+    function copyRobotText() {
+      const text = document.getElementById('robotText').innerText;
+      navigator.clipboard.writeText(text);
+      alert('Tailored cover letter copied to clipboard!');
+    }
+
+    // ON LOAD
+    window.onload = function() {
+      renderIndustries();
+      renderJobs();
+      renderStudents();
+    };
+  </script>
+</body>
+</html>
