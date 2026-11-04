@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MZANSI CAREERS & OPPS V3 - Direct Apply SA Hub</title>
+  <title>MZANSI CAREERS & OPPS - All SA Universities Direct Apply Hub</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
@@ -37,7 +37,7 @@
               <i class="fa-solid fa-briefcase text-xl"></i>
             </div>
             <h2 class="text-xl font-bold text-slate-900 mb-2">Job Seeker</h2>
-            <p class="text-slate-500 text-sm">Direct links to verified South African job vacancies and application forms.</p>
+            <p class="text-slate-500 text-sm">Direct links to verified South African job vacancies and application portals.</p>
           </div>
           <span class="mt-6 text-blue-600 font-semibold text-sm flex items-center gap-2">
             Go to Job Applications <i class="fa-solid fa-arrow-right"></i>
@@ -51,10 +51,10 @@
               <i class="fa-solid fa-graduation-cap text-xl"></i>
             </div>
             <h2 class="text-xl font-bold text-slate-900 mb-2">Student</h2>
-            <p class="text-slate-500 text-sm">Direct links to University applications, TVET Colleges, and NSFAS.</p>
+            <p class="text-slate-500 text-sm">Direct application links to all 26 SA public universities, TVET colleges & NSFAS.</p>
           </div>
           <span class="mt-6 text-emerald-600 font-semibold text-sm flex items-center gap-2">
-            Go to Student Applications <i class="fa-solid fa-arrow-right"></i>
+            Go to University Applications <i class="fa-solid fa-arrow-right"></i>
           </span>
         </button>
       </div>
@@ -66,15 +66,15 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="openGateway()">
         <span class="bg-blue-600 text-white px-3 py-1.5 rounded-lg font-black text-xl tracking-wider">SA</span>
-        <span class="font-bold text-lg text-slate-900">Mzansi Direct Hub <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">V3</span></span>
+        <span class="font-bold text-lg text-slate-900">Mzansi Direct Hub <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">All Universities</span></span>
       </div>
       
       <!-- Navigation Tabs -->
       <div class="flex items-center space-x-2 bg-slate-100 p-1 rounded-xl">
-        <button id="navJobseeker" onclick="switchTab('jobseeker')" class="px-4 py-2 rounded-lg font-medium text-sm transition-all bg-white text-slate-900 shadow-sm">
+        <button id="navJobseeker" onclick="switchTab('jobseeker')" class="px-4 py-2 rounded-lg font-medium text-sm transition-all text-slate-600 hover:text-slate-900">
           <i class="fa-solid fa-briefcase mr-1.5"></i> Job Seekers
         </button>
-        <button id="navStudent" onclick="switchTab('student')" class="px-4 py-2 rounded-lg font-medium text-sm transition-all text-slate-600 hover:text-slate-900">
+        <button id="navStudent" onclick="switchTab('student')" class="px-4 py-2 rounded-lg font-medium text-sm transition-all bg-white text-slate-900 shadow-sm">
           <i class="fa-solid fa-graduation-cap mr-1.5"></i> Students
         </button>
       </div>
@@ -85,12 +85,12 @@
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
     <!-- JOB SEEKER SECTION -->
-    <section id="jobseekerSection">
+    <section id="jobseekerSection" class="hidden">
       <!-- Banner -->
       <div class="gradient-bg text-white rounded-2xl p-8 mb-6 flex flex-col md:flex-row justify-between items-center gap-6 shadow-lg">
         <div>
           <h2 class="text-3xl font-extrabold mb-2">Direct Job Application Portal</h2>
-          <p class="text-blue-100 max-w-xl text-sm mb-3">No shopping pages or generic homepages. Every link below takes you straight to active career portals and application forms.</p>
+          <p class="text-blue-100 max-w-xl text-sm mb-3">No generic homepages. Every link below takes you straight to active career portals and official application forms.</p>
           <div class="inline-flex items-center gap-2 bg-blue-900/60 border border-blue-400/30 text-blue-200 text-xs px-3 py-1.5 rounded-lg">
             <i class="fa-solid fa-shield-halved text-emerald-400"></i>
             <span>Verified 100% Direct Application Links</span>
@@ -125,19 +125,32 @@
 
 
     <!-- STUDENT SECTION -->
-    <section id="studentSection" class="hidden">
+    <section id="studentSection">
       <!-- Banner -->
       <div class="bg-gradient-to-r from-emerald-600 to-teal-800 text-white rounded-2xl p-8 mb-8 shadow-lg">
-        <h2 class="text-3xl font-extrabold mb-2">Direct University & College Applications</h2>
-        <p class="text-emerald-100">Click any institution to open their exact online application gateway instantly.</p>
+        <h2 class="text-3xl font-extrabold mb-2">Direct University & Tertiary Application Portals</h2>
+        <p class="text-emerald-100 mb-3">All South African public universities, TVET colleges, and bursaries. Clicking any portal opens its exact application system immediately.</p>
+        <div class="inline-flex items-center gap-2 bg-emerald-900/60 border border-emerald-400/30 text-emerald-100 text-xs px-3 py-1.5 rounded-lg">
+          <i class="fa-solid fa-circle-check text-emerald-300"></i>
+          <span>Direct ITS iEnabler, Oracle Student System & Online Application Links Included</span>
+        </div>
       </div>
 
-      <!-- Category Filter Tabs -->
-      <div class="flex flex-wrap gap-3 border-b border-slate-200 pb-4 mb-6">
-        <button onclick="filterStudentCat('all')" class="student-cat-btn active bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold">All Categories</button>
-        <button onclick="filterStudentCat('university')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">Universities</button>
-        <button onclick="filterStudentCat('college')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">TVET Colleges</button>
-        <button onclick="filterStudentCat('bursary')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">Bursaries & NSFAS</button>
+      <!-- Search & Category Filters -->
+      <div class="bg-white p-4 rounded-2xl border border-slate-200 mb-6 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div class="relative w-full md:w-96">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <input type="text" id="studentSearchInput" oninput="handleStudentSearch()" placeholder="Search university by name or abbreviation (e.g., TUT, UJ, Wits)..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterStudentCat('all')" class="student-cat-btn active bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold">All Portals</button>
+          <button onclick="filterStudentCat('university')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">Universities (26)</button>
+          <button onclick="filterStudentCat('college')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">TVET Colleges</button>
+          <button onclick="filterStudentCat('bursary')" class="student-cat-btn bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-lg text-sm font-semibold hover:border-slate-400">Bursaries & NSFAS</button>
+        </div>
       </div>
 
       <!-- Student Portals Grid -->
@@ -173,11 +186,11 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Target Company</label>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Target Company / Institution</label>
             <input type="text" required id="robotCompany" placeholder="e.g. Department of Health / Shoprite" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
           </div>
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Target Job Title</label>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Target Role / Program</label>
             <input type="text" required id="robotTitle" placeholder="e.g. Administrative Assistant" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
           </div>
         </div>
@@ -205,7 +218,7 @@
 
       <!-- Robot Output Screen -->
       <div id="robotOutput" class="hidden mt-6 pt-6 border-t border-slate-200">
-        <h4 class="font-bold text-slate-900 mb-2">Generated 3-Paragraph Cover Letter:</h4>
+        <h4 class="font-bold text-slate-900 mb-2">Generated Cover Letter:</h4>
         <div id="robotText" class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs font-mono text-slate-700 whitespace-pre-line mb-4"></div>
         <div class="flex gap-2">
           <button onclick="copyRobotText()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm flex items-center justify-center gap-2">
@@ -219,7 +232,7 @@
   <!-- FOOTER -->
   <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-auto">
     <div class="max-w-7xl mx-auto px-4 text-center text-sm">
-      <p>© 2026 Mzansi Direct Application Hub. 100% Verified Direct Links.</p>
+      <p>© 2026 Mzansi Direct Application Hub. Complete South African University & Career Gateway.</p>
     </div>
   </footer>
 
@@ -228,7 +241,7 @@
     // INDUSTRIES
     const industries = ["All", "Government", "Retail", "Banking", "Learnership", "Mining", "Hospitality", "Medical"];
 
-    // 100% VERIFIED DIRECT APPLICATION LINKS (No shopping, no homepages)
+    // JOB VACANCY DIRECT LINKS
     const jobs = [
       {
         title: "SA Public Service Vacancy Circulars (Z83 Direct)",
@@ -337,52 +350,166 @@
       }
     ];
 
-    // 100% VERIFIED DIRECT STUDENT & UNIVERSITY APPLICATION LINKS
+    // COMPLETE ALL 26 SOUTH AFRICAN UNIVERSITIES + TVET & BURSARIES
     const studentPortals = [
       {
-        name: "University of South Africa (UNISA)",
+        name: "Tshwane University of Technology (TUT)",
         category: "university",
-        link: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission",
-        desc: "Direct online undergraduate and postgraduate application system."
+        link: "https://applications-prod.tut.ac.za/",
+        desc: "Direct online application portal for TUT undergraduate and postgraduate programs."
       },
       {
         name: "University of Pretoria (UP)",
         category: "university",
-        link: "https://www.up.ac.za/online-application",
-        desc: "Direct online application portal for UP undergraduate degree programs."
+        link: "https://upnet.up.ac.za/psc/upapply/EMPLOYEE/SA/c/UP_OAP_MENU.UP_OAP_LOGIN_FL.GBL?&",
+        desc: "Direct UP Student Online Application portal (UPNet PeopleSoft system)."
       },
       {
-        name: "University of Cape Town (UCT)",
+        name: "Sefako Makgatho Health Sciences University (SMU)",
         category: "university",
-        link: "https://applyonline.uct.ac.za/",
-        desc: "Direct application system for UCT academic course enrollment."
+        link: "https://onlineapplication.smu.ac.za/pls/prodi41/gen.gw1pkg.gw1view",
+        desc: "Direct SMU online application gateway for health and medical sciences."
+      },
+      {
+        name: "University of Johannesburg (UJ)",
+        category: "university",
+        link: "https://registration.uj.ac.za/pls/prodi41/gen.gw1pkg.gw1view",
+        desc: "Direct UJ prospective student online application and registration portal."
       },
       {
         name: "University of the Witwatersrand (Wits)",
         category: "university",
-        link: "https://www.wits.ac.za/undergraduate/apply-to-wits/",
-        desc: "Direct self-service student application portal for Wits."
+        link: "https://self-service.wits.ac.za/psc/csprodonl/UW_SELF_SERVICE/SA/c/VC_OA_LOGIN_MENU.VC_OA_LOGIN_FL.GBL",
+        desc: "Direct Wits Self-Service online student application gateway."
       },
       {
-        name: "Central Applications Office (CAO KZN)",
+        name: "Vaal University of Technology (VUT)",
         category: "university",
-        link: "https://www.cao.ac.za/Enquire.aspx",
-        desc: "Direct central application system for UKZN, DUT, MUT, and UniZulu."
+        link: "https://ienablerprod.vut.ac.za/pls/prodi41/w99pkg.mi_login",
+        desc: "Direct VUT ITS iEnabler prospective student application login."
       },
       {
-        name: "Stellenbosch University Admissions",
+        name: "University of Limpopo (UL)",
         category: "university",
-        link: "https://www.sun.ac.za/english/enrolment",
-        desc: "Direct undergraduate application intake portal."
+        link: "https://ulc-prod-webserver.ul.ac.za/pls/prodi41/gen.gw1pkg.gw1view",
+        desc: "Direct UL online student application system."
+      },
+      {
+        name: "University of Venda (UNIVEN)",
+        category: "university",
+        link: "https://univenierp01.univen.ac.za/pls/prodi41/gen.gw1pkg.gw1view",
+        desc: "Direct UNIVEN online application portal."
+      },
+      {
+        name: "Central University of Technology (CUT)",
+        category: "university",
+        link: "https://www.cut.ac.za/application-process",
+        desc: "Direct online application portal for CUT campuses."
+      },
+      {
+        name: "University of the Free State (UFS)",
+        category: "university",
+        link: "https://www.ufs.ac.za/natagri/departments-and-divisions/centre-for-environmental-management-home/apply",
+        desc: "Direct UFS online undergraduate and postgraduate application system."
+      },
+      {
+        name: "Walter Sisulu University (WSU)",
+        category: "university",
+        link: "https://ieweb.wsu.ac.za/pls/prodi41/w99pkg.mi_login",
+        desc: "Direct WSU ITS iEnabler online student application system."
+      },
+      {
+        name: "University of Fort Hare (UFH)",
+        category: "university",
+        link: "https://ienabler.ufh.ac.za/pls/prodi41/w99pkg.mi_login",
+        desc: "Direct UFH ITS iEnabler online application portal."
+      },
+      {
+        name: "Nelson Mandela University (NMU)",
+        category: "university",
+        link: "https://www.mandela.ac.za/study-at-mandela/application/apply-undergraduate",
+        desc: "Direct Nelson Mandela University undergraduate online application portal."
+      },
+      {
+        name: "Cape Peninsula University of Technology (CPUT)",
+        category: "university",
+        link: "https://alecto.cput.ac.za/pls/prodi41/w99pkg.mi_login",
+        desc: "Direct CPUT online application system (ITS iEnabler Portal)."
+      },
+      {
+        name: "University of Cape Town (UCT)",
+        category: "university",
+        link: "https://publicaccess.uct.ac.za/psc/public/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?LP=UCT_ONLINE_APP_PUBLIC&",
+        desc: "Direct UCT Public Online Application gateway."
+      },
+      {
+        name: "University of the Western Cape (UWC)",
+        category: "university",
+        link: "https://student.uwc.ac.za/",
+        desc: "Direct UWC student portal for online admissions and applications."
       },
       {
         name: "North-West University (NWU)",
         category: "university",
-        link: "https://studies.nwu.ac.za/undergraduate-studies/apply-nwu",
-        desc: "Direct application portal for all NWU campuses."
+        link: "https://vssweb.nwu.ac.za/aaa-webclient/#/top",
+        desc: "Direct NWU prospective student web application portal."
       },
       {
-        name: "NSFAS Official Bursary Portal",
+        name: "University of South Africa (UNISA)",
+        category: "university",
+        link: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission",
+        desc: "Direct online distance learning undergraduate and postgraduate application portal."
+      },
+      {
+        name: "Stellenbosch University (SU)",
+        category: "university",
+        link: "https://www.sun.ac.za/english/enrolment",
+        desc: "Direct Stellenbosch University prospective undergraduate application portal."
+      },
+      {
+        name: "University of KwaZulu-Natal (UKZN / CAO)",
+        category: "university",
+        link: "https://www.cao.ac.za/",
+        desc: "Direct Central Applications Office portal for UKZN, DUT, MUT, and UniZulu."
+      },
+      {
+        name: "Durban University of Technology (DUT)",
+        category: "university",
+        link: "https://www.cao.ac.za/",
+        desc: "Direct application intake portal for DUT via CAO."
+      },
+      {
+        name: "Mangosuthu University of Technology (MUT)",
+        category: "university",
+        link: "https://www.cao.ac.za/",
+        desc: "Direct application intake portal for MUT via CAO."
+      },
+      {
+        name: "University of Zululand (UNIZULU)",
+        category: "university",
+        link: "https://www.cao.ac.za/",
+        desc: "Direct application intake portal for UniZulu via CAO."
+      },
+      {
+        name: "University of Mpumalanga (UMP)",
+        category: "university",
+        link: "https://www.ump.ac.za/Study-with-us/Apply-Online",
+        desc: "Direct University of Mpumalanga online application system."
+      },
+      {
+        name: "Sol Plaatje University (SPU)",
+        category: "university",
+        link: "https://www.spu.ac.za/index.php/how-to-apply/",
+        desc: "Direct Sol Plaatje University online admissions portal."
+      },
+      {
+        name: "Rhodes University (RU)",
+        category: "university",
+        link: "https://ross.ru.ac.za/",
+        desc: "Direct Rhodes Online Student System (ROSS) application login."
+      },
+      {
+        name: "NSFAS Official Student Bursary Portal",
         category: "bursary",
         link: "https://my.nsfas.org.za/",
         desc: "Direct online student bursary application and account login."
@@ -404,6 +531,8 @@
     // STATE VARIABLES
     let selectedIndustry = "All";
     let searchQuery = "";
+    let studentSearchQuery = "";
+    let selectedStudentCategory = "all";
 
     // INITIALIZATION & TAB SWITCHING
     function selectPortal(type) {
@@ -456,7 +585,12 @@
       renderJobs();
     }
 
-    // RENDER JOBS WITH WHATSAPP SHARE
+    function handleStudentSearch() {
+      studentSearchQuery = document.getElementById('studentSearchInput').value.toLowerCase().trim();
+      renderStudents(selectedStudentCategory);
+    }
+
+    // RENDER JOBS
     function renderJobs() {
       const grid = document.getElementById('jobGrid');
       
@@ -504,14 +638,29 @@
 
     // RENDER STUDENT PORTALS
     function renderStudents(category = 'all') {
+      selectedStudentCategory = category;
       const grid = document.getElementById('studentGrid');
-      const filtered = category === 'all' ? studentPortals : studentPortals.filter(s => s.category === category);
+      
+      let filtered = studentPortals.filter(s => {
+        const matchesCat = category === 'all' || s.category === category;
+        const matchesSearch = s.name.toLowerCase().includes(studentSearchQuery) || 
+                              s.desc.toLowerCase().includes(studentSearchQuery);
+        return matchesCat && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 bg-white rounded-2xl border border-slate-200">No institutions match your search criteria. Try clearing the search bar.</div>`;
+        return;
+      }
       
       grid.innerHTML = filtered.map(portal => `
         <div class="bg-white p-6 rounded-2xl border border-slate-200 card-hover flex flex-col justify-between">
           <div>
-            <div class="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center mb-4">
-              <i class="fa-solid fa-graduation-cap"></i>
+            <div class="flex justify-between items-start mb-3">
+              <div class="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <span class="text-xs text-emerald-600 font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Official System</span>
             </div>
             <h4 class="text-lg font-bold text-slate-900 mb-2">${portal.name}</h4>
             <p class="text-sm text-slate-600 mb-6">${portal.desc}</p>
@@ -549,7 +698,7 @@
       const exp = document.getElementById('robotExp').value;
       const skills = document.getElementById('robotSkills').value;
 
-      const template = `Dear Hiring Manager at ${company},\n\nI am writing to express my strong interest in the ${title} vacancy, which I discovered via ${source}. With ${exp} of practical experience and a strong background in ${skills}, I am fully prepared to deliver immediate value and uphold your company standards.\n\nThroughout my career journey, I have cultivated a disciplined work ethic, exceptional communication skills, and the capacity to adapt quickly to fast-paced operational environments. My core competencies directly align with your requirements.\n\nThank you for considering my application. I have attached my documentation for your review and look forward to the opportunity to discuss how my qualifications can benefit ${company}.\n\nSincerely,\n${name}`;
+      const template = `Dear Hiring Manager at ${company},\n\nI am writing to express my strong interest in the ${title} vacancy, which I discovered via ${source}. With ${exp} of practical experience and a strong background in ${skills}, I am fully prepared to deliver immediate value and uphold your standards.\n\nThroughout my career journey, I have cultivated a disciplined work ethic, exceptional communication skills, and the capacity to adapt quickly to fast-paced operational environments. My core competencies directly align with your requirements.\n\nThank you for considering my application. I have attached my documentation for your review and look forward to the opportunity to discuss how my qualifications can benefit ${company}.\n\nSincerely,\n${name}`;
 
       document.getElementById('robotText').innerText = template;
       document.getElementById('robotOutput').classList.remove('hidden');
