@@ -132,7 +132,7 @@
         <p class="text-emerald-100 mb-3">All South African public universities, TVET colleges, and bursaries. Clicking any portal opens its exact application system immediately.</p>
         <div class="inline-flex items-center gap-2 bg-emerald-900/60 border border-emerald-400/30 text-emerald-100 text-xs px-3 py-1.5 rounded-lg">
           <i class="fa-solid fa-circle-check text-emerald-300"></i>
-          <span>Direct ITS iEnabler, Oracle Student System & Online Application Links Included</span>
+          <span>Direct ITS iEnabler, PeopleSoft & Online Application Links Included</span>
         </div>
       </div>
 
@@ -350,7 +350,7 @@
       }
     ];
 
-    // COMPLETE ALL 26 SOUTH AFRICAN UNIVERSITIES + TVET & BURSARIES
+    // COMPLETE ALL 26 SOUTH AFRICAN UNIVERSITIES + TVET & BURSARIES (FIXED LINKS)
     const studentPortals = [
       {
         name: "Tshwane University of Technology (TUT)",
@@ -367,7 +367,7 @@
       {
         name: "Sefako Makgatho Health Sciences University (SMU)",
         category: "university",
-        link: "https://onlineapplication.smu.ac.za/pls/prodi41/gen.gw1pkg.gw1view",
+        link: "https://www.smu.ac.za/students/apply/",
         desc: "Direct SMU online application gateway for health and medical sciences."
       },
       {
@@ -391,14 +391,20 @@
       {
         name: "University of Limpopo (UL)",
         category: "university",
-        link: "https://ulc-prod-webserver.ul.ac.za/pls/prodi41/gen.gw1pkg.gw1view",
+        link: "https://ulc-prod-webserver.ul.ac.za/pls/prodi41/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP",
         desc: "Direct UL online student application system."
       },
       {
         name: "University of Venda (UNIVEN)",
         category: "university",
-        link: "https://univenierp01.univen.ac.za/pls/prodi41/gen.gw1pkg.gw1view",
+        link: "https://univenierp01.univen.ac.za/pls/prodi41/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP",
         desc: "Direct UNIVEN online application portal."
+      },
+      {
+        name: "University of Mpumalanga (UMP)",
+        category: "university",
+        link: "https://ienabler.ump.ac.za/pls/prodi41/w99pkg.mi_login",
+        desc: "Direct University of Mpumalanga ITS iEnabler online application system."
       },
       {
         name: "Central University of Technology (CUT)",
@@ -439,7 +445,7 @@
       {
         name: "University of Cape Town (UCT)",
         category: "university",
-        link: "https://publicaccess.uct.ac.za/psc/public/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?LP=UCT_ONLINE_APP_PUBLIC&",
+        link: "https://publicaccess.uct.ac.za/psc/public/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?LP=UCT_ONLINE_APP_PUBLIC",
         desc: "Direct UCT Public Online Application gateway."
       },
       {
@@ -463,8 +469,8 @@
       {
         name: "Stellenbosch University (SU)",
         category: "university",
-        link: "https://www.sun.ac.za/english/enrolment",
-        desc: "Direct Stellenbosch University prospective undergraduate application portal."
+        link: "https://student.sun.ac.za/",
+        desc: "Direct Stellenbosch University prospective student application portal."
       },
       {
         name: "University of KwaZulu-Natal (UKZN / CAO)",
@@ -489,12 +495,6 @@
         category: "university",
         link: "https://www.cao.ac.za/",
         desc: "Direct application intake portal for UniZulu via CAO."
-      },
-      {
-        name: "University of Mpumalanga (UMP)",
-        category: "university",
-        link: "https://www.ump.ac.za/Study-with-us/Apply-Online",
-        desc: "Direct University of Mpumalanga online application system."
       },
       {
         name: "Sol Plaatje University (SPU)",
