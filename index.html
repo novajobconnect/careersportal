@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casenova Connection - South Africa Tertiary Applications Portal</title>
+  <title>Casenova Connection - All SA Universities & TVET Direct Portal</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
@@ -25,7 +25,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('home')">
         <span class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-black text-xl tracking-wider">CC</span>
-        <span class="font-bold text-lg text-slate-900">Casenova Connection <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">SA Portal</span></span>
+        <span class="font-bold text-lg text-slate-900">Casenova Connection <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">SA All Unis Portal</span></span>
       </div>
       
       <div class="flex items-center gap-2">
@@ -50,11 +50,11 @@
         <div>
           <span class="bg-emerald-500/30 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-400/30">Official Student Gateway</span>
           <h1 class="text-3xl md:text-5xl font-extrabold mt-3 mb-4">Welcome to Casenova Connection</h1>
-          <p class="text-emerald-100 max-w-xl text-sm md:text-base mb-6">Your ultimate South African tertiary hub. Access direct university application links, calculate your APS score, or chat live with our interactive Gemini-style AI Assistant.</p>
+          <p class="text-emerald-100 max-w-xl text-sm md:text-base mb-6">Your ultimate South African tertiary hub. Access direct application portals for all 26 public universities & TVET colleges, calculate your APS score, or chat live with our AI Helper.</p>
         </div>
         <div class="w-full md:w-auto bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
           <div class="text-4xl font-black mb-1">26+</div>
-          <div class="text-xs text-emerald-200 uppercase tracking-wider font-semibold">Public Universities & Colleges</div>
+          <div class="text-xs text-emerald-200 uppercase tracking-wider font-semibold">SA Public Universities & Colleges</div>
         </div>
       </div>
 
@@ -71,7 +71,7 @@
                 <i class="fa-solid fa-graduation-cap"></i>
               </div>
               <h3 class="text-lg font-bold text-slate-900 mb-2">1. University & College Applications</h3>
-              <p class="text-sm text-slate-600 mb-6">Browse all public universities, TVET colleges, and bursaries with direct official application links and fee details.</p>
+              <p class="text-sm text-slate-600 mb-6">Browse all 26 public universities, TVET colleges, and bursaries with direct official application links and fee details.</p>
             </div>
             <div class="text-emerald-600 font-bold text-sm flex items-center gap-2">
               Open Portals <i class="fa-solid fa-arrow-right"></i>
@@ -84,7 +84,7 @@
                 <i class="fa-solid fa-calculator"></i>
               </div>
               <h3 class="text-lg font-bold text-slate-900 mb-2">2. National APS Calculator & Careers</h3>
-              <p class="text-sm text-slate-600 mb-6">Calculate your exact Admission Point Score and instantly discover qualifying courses, target universities, and career pathways.</p>
+              <p class="text-sm text-slate-600 mb-6">Calculate your exact Admission Point Score and instantly discover qualifying courses, target universities, and real-world career paths.</p>
             </div>
             <div class="text-blue-600 font-bold text-sm flex items-center gap-2">
               Calculate Score <i class="fa-solid fa-arrow-right"></i>
@@ -97,7 +97,7 @@
                 <i class="fa-solid fa-robot"></i>
               </div>
               <h3 class="text-lg font-bold text-slate-900 mb-2">3. Interactive AI Application Helper</h3>
-              <p class="text-sm text-slate-600 mb-6">Chat live with our Gemini-style AI assistant. Ask questions, paste portal screenshots, and get real-time step-by-step guidance.</p>
+              <p class="text-sm text-slate-600 mb-6">Chat live with our AI assistant. Ask questions, paste portal screenshots, and get interactive step-by-step guidance.</p>
             </div>
             <div class="text-purple-600 font-bold text-sm flex items-center gap-2">
               Launch AI Chat <i class="fa-solid fa-arrow-right"></i>
@@ -126,7 +126,7 @@
           <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
             <i class="fa-solid fa-magnifying-glass"></i>
           </span>
-          <input type="text" id="studentSearchInput" oninput="handleStudentSearch()" placeholder="Search institution (e.g. TUT, UP, TNC, SWGC)..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <input type="text" id="studentSearchInput" oninput="handleStudentSearch()" placeholder="Search institution (e.g. TUT, UP, UJ, Wits, TNC, SWGC)..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
         </div>
 
         <div class="flex flex-wrap gap-2">
@@ -154,13 +154,13 @@
       </div>
     </div>
 
-    <!-- VIEW 3: INTERACTIVE GEMINI-STYLE AI HELPER CHAT -->
+    <!-- VIEW 3: INTERACTIVE AI HELPER CHAT -->
     <div id="view-aihelper" class="hidden space-y-4">
       <div class="bg-gradient-to-r from-purple-700 to-indigo-900 text-white rounded-2xl p-6 shadow-xl flex items-center justify-between">
         <div>
-          <span class="bg-purple-500/30 text-purple-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-purple-400/30">Gemini AI Assistant</span>
+          <span class="bg-purple-500/30 text-purple-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-purple-400/30">AI Assistant</span>
           <h2 class="text-2xl font-extrabold mt-2">Casenova AI Application Helper</h2>
-          <p class="text-purple-100 text-xs max-w-xl">Ask questions about any university portal, document requirements, or paste/upload screenshots for instant step-by-step assistance.</p>
+          <p class="text-purple-100 text-xs max-w-xl">Ask questions about any university portal, document upload requirements, or paste/upload screenshots for step-by-step assistance.</p>
         </div>
         <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl border border-white/20 hidden sm:flex">
           <i class="fa-solid fa-robot"></i>
@@ -169,16 +169,14 @@
 
       <!-- Chat Container -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col h-[65vh]">
-        <!-- Chat Messages Area -->
         <div id="chatMessages" class="flex-grow p-4 md:p-6 overflow-y-auto space-y-4">
-          <!-- Initial Greeting Message -->
           <div class="flex items-start gap-3">
             <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center flex-shrink-0 text-sm">
               <i class="fa-solid fa-robot"></i>
             </div>
             <div class="bg-slate-100 text-slate-800 p-4 rounded-2xl rounded-tl-none max-w-xl text-sm shadow-sm">
               <p class="font-bold mb-1">Hello! I am your Casenova AI Application Assistant.</p>
-              <p>Stuck on an application portal, need help creating a student pin, or want to know what documents to upload? Type your question below or paste a screenshot! How can I help you today?</p>
+              <p>Stuck on an application portal, need help creating a student pin, or want to know what documents to upload? Type your question below or upload a screenshot! How can I help you today?</p>
             </div>
           </div>
         </div>
@@ -196,7 +194,7 @@
             <i class="fa-solid fa-image"></i>
             <input type="file" id="chatImageInput" accept="image/*" class="hidden" onchange="handleImageAttachment(event)">
           </label>
-          <input type="text" id="chatInputText" onkeydown="handleChatKey(event)" placeholder="Ask a question or describe what is on your screen..." class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+          <input type="text" id="chatInputText" onkeydown="handleChatKey(event)" placeholder="Ask any question or describe what is on your screen..." class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
           <button onclick="sendChatMessage()" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-xl font-bold text-sm shadow transition-all flex items-center gap-2">
             <span>Send</span> <i class="fa-solid fa-paper-plane text-xs"></i>
           </button>
@@ -333,12 +331,34 @@
 
   <!-- DATA & SCRIPTS -->
   <script>
-    // UNIVERSITIES, BURSARIES & TVET COLLEGES (INCLUDING TNC, SWGC, ORBIT, ETC.)
+    // ALL 26 SOUTH AFRICAN PUBLIC UNIVERSITIES + TVET COLLEGES & BURSARIES
     const studentPortals = [
       { name: "Tshwane University of Technology (TUT)", category: "university", fee: "R240", link: "https://applications-prod.tut.ac.za/", desc: "Direct online application portal for TUT undergraduate and postgraduate programs." },
       { name: "University of Pretoria (UP)", category: "university", fee: "R300 (Free if Income < R150k)", link: "https://upnet.up.ac.za/psc/upapply/EMPLOYEE/SA/c/UP_OAP_MENU.UP_OAP_LOGIN_FL.GBL?&", desc: "Direct UP Student Online Application portal (UPNet PeopleSoft system)." },
+      { name: "Sefako Makgatho Health Sciences University (SMU)", category: "university", fee: "R300", link: "https://onlineapplication.smu.ac.za/pls/prodi41/gen.gw1pkg.gw1view", desc: "Direct SMU online application gateway for health and medical sciences." },
       { name: "University of Johannesburg (UJ)", category: "university", fee: "FREE (Online) / R200 (Manual)", link: "https://registration.uj.ac.za/pls/prodi41/gen.gw1pkg.gw1view", desc: "Direct UJ prospective student online application and registration portal." },
       { name: "University of the Witwatersrand (Wits)", category: "university", fee: "R100", link: "https://self-service.wits.ac.za/psc/csprodonl/UW_SELF_SERVICE/SA/c/VC_OA_LOGIN_MENU.VC_OA_LOGIN_FL.GBL", desc: "Direct Wits Self-Service online student application gateway." },
+      { name: "Vaal University of Technology (VUT)", category: "university", fee: "R100", link: "https://ienablerprod.vut.ac.za/pls/prodi41/w99pkg.mi_login", desc: "Direct VUT ITS iEnabler prospective student application login." },
+      { name: "University of Limpopo (UL)", category: "university", fee: "R200", link: "https://ulc-prod-webserver.ul.ac.za/pls/prodi41/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP", desc: "Direct UL online student application system." },
+      { name: "University of Venda (UNIVEN)", category: "university", fee: "R100", link: "https://univenierp01.univen.ac.za/pls/prodi41/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP", desc: "Direct UNIVEN online application portal." },
+      { name: "University of Mpumalanga (UMP)", category: "university", fee: "R200", link: "https://ienabler.ump.ac.za/pls/prodi41/w99pkg.mi_login", desc: "Direct University of Mpumalanga ITS iEnabler online application system." },
+      { name: "Central University of Technology (CUT)", category: "university", fee: "FREE (Online)", link: "https://www.cut.ac.za/application-process", desc: "Direct online application portal for CUT campuses." },
+      { name: "University of the Free State (UFS)", category: "university", fee: "FREE (Online)", link: "https://www.ufs.ac.za/natagri/departments-and-divisions/centre-for-environmental-management-home/apply", desc: "Direct UFS online undergraduate and postgraduate application system." },
+      { name: "Walter Sisulu University (WSU)", category: "university", fee: "R100", link: "https://ieweb.wsu.ac.za/pls/prodi41/w99pkg.mi_login", desc: "Direct WSU ITS iEnabler online student application system." },
+      { name: "University of Fort Hare (UFH)", category: "university", fee: "FREE (Online) / R120 (Manual)", link: "https://ienabler.ufh.ac.za/pls/prodi41/w99pkg.mi_login", desc: "Direct UFH ITS iEnabler online application portal." },
+      { name: "Nelson Mandela University (NMU)", category: "university", fee: "FREE (SA Citizens)", link: "https://www.mandela.ac.za/study-at-mandela/application/apply-undergraduate", desc: "Direct Nelson Mandela University undergraduate online application portal." },
+      { name: "Cape Peninsula University of Technology (CPUT)", category: "university", fee: "R100", link: "https://alecto.cput.ac.za/pls/prodi41/w99pkg.mi_login", desc: "Direct CPUT online application system (ITS iEnabler Portal)." },
+      { name: "University of Cape Town (UCT)", category: "university", fee: "R100", link: "https://publicaccess.uct.ac.za/psc/public/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?LP=UCT_ONLINE_APP_PUBLIC", desc: "Direct UCT Public Online Application gateway." },
+      { name: "University of the Western Cape (UWC)", category: "university", fee: "FREE (Online)", link: "https://student.uwc.ac.za/", desc: "Direct UWC student portal for online admissions and applications." },
+      { name: "North-West University (NWU)", category: "university", fee: "FREE (Online)", link: "https://vssweb.nwu.ac.za/aaa-webclient/#/top", desc: "Direct NWU prospective student web application portal." },
+      { name: "University of South Africa (UNISA)", category: "university", fee: "R135", link: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission", desc: "Direct online distance learning undergraduate and postgraduate application portal." },
+      { name: "Stellenbosch University (SU)", category: "university", fee: "R100", link: "https://student.sun.ac.za/", desc: "Direct Stellenbosch University prospective student application portal." },
+      { name: "University of KwaZulu-Natal (UKZN / CAO)", category: "university", fee: "R250 (One CAO fee for all KZN unis)", link: "https://www.cao.ac.za/", desc: "Direct Central Applications Office portal for UKZN, DUT, MUT, and UniZulu." },
+      { name: "Durban University of Technology (DUT)", category: "university", fee: "R250 (via CAO)", link: "https://www.cao.ac.za/", desc: "Direct application intake portal for DUT via CAO." },
+      { name: "Mangosuthu University of Technology (MUT)", category: "university", fee: "R250 (via CAO)", link: "https://www.cao.ac.za/", desc: "Direct application intake portal for MUT via CAO." },
+      { name: "University of Zululand (UNIZULU)", category: "university", fee: "R250 (via CAO)", link: "https://www.cao.ac.za/", desc: "Direct application intake portal for UniZulu via CAO." },
+      { name: "Sol Plaatje University (SPU)", category: "university", fee: "FREE (Online)", link: "https://www.spu.ac.za/index.php/how-to-apply/", desc: "Direct Sol Plaatje University online admissions portal." },
+      { name: "Rhodes University (RU)", category: "university", fee: "R100", link: "https://ross.ru.ac.za/", desc: "Direct Rhodes Online Student System (ROSS) application login." },
       { name: "Tshwane North TVET College (TNC)", category: "college", fee: "FREE Application", link: "https://www.tnc.edu.za/", desc: "Direct registration portal for Engineering, Business, and Utility studies in Gauteng." },
       { name: "South West Gauteng TVET College (SWGC)", category: "college", fee: "FREE Application", link: "https://www.swgc.co.za/", desc: "Direct application portal for vocational certificates and diplomas in Johannesburg." },
       { name: "Orbit TVET College", category: "college", fee: "FREE Application", link: "https://orbitcollege.co.za/", desc: "Direct North West province TVET college online application portal." },
@@ -497,7 +517,7 @@
             <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Practical technical engineering support, GIS mapping, media production.</p>
           </div>
           <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <h5 class="font-bold term-amber-900 text-sm">⚡ TVET Colleges & Higher Certificates (18 - 21 Points)</h5>
+            <h5 class="font-bold text-amber-900 text-sm">⚡ TVET Colleges & Higher Certificates (18 - 21 Points)</h5>
             <p class="text-xs text-amber-700 mt-1">Highly recommended: National Certificates (N4-N6) at Tshwane North TVET (TNC), SWGC, or Orbit College leading directly to trade certifications or university articulation.</p>
             <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Electrical contracting, mechanical fitting, professional office administration.</p>
           </div>
@@ -516,7 +536,7 @@
       document.getElementById('apsResultsContainer').classList.remove('hidden');
     }
 
-    // GEMINI-STYLE INTERACTIVE CHAT AI HELPER
+    // DYNAMIC INTERACTIVE CHAT AI HELPER
     function handleImageAttachment(e) {
       const file = e.target.files[0];
       if (file) {
@@ -549,13 +569,13 @@
 
       if (!text && !attachedImageBase64) return;
 
-      // 1. Append User Message
+      // Render User Message
       let userHtml = `
         <div class="flex items-start gap-3 justify-end">
           <div class="bg-purple-600 text-white p-4 rounded-2xl rounded-tr-none max-w-xl text-sm shadow-sm space-y-2">
       `;
       if (attachedImageBase64) {
-        userHtml += `<img src="${attachedImageBase64}" alt="Uploaded screenshot" class="max-w-xs rounded-lg border border-purple-400">`;
+        userHtml += `<img src="${attachedImageBase64}" alt="Uploaded screenshot" class="max-w-xs rounded-lg border border-purple-400 mb-2">`;
       }
       if (text) {
         userHtml += `<p>${escapeHtml(text)}</p>`;
@@ -569,15 +589,14 @@
       `;
       chatContainer.insertAdjacentHTML('beforeend', userHtml);
 
-      // Clear input & image preview
       inputField.value = '';
       const sentImage = attachedImageBase64;
       clearAttachedImage();
       chatContainer.scrollTop = chatContainer.scrollHeight;
 
-      // 2. Simulate Gemini AI Typing / Response
+      // Generate Dynamic AI Response based on input
       setTimeout(() => {
-        const aiResponseText = generateGeminiResponse(text, sentImage);
+        const aiResponseText = generateInteractiveAiResponse(text, sentImage);
         
         let aiHtml = `
           <div class="flex items-start gap-3">
@@ -591,27 +610,61 @@
         `;
         chatContainer.insertAdjacentHTML('beforeend', aiHtml);
         chatContainer.scrollTop = chatContainer.scrollHeight;
-      }, 700);
+      }, 600);
     }
 
-    function generateGeminiResponse(query, hasImage) {
+    function generateInteractiveAiResponse(query, hasImage) {
       const q = query.toLowerCase();
+
       if (hasImage) {
-        return `I have successfully scanned your attached screenshot! It looks like you are on a standard South African student login or document upload screen. Make sure your files are saved in <b>PDF format under 2MB</b> and that your ID number has no spaces. Would you like me to guide you on how to reset your PIN or check your status?`;
+        return `I've analyzed your uploaded portal screenshot. Here is what you need to do step by step:<br><br>
+        1. <b>File Check:</b> Ensure your document is a certified PDF under 2MB.<br>
+        2. <b>ID/Registration:</b> Do not type spaces in your ID or passport number.<br>
+        3. <b>Browser Cache:</b> If the submit button is greyed out, refresh or switch to Google Chrome.<br><br>
+        Is there a specific error message popping up on your screen right now?`;
       }
+
       if (q.includes('tut') || q.includes('tshwane')) {
-        return `For <b>TUT (Tshwane University of Technology)</b>, applications are done directly via <a href="https://applications-prod.tut.ac.za/" target="_blank" class="text-purple-600 underline font-bold">applications-prod.tut.ac.za</a>. The application fee is R240. Ensure you have your certified ID copy and final Grade 11 or 12 results ready. What specific step are you stuck on?`;
+        return `For <b>TUT (Tshwane University of Technology)</b>, applications are handled via <a href="https://applications-prod.tut.ac.za/" target="_blank" class="text-purple-600 font-bold underline">applications-prod.tut.ac.za</a>.<br><br>
+        • Application Fee: R240<br>
+        • Required Documents: Certified ID copy, Grade 11 results or Grade 12 Certificate.<br><br>
+        Are you applying as a first-time applicant or trying to log into your ITS iEnabler portal?`;
       }
+
       if (q.includes('up') || q.includes('pretoria')) {
-        return `For the <b>University of Pretoria (UP)</b>, use the UPNet PeopleSoft gateway. Application fee is R300 (or free if household income is under R150,000). Are you trying to log in as a new applicant or upload supporting documents?`;
+        return `For the <b>University of Pretoria (UP)</b>, applications go through the UPNet PeopleSoft portal (<a href="https://upnet.up.ac.za/" target="_blank" class="text-purple-600 font-bold underline">upnet.up.ac.za</a>).<br><br>
+        • Fee: R300 (Waiver available if household income is under R150,000).<br>
+        • Tip: Save your emplid/student number immediately upon completing page 1.`;
       }
+
+      if (q.includes('wits')) {
+        return `For <b>Wits University</b>, use the Wits Self-Service gateway (<a href="https://self-service.wits.ac.za/" target="_blank" class="text-purple-600 font-bold underline">self-service.wits.ac.za</a>). Application fee is R100. Make sure to choose your first and second choice courses carefully.`;
+      }
+
+      if (q.includes('uj') || q.includes('johannesburg')) {
+        return `For <b>UJ</b>, application is <b>FREE online</b> via <a href="https://registration.uj.ac.za/pls/prodi41/gen.gw1pkg.gw1view" target="_blank" class="text-purple-600 font-bold underline">registration.uj.ac.za</a> (Manual paper forms carry an R200 fee). Do you need assistance calculating your UJ APS score?`;
+      }
+
       if (q.includes('nsfas') || q.includes('bursary')) {
-        return `To apply for <b>NSFAS</b>, visit <a href="https://my.nsfas.org.za/" target="_blank" class="text-purple-600 underline font-bold">my.nsfas.org.za</a>. You will need your ID copy, parental proof of income (or SASSA confirmation), and a working cellphone number. Do you need help resetting your NSFAS password?`;
+        return `For <b>NSFAS</b>, register directly at <a href="https://my.nsfas.org.za/" target="_blank" class="text-purple-600 font-bold underline">my.nsfas.org.za</a>.<br><br>
+        • Required: ID copy, parental proof of income / SASSA letter, working phone number.<br>
+        • Tip: Never use someone else's email or phone number to create your profile.`;
       }
-      if (q.includes('pin') || q.includes('password') || q.includes('forgot')) {
-        return `If you forgot your student portal PIN or password, look for the <b>"Forgotten PIN"</b> or <b>"Reset Password"</b> link right below the login boxes. It will send a temporary reset link or OTP to your registered cellphone number or email.`;
+
+      if (q.includes('tvet') || q.includes('tnc') || q.includes('swgc') || q.includes('orbit')) {
+        return `For TVET Colleges (like Tshwane North TNC, South West Gauteng SWGC, or Orbit TVET), applications are <b>100% FREE</b>. You can register on their direct portals linked on our Applications page. Most TVET colleges require an online placement test before choosing your course.`;
       }
-      return `I understand. When applying to South African universities or TVET colleges (like TNC or SWGC), always ensure your documents are certified by the South African Police Service (SAPS) and dated within the last 3 months. Let me know if you need help with a specific institution or document requirement!`;
+
+      if (q.includes('pin') || q.includes('password') || q.includes('reset') || q.includes('forgot')) {
+        return `To reset your portal PIN or password:<br>
+        1. Click on <b>"Forgot PIN / Password"</b> on the institution's login screen.<br>
+        2. Enter your South African ID Number or Student Number.<br>
+        3. Check your SMS or email inbox for the reset link.<br>
+        If your phone number changed, you will need to email the university admissions department with a certified copy of your ID to update your contact details.`;
+      }
+
+      return `I received your query: "<i>${escapeHtml(query)}</i>".<br><br>
+      To help you step by step, could you specify which university or college you are applying to (e.g. TUT, UP, UJ, Wits, UNISA, TNC), or what error you are seeing on your screen? You can also upload a screenshot using the image button below!`;
     }
 
     function escapeHtml(text) {
