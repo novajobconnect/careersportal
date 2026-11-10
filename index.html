@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <!-- 2 DESTINATION CARDS -->
+      <!-- DESTINATION CARDS -->
       <div>
         <h2 class="text-xl font-extrabold text-slate-900 mb-4 flex items-center gap-2">
           <i class="fa-solid fa-circle-chevron-right text-emerald-600"></i> Select what you want to do today:
@@ -264,85 +264,6 @@
       <p>© 2026 Casenova Connection. Official South African Student Application Center.</p>
     </div>
   </footer>
-
-  <!-- ===== CASENOVA CONNECTION AI CHATBOT ONLY - PASTE BEFORE </body> ===== -->
-<style>
-#casenova-fab{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#14b8a6;border-radius:50%;border:0;font-size:28px;cursor:pointer;z-index:9999;box-shadow:0 8px 25px rgba(0,0,0,.3)}
-#casenova-box{display:none;position:fixed;bottom:90px;right:20px;width:min(420px,calc(100vw - 30px));height:620px;max-height:80vh;background:#f8fafc;border-radius:18px;overflow:hidden;flex-direction:column;z-index:9999;box-shadow:0 15px 40px rgba(0,0,0,.3);border:1px solid #e2e8f0;font-family:Inter,system-ui,Arial,sans-serif}
-#casenova-box.open{display:flex}
-.cc-header{background:#0f172a;color:#fff;padding:14px;display:flex;gap:10px;align-items:center}
-.cc-logo{width:38px;height:38px;background:#14b8a6;border-radius:10px;display:grid;place-items:center;font-weight:900}.cc-logo span{color:#0f172a}
-.cc-header h3{font-size:15px;margin:0}.cc-header p{font-size:11px;opacity:.75;margin:2px 0 0}
-.cc-close{margin-left:auto;background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer}
-#cc-chat{flex:1;padding:12px;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
-.cc-msg{max-width:88%;padding:11px 13px;border-radius:16px;line-height:1.5;font-size:14px;white-space:pre-wrap}
-.cc-msg.ai{background:#fff;border:1px solid #e2e8f0;color:#111}
-.cc-msg.user{background:#0f172a;color:#fff;margin-left:auto}
-.cc-msg img{max-width:100%;border-radius:10px;margin-top:8px;display:block}
-.cc-chips{display:flex;gap:6px;overflow-x:auto;padding:0 10px 8px}.cc-chips button{white-space:nowrap;border:1px solid #cbd5e1;background:#fff;padding:6px 10px;border-radius:999px;cursor:pointer;font-size:12px}
-#cc-preview{display:flex;gap:8px;align-items:center;padding:8px 10px;background:#fef9c3;font-size:12px;color:#111}.cc-hidden{display:none!important}
-#cc-pasteHint{display:none;background:#dcfce7;padding:8px 10px;font-size:12px;color:#111}#cc-pasteHint.show{display:block}
-.cc-composer{display:flex;gap:6px;padding:10px;background:#fff;border-top:1px solid #e2e8f0;align-items:flex-end}
-.cc-composer textarea{flex:1;border:1px solid #cbd5e1;border-radius:12px;padding:9px;resize:none;font-family:inherit;font-size:14px}
-.cc-send{background:#14b8a6;border:0;width:42px;height:42px;border-radius:50%;font-size:17px;cursor:pointer}
-.cc-privacy{text-align:center;font-size:10px;color:#64748b;padding:6px;background:#fff}
-</style>
-
-<button id="casenova-fab" onclick="document.getElementById('casenova-box').classList.toggle('open')">💬</button>
-
-<div id="casenova-box">
-  <div class="cc-header">
-    <div class="cc-logo">C<span>C</span></div>
-    <div><h3>Casenova Connection</h3><p>AI Assistant • All Tertiary Institutions</p></div>
-    <button class="cc-close" onclick="document.getElementById('casenova-box').classList.remove('open')">✕</button>
-  </div>
-  <div id="cc-chat">
-    <div class="cc-msg ai"><b>Casenova AI 🤖</b><br><br>Hi! Ask me about NSFAS, CAO, CACH, closing dates, APS.<br><br>Upload a screenshot OR paste text / image (Ctrl+V) and I'll explain it.</div>
-  </div>
-  <div class="cc-chips">
-    <button onclick="ccAsk('What are NSFAS requirements?')">NSFAS</button>
-    <button onclick="ccAsk('When do UP applications close?')">UP Dates</button>
-    <button onclick="ccAsk('How do I apply at TUT?')">TUT</button>
-    <button onclick="ccAsk('What does Provisional Acceptance mean?')">My Status</button>
-  </div>
-  <div id="cc-preview" class="cc-hidden"><img id="cc-previewImg" style="width:60px;height:40px;object-fit:cover;border-radius:8px"><span>Screenshot ready</span><button onclick="ccClear()" style="border:0;background:#0f172a;color:#fff;padding:4px 8px;border-radius:999px;cursor:pointer">✕</button></div>
-  <div id="cc-pasteHint">Pasted content detected</div>
-  <form id="cc-form" class="cc-composer">
-    <label style="font-size:22px;cursor:pointer">📷<input type="file" id="cc-file" accept="image/*" hidden></label>
-    <textarea id="cc-input" placeholder="Type or paste here (Ctrl+V)..." rows="1"></textarea>
-    <button type="submit" class="cc-send">➤</button>
-  </form>
-  <p class="cc-privacy">⚠️ Blur ID & student number before uploading</p>
-</div>
-
-<script>
-const OPENAI_API_KEY = "";
-const CC_KNOW = [
-  {k:["nsfas","funding"], t:"NSFAS 2026:\n• SA citizens, income under R350,000 (R600k if disabled)\n• Covers tuition, accommodation, books\n• Apply at my.nsfas.org.za\n• Need certified ID + proof of income"},
-  {k:["university of pretoria"," up ","tuks"], t:"UP:\n• Open 1 April, close 30 June\n• APS 30+ for most degrees\n• Apply at www.up.ac.za/online-application"},
-  {k:["tut","tshwane"], t:"TUT:\n• Open March, close 30 Sept (some 31 July)\n• APS 20-30\n• Apply at www.tut.ac.za, fee R240"},
-  {k:["uj","johannesburg"], t:"UJ:\n• Closes 30 Sept, FREE application\n• APS 26+ diploma, 28+ degree\n• www.uj.ac.za"},
-  {k:["cao"], t:"CAO (KZN): DUT, UKZN, MUT, UNIZULU via cao.ac.za. Fee R250. One form for many."},
-  {k:["cach"], t:"CACH: If no place after matric, register Jan at cach.dhet.gov.za for unfilled spaces."},
-  {k:["provisional"], t:"'Provisional Acceptance' = You are ACCEPTED IF you meet final matric results. Don't ignore it."},
-  {k:["pending","awaiting"], t:"'Pending' = Still processing. Do NOT re-apply. Check documents, wait 2-4 weeks."},
-  {k:["unsuccessful","rejected"], t:"'Unsuccessful' = Did not meet requirements. Try other course / university / TVET / CACH in Jan."},
-  {k:["aps"], t:"APS = sum of points for best 6 subjects (excl LO). 80%=7, 70%=6, 60%=5. Send marks and I'll calculate."},
-  {k:["error","failed"], t:"Portal error fix:\n1. Use Chrome Incognito\n2. Clear cache\n3. ID = 13 digits, no spaces\n4. File must be PDF under 2MB"}
-];
-function ccFind(q){ const l=q.toLowerCase(); let best=null,s=0; for(const it of CC_KNOW){ let sc=0; it.k.forEach(kw=>{ if(l.includes(kw)) sc+=3; }); if(sc>s){ s=sc; best=it; } } return best?best.t:null; }
-const ccChat=document.getElementById('cc-chat'), ccForm=document.getElementById('cc-form'), ccInput=document.getElementById('cc-input'), ccFile=document.getElementById('cc-file'), ccPreview=document.getElementById('cc-preview'), ccPreviewImg=document.getElementById('cc-previewImg'), ccHint=document.getElementById('cc-pasteHint');
-let ccImg=null, ccPasted="";
-function ccAdd(t,who,img){ const d=document.createElement('div'); d.className='cc-msg '+who; d.textContent=t; if(img){ const im=document.createElement('img'); im.src=img; d.appendChild(im); } ccChat.appendChild(d); ccChat.scrollTop=ccChat.scrollHeight; return d; }
-function ccAsk(t){ ccInput.value=t; ccForm.dispatchEvent(new Event('submit')); }
-function ccClear(){ ccImg=null; ccPreview.classList.add('cc-hidden'); ccFile.value=''; }
-ccFile.addEventListener('change',e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); });
-document.addEventListener('paste',e=>{ for(let it of e.clipboardData.items){ if(it.type.startsWith('image/')){ const f=it.getAsFile(); const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); ccHint.textContent='📷 Pasted screenshot detected'; ccHint.classList.add('show'); } } const txt=e.clipboardData.getData('text'); if(txt&&txt.length>20){ ccPasted=txt; ccHint.textContent='📋 Pasted text: '+txt.slice(0,60)+'...'; ccHint.classList.add('show'); } });
-document.addEventListener('dragover',e=>e.preventDefault());
-document.addEventListener('drop',e=>{ e.preventDefault(); const f=e.dataTransfer.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); });
-ccForm.addEventListener('submit',async e=>{ e.preventDefault(); const msg=ccInput.value.trim(); if(!msg&&!ccImg&&!ccPasted) return; const full=msg+(ccPasted?"\n\nPasted: "+ccPasted:""); ccAdd(msg||"Please analyse this screenshot",'user',ccImg); ccInput.value=''; ccHint.classList.remove('show'); const typing=ccAdd('Casenova AI is thinking...','ai'); try{ if(OPENAI_API_KEY&&ccImg){ const res=await fetch("https://api.openai.com/v1/chat/completions",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+OPENAI_API_KEY},body:JSON.stringify({model:"gpt-4o",messages:[{role:"system",content:"You are Casenova Connection AI Assistant. Help SA students apply to all tertiary institutions. Explain simply. Never invent dates."},{role:"user",content:[{type:"text",text:full},{type:"image_url",image_url:{url:ccImg}}]}],max_tokens:800})}); const data=await res.json(); typing.remove(); ccAdd(data.choices[0].message.content,'ai'); } else { await new Promise(r=>setTimeout(r,700)); let reply=""; if(ccImg){ reply="I can see your screenshot 📷\n\n"; const f=ccFind(full); reply+=f?f:"Tell me the university name + exact status (Pending / Provisional / Unsuccessful) and I'll give exact next steps."; } else { const f=ccFind(full); reply=f?f:"I can help with NSFAS, CAO, CACH, closing dates, APS, statuses. Try: 'What are NSFAS requirements?' or upload a screenshot."; } typing.remove(); ccAdd(reply,'ai'); } }catch(err){ typing.remove(); ccAdd('Sorry, try again or WhatsApp Casenova Connection.','ai'); } ccPasted=""; ccClear(); });
-</script>
-<!-- ===== END OF CHATBOT ===== -->
 
   <!-- DATA & SCRIPTS -->
   <script>
@@ -554,5 +475,84 @@ ccForm.addEventListener('submit',async e=>{ e.preventDefault(); const msg=ccInpu
       renderStudents();
     };
   </script>
+
+<!-- ===== CASENOVA CONNECTION AI CHATBOT ONLY - PASTE BEFORE </body> ===== -->
+<style>
+#casenova-fab{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#14b8a6;border-radius:50%;border:0;font-size:28px;cursor:pointer;z-index:9999;box-shadow:0 8px 25px rgba(0,0,0,.3)}
+#casenova-box{display:none;position:fixed;bottom:90px;right:20px;width:min(420px,calc(100vw - 30px));height:620px;max-height:80vh;background:#f8fafc;border-radius:18px;overflow:hidden;flex-direction:column;z-index:9999;box-shadow:0 15px 40px rgba(0,0,0,.3);border:1px solid #e2e8f0;font-family:Inter,system-ui,Arial,sans-serif}
+#casenova-box.open{display:flex}
+.cc-header{background:#0f172a;color:#fff;padding:14px;display:flex;gap:10px;align-items:center}
+.cc-logo{width:38px;height:38px;background:#14b8a6;border-radius:10px;display:grid;place-items:center;font-weight:900}.cc-logo span{color:#0f172a}
+.cc-header h3{font-size:15px;margin:0}.cc-header p{font-size:11px;opacity:.75;margin:2px 0 0}
+.cc-close{margin-left:auto;background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer}
+#cc-chat{flex:1;padding:12px;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
+.cc-msg{max-width:88%;padding:11px 13px;border-radius:16px;line-height:1.5;font-size:14px;white-space:pre-wrap}
+.cc-msg.ai{background:#fff;border:1px solid #e2e8f0;color:#111}
+.cc-msg.user{background:#0f172a;color:#fff;margin-left:auto}
+.cc-msg img{max-width:100%;border-radius:10px;margin-top:8px;display:block}
+.cc-chips{display:flex;gap:6px;overflow-x:auto;padding:0 10px 8px}.cc-chips button{white-space:nowrap;border:1px solid #cbd5e1;background:#fff;padding:6px 10px;border-radius:999px;cursor:pointer;font-size:12px}
+#cc-preview{display:flex;gap:8px;align-items:center;padding:8px 10px;background:#fef9c3;font-size:12px;color:#111}.cc-hidden{display:none!important}
+#cc-pasteHint{display:none;background:#dcfce7;padding:8px 10px;font-size:12px;color:#111}#cc-pasteHint.show{display:block}
+.cc-composer{display:flex;gap:6px;padding:10px;background:#fff;border-top:1px solid #e2e8f0;align-items:flex-end}
+.cc-composer textarea{flex:1;border:1px solid #cbd5e1;border-radius:12px;padding:9px;resize:none;font-family:inherit;font-size:14px}
+.cc-send{background:#14b8a6;border:0;width:42px;height:42px;border-radius:50%;font-size:17px;cursor:pointer}
+.cc-privacy{text-align:center;font-size:10px;color:#64748b;padding:6px;background:#fff}
+</style>
+
+<button id="casenova-fab" onclick="document.getElementById('casenova-box').classList.toggle('open')">💬</button>
+
+<div id="casenova-box">
+  <div class="cc-header">
+    <div class="cc-logo">C<span>C</span></div>
+    <div><h3>Casenova Connection</h3><p>AI Assistant • All Tertiary Institutions</p></div>
+    <button class="cc-close" onclick="document.getElementById('casenova-box').classList.remove('open')">✕</button>
+  </div>
+  <div id="cc-chat">
+    <div class="cc-msg ai"><b>Casenova AI 🤖</b><br><br>Hi! Ask me about NSFAS, CAO, CACH, closing dates, APS.<br><br>Upload a screenshot OR paste text / image (Ctrl+V) and I'll explain it.</div>
+  </div>
+  <div class="cc-chips">
+    <button onclick="ccAsk('What are NSFAS requirements?')">NSFAS</button>
+    <button onclick="ccAsk('When do UP applications close?')">UP Dates</button>
+    <button onclick="ccAsk('How do I apply at TUT?')">TUT</button>
+    <button onclick="ccAsk('What does Provisional Acceptance mean?')">My Status</button>
+  </div>
+  <div id="cc-preview" class="cc-hidden"><img id="cc-previewImg" style="width:60px;height:40px;object-fit:cover;border-radius:8px"><span>Screenshot ready</span><button onclick="ccClear()" style="border:0;background:#0f172a;color:#fff;padding:4px 8px;border-radius:999px;cursor:pointer">✕</button></div>
+  <div id="cc-pasteHint">Pasted content detected</div>
+  <form id="cc-form" class="cc-composer">
+    <label style="font-size:22px;cursor:pointer">📷<input type="file" id="cc-file" accept="image/*" hidden></label>
+    <textarea id="cc-input" placeholder="Type or paste here (Ctrl+V)..." rows="1"></textarea>
+    <button type="submit" class="cc-send">➤</button>
+  </form>
+  <p class="cc-privacy">⚠️ Blur ID & student number before uploading</p>
+</div>
+
+<script>
+const OPENAI_API_KEY = "";
+const CC_KNOW = [
+  {k:["nsfas","funding"], t:"NSFAS 2026:\n• SA citizens, income under R350,000 (R600k if disabled)\n• Covers tuition, accommodation, books\n• Apply at my.nsfas.org.za\n• Need certified ID + proof of income"},
+  {k:["university of pretoria"," up ","tuks"], t:"UP:\n• Open 1 April, close 30 June\n• APS 30+ for most degrees\n• Apply at www.up.ac.za/online-application"},
+  {k:["tut","tshwane"], t:"TUT:\n• Open March, close 30 Sept (some 31 July)\n• APS 20-30\n• Apply at www.tut.ac.za, fee R240"},
+  {k:["uj","johannesburg"], t:"UJ:\n• Closes 30 Sept, FREE application\n• APS 26+ diploma, 28+ degree\n• www.uj.ac.za"},
+  {k:["cao"], t:"CAO (KZN): DUT, UKZN, MUT, UNIZULU via cao.ac.za. Fee R250. One form for many."},
+  {k:["cach"], t:"CACH: If no place after matric, register Jan at cach.dhet.gov.za for unfilled spaces."},
+  {k:["provisional"], t:"'Provisional Acceptance' = You are ACCEPTED IF you meet final matric results. Don't ignore it."},
+  {k:["pending","awaiting"], t:"'Pending' = Still processing. Do NOT re-apply. Check documents, wait 2-4 weeks."},
+  {k:["unsuccessful","rejected"], t:"'Unsuccessful' = Did not meet requirements. Try other course / university / TVET / CACH in Jan."},
+  {k:["aps"], t:"APS = sum of points for best 6 subjects (excl LO). 80%=7, 70%=6, 60%=5. Send marks and I'll calculate."},
+  {k:["error","failed"], t:"Portal error fix:\n1. Use Chrome Incognito\n2. Clear cache\n3. ID = 13 digits, no spaces\n4. File must be PDF under 2MB"}
+];
+function ccFind(q){ const l=q.toLowerCase(); let best=null,s=0; for(const it of CC_KNOW){ let sc=0; it.k.forEach(kw=>{ if(l.includes(kw)) sc+=3; }); if(sc>s){ s=sc; best=it; } } return best?best.t:null; }
+const ccChat=document.getElementById('cc-chat'), ccForm=document.getElementById('cc-form'), ccInput=document.getElementById('cc-input'), ccFile=document.getElementById('cc-file'), ccPreview=document.getElementById('cc-preview'), ccPreviewImg=document.getElementById('cc-previewImg'), ccHint=document.getElementById('cc-pasteHint');
+let ccImg=null, ccPasted="";
+function ccAdd(t,who,img){ const d=document.createElement('div'); d.className='cc-msg '+who; d.textContent=t; if(img){ const im=document.createElement('img'); im.src=img; d.appendChild(im); } ccChat.appendChild(d); ccChat.scrollTop=ccChat.scrollHeight; return d; }
+function ccAsk(t){ ccInput.value=t; ccForm.dispatchEvent(new Event('submit')); }
+function ccClear(){ ccImg=null; ccPreview.classList.add('cc-hidden'); ccFile.value=''; }
+ccFile.addEventListener('change',e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); });
+document.addEventListener('paste',e=>{ for(let it of e.clipboardData.items){ if(it.type.startsWith('image/')){ const f=it.getAsFile(); const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); ccHint.textContent='📷 Pasted screenshot detected'; ccHint.classList.add('show'); } } const txt=e.clipboardData.getData('text'); if(txt&&txt.length>20){ ccPasted=txt; ccHint.textContent='📋 Pasted text: '+txt.slice(0,60)+'...'; ccHint.classList.add('show'); } });
+document.addEventListener('dragover',e=>e.preventDefault());
+document.addEventListener('drop',e=>{ e.preventDefault(); const f=e.dataTransfer.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); });
+ccForm.addEventListener('submit',async e=>{ e.preventDefault(); const msg=ccInput.value.trim(); if(!msg&&!ccImg&&!ccPasted) return; const full=msg+(ccPasted?"\n\nPasted: "+ccPasted:""); ccAdd(msg||"Please analyse this screenshot",'user',ccImg); ccInput.value=''; ccHint.classList.remove('show'); const typing=ccAdd('Casenova AI is thinking...','ai'); try{ if(OPENAI_API_KEY&&ccImg){ const res=await fetch("https://api.openai.com/v1/chat/completions",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+OPENAI_API_KEY},body:JSON.stringify({model:"gpt-4o",messages:[{role:"system",content:"You are Casenova Connection AI Assistant. Help SA students apply to all tertiary institutions. Explain simply. Never invent dates."},{role:"user",content:[{type:"text",text:full},{type:"image_url",image_url:{url:ccImg}}]}],max_tokens:800})}); const data=await res.json(); typing.remove(); ccAdd(data.choices[0].message.content,'ai'); } else { await new Promise(r=>setTimeout(r,700)); let reply=""; if(ccImg){ reply="I can see your screenshot 📷\n\n"; const f=ccFind(full); reply+=f?f:"Tell me the university name + exact status (Pending / Provisional / Unsuccessful) and I'll give exact next steps."; } else { const f=ccFind(full); reply=f?f:"I can help with NSFAS, CAO, CACH, closing dates, APS, statuses. Try: 'What are NSFAS requirements?' or upload a screenshot."; } typing.remove(); ccAdd(reply,'ai'); } }catch(err){ typing.remove(); ccAdd('Sorry, try again or WhatsApp Casenova Connection.','ai'); } ccPasted=""; ccClear(); });
+</script>
+<!-- ===== END OF CHATBOT ===== -->
 </body>
 </html>
