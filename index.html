@@ -44,14 +44,13 @@
   <!-- ================= MAIN CONTENT VIEWS ================= -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-    <!-- VIEW 1: HOME LANDING (3 TICK BUTTONS) -->
+    <!-- VIEW 1: HOME LANDING -->
     <div id="view-home" class="space-y-8">
-      <!-- Hero Banner -->
       <div class="gradient-bg text-white rounded-3xl p-8 md:p-12 shadow-xl text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-8">
         <div>
           <span class="bg-emerald-500/30 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-400/30">Official Student Gateway</span>
           <h1 class="text-3xl md:text-5xl font-extrabold mt-3 mb-4">Welcome to Casenova Connection</h1>
-          <p class="text-emerald-100 max-w-xl text-sm md:text-base mb-6">Your ultimate South African tertiary hub. Access direct university application links, calculate your APS score, or get instant step-by-step AI guidance.</p>
+          <p class="text-emerald-100 max-w-xl text-sm md:text-base mb-6">Your ultimate South African tertiary hub. Access direct university application links, calculate your APS score, or chat live with our interactive Gemini-style AI Assistant.</p>
         </div>
         <div class="w-full md:w-auto bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
           <div class="text-4xl font-black mb-1">26+</div>
@@ -66,45 +65,42 @@
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          <!-- Card 1 -->
           <div onclick="switchView('portals')" class="bg-white p-6 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 card-hover cursor-pointer flex flex-col justify-between">
             <div>
               <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl mb-4">
                 <i class="fa-solid fa-graduation-cap"></i>
               </div>
               <h3 class="text-lg font-bold text-slate-900 mb-2">1. University & College Applications</h3>
-              <p class="text-sm text-slate-600 mb-6">Browse all 26 public universities, TVET colleges, and bursaries with direct official application links and fee details.</p>
+              <p class="text-sm text-slate-600 mb-6">Browse all public universities, TVET colleges, and bursaries with direct official application links and fee details.</p>
             </div>
             <div class="text-emerald-600 font-bold text-sm flex items-center gap-2">
               Open Portals <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
 
-          <!-- Card 2 -->
           <div onclick="openApsModal()" class="bg-white p-6 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 card-hover cursor-pointer flex flex-col justify-between">
             <div>
               <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center text-xl mb-4">
                 <i class="fa-solid fa-calculator"></i>
               </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2">2. National APS Calculator</h3>
-              <p class="text-sm text-slate-600 mb-6">Calculate your exact Admission Point Score based on your matric subject levels to check university admission requirements.</p>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">2. National APS Calculator & Careers</h3>
+              <p class="text-sm text-slate-600 mb-6">Calculate your exact Admission Point Score and instantly discover qualifying courses, target universities, and career pathways.</p>
             </div>
             <div class="text-blue-600 font-bold text-sm flex items-center gap-2">
               Calculate Score <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
 
-          <!-- Card 3 -->
           <div onclick="switchView('aihelper')" class="bg-white p-6 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 card-hover cursor-pointer flex flex-col justify-between">
             <div>
               <div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-xl flex items-center justify-center text-xl mb-4">
                 <i class="fa-solid fa-robot"></i>
               </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2">3. AI Application Helper Robot</h3>
-              <p class="text-sm text-slate-600 mb-6">Stuck on an application portal? Upload a screenshot or ask our AI assistant for step-by-step guidance on what to do next.</p>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">3. Interactive AI Application Helper</h3>
+              <p class="text-sm text-slate-600 mb-6">Chat live with our Gemini-style AI assistant. Ask questions, paste portal screenshots, and get real-time step-by-step guidance.</p>
             </div>
             <div class="text-purple-600 font-bold text-sm flex items-center gap-2">
-              Launch AI Assistant <i class="fa-solid fa-arrow-right"></i>
+              Launch AI Chat <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
 
@@ -130,7 +126,7 @@
           <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
             <i class="fa-solid fa-magnifying-glass"></i>
           </span>
-          <input type="text" id="studentSearchInput" oninput="handleStudentSearch()" placeholder="Search institution (e.g. TUT, UP, Wits, UJ)..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <input type="text" id="studentSearchInput" oninput="handleStudentSearch()" placeholder="Search institution (e.g. TUT, UP, TNC, SWGC)..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
         </div>
 
         <div class="flex flex-wrap gap-2">
@@ -158,89 +154,61 @@
       </div>
     </div>
 
-    <!-- VIEW 3: AI APPLICATION HELPER ROBOT -->
-    <div id="view-aihelper" class="hidden space-y-6">
-      <div class="bg-gradient-to-r from-purple-700 to-indigo-900 text-white rounded-3xl p-8 shadow-xl flex flex-col md:flex-row justify-between items-center gap-6">
+    <!-- VIEW 3: INTERACTIVE GEMINI-STYLE AI HELPER CHAT -->
+    <div id="view-aihelper" class="hidden space-y-4">
+      <div class="bg-gradient-to-r from-purple-700 to-indigo-900 text-white rounded-2xl p-6 shadow-xl flex items-center justify-between">
         <div>
-          <span class="bg-purple-500/30 text-purple-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-purple-400/30">AI Assistant</span>
-          <h2 class="text-3xl font-extrabold mt-2 mb-2">AI Application Helper Robot</h2>
-          <p class="text-purple-100 text-sm max-w-2xl">Stuck trying to register an account, upload your certified documents, or verify your email on an institutional portal? Select your university below or upload a screenshot to get instant step-by-step guidance!</p>
+          <span class="bg-purple-500/30 text-purple-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-purple-400/30">Gemini AI Assistant</span>
+          <h2 class="text-2xl font-extrabold mt-2">Casenova AI Application Helper</h2>
+          <p class="text-purple-100 text-xs max-w-xl">Ask questions about any university portal, document requirements, or paste/upload screenshots for instant step-by-step assistance.</p>
         </div>
-        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl border border-white/20">
+        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl border border-white/20 hidden sm:flex">
           <i class="fa-solid fa-robot"></i>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Left: Interactive Selector & Screenshot Uploader -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 lg:col-span-1">
-          <h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
-            <i class="fa-solid fa-sliders text-purple-600"></i> What do you need help with?
-          </h3>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Select Institution</label>
-            <select id="aiUniSelect" class="w-full border border-slate-300 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-purple-500 outline-none bg-slate-50">
-              <option value="tut">Tshwane University of Technology (TUT)</option>
-              <option value="up">University of Pretoria (UP)</option>
-              <option value="uj">University of Johannesburg (UJ)</option>
-              <option value="wits">University of the Witwatersrand (Wits)</option>
-              <option value="nsfas">NSFAS Bursary Application</option>
-              <option value="general">General Application / Password Reset / Documents</option>
-            </select>
+      <!-- Chat Container -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col h-[65vh]">
+        <!-- Chat Messages Area -->
+        <div id="chatMessages" class="flex-grow p-4 md:p-6 overflow-y-auto space-y-4">
+          <!-- Initial Greeting Message -->
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center flex-shrink-0 text-sm">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="bg-slate-100 text-slate-800 p-4 rounded-2xl rounded-tl-none max-w-xl text-sm shadow-sm">
+              <p class="font-bold mb-1">Hello! I am your Casenova AI Application Assistant.</p>
+              <p>Stuck on an application portal, need help creating a student pin, or want to know what documents to upload? Type your question below or paste a screenshot! How can I help you today?</p>
+            </div>
           </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">What is your issue?</label>
-            <select id="aiIssueSelect" class="w-full border border-slate-300 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-purple-500 outline-none bg-slate-50">
-              <option value="account">How do I create a new student account/pin?</option>
-              <option value="docs">How do I upload certified ID & matric results?</option>
-              <option value="status">How do I track my application status?</option>
-              <option value="fee">Where do I upload proof of application fee payment?</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Upload Portal Screenshot (Optional)</label>
-            <input type="file" id="aiScreenshotInput" accept="image/*" class="w-full border border-slate-300 rounded-xl p-2 text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100">
-          </div>
-
-          <button onclick="runAiHelper()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl shadow transition-all text-sm flex items-center justify-center gap-2">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Get Step-by-Step AI Guide
-          </button>
         </div>
 
-        <!-- Right: AI Response & Step-by-Step Guide -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm lg:col-span-2 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
-              <h3 class="font-bold text-slate-900 flex items-center gap-2">
-                <i class="fa-solid fa-list-check text-emerald-600"></i> AI Step-by-Step Action Plan
-              </h3>
-              <span id="aiStatusBadge" class="text-xs bg-purple-100 text-purple-700 font-bold px-2.5 py-1 rounded-md">Ready</span>
-            </div>
+        <!-- Attached Image Preview Bar -->
+        <div id="imagePreviewContainer" class="hidden px-4 py-2 bg-slate-50 border-t border-slate-200 flex items-center gap-2">
+          <span class="text-xs font-bold text-slate-500">Attached Screenshot:</span>
+          <img id="imagePreviewThumb" src="" alt="Preview" class="w-12 h-12 object-cover rounded-lg border border-slate-300">
+          <button onclick="clearAttachedImage()" class="text-red-500 hover:text-red-700 text-xs font-bold ml-2"><i class="fa-solid fa-trash"></i> Remove</button>
+        </div>
 
-            <div id="aiResponseBox" class="space-y-4 text-sm text-slate-700">
-              <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-center text-slate-500 py-12">
-                <i class="fa-solid fa-robot text-3xl text-purple-400 mb-3 block"></i>
-                Select your institution and issue on the left, then click <b>"Get Step-by-Step AI Guide"</b> to instantly generate your custom action plan!
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-            <span>Casenova Connection AI Assistant v2.0</span>
-            <button onclick="switchView('portals')" class="text-purple-600 font-bold hover:underline">Go to Application Portals &rarr;</button>
-          </div>
+        <!-- Chat Input Bar -->
+        <div class="p-3 md:p-4 border-t border-slate-200 bg-white rounded-b-2xl flex items-center gap-2">
+          <label class="cursor-pointer text-slate-400 hover:text-purple-600 p-2 text-lg transition-colors" title="Upload Screenshot">
+            <i class="fa-solid fa-image"></i>
+            <input type="file" id="chatImageInput" accept="image/*" class="hidden" onchange="handleImageAttachment(event)">
+          </label>
+          <input type="text" id="chatInputText" onkeydown="handleChatKey(event)" placeholder="Ask a question or describe what is on your screen..." class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+          <button onclick="sendChatMessage()" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-xl font-bold text-sm shadow transition-all flex items-center gap-2">
+            <span>Send</span> <i class="fa-solid fa-paper-plane text-xs"></i>
+          </button>
         </div>
       </div>
     </div>
 
   </main>
 
-  <!-- ================= APS CALCULATOR MODAL ================= -->
+  <!-- ================= APS CALCULATOR & CAREER PATHWAYS MODAL ================= -->
   <div id="apsModal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-3xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
       <button onclick="closeApsModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
@@ -250,23 +218,21 @@
           <i class="fa-solid fa-calculator"></i>
         </div>
         <div>
-          <h3 class="text-xl font-bold text-slate-900">National APS Score Calculator</h3>
-          <p class="text-slate-500 text-xs">Calculate your Admission Point Score for South African tertiary applications</p>
+          <h3 class="text-xl font-bold text-slate-900">APS Calculator & Career Pathways</h3>
+          <p class="text-slate-500 text-xs">Calculate your points and discover matching university courses and real-world careers</p>
         </div>
       </div>
 
-      <form id="apsForm" onsubmit="calculateAps(event)" class="space-y-3">
+      <form id="apsForm" onsubmit="calculateApsAndCareers(event)" class="space-y-3">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">1. Home Language (HL)</label>
             <select id="subj1" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
               <option value="4">Level 4 (50% - 59%) - 4 pts</option>
               <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-              <option value="2">Level 2 (30% - 39%) - 2 pts</option>
-              <option value="1">Level 1 (0% - 29%) - 1 pt</option>
             </select>
           </div>
 
@@ -275,11 +241,9 @@
             <select id="subj2" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
               <option value="4">Level 4 (50% - 59%) - 4 pts</option>
               <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-              <option value="2">Level 2 (30% - 39%) - 2 pts</option>
-              <option value="1">Level 1 (0% - 29%) - 1 pt</option>
             </select>
           </div>
 
@@ -288,11 +252,9 @@
             <select id="subj3" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
               <option value="4">Level 4 (50% - 59%) - 4 pts</option>
               <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-              <option value="2">Level 2 (30% - 39%) - 2 pts</option>
-              <option value="1">Level 1 (0% - 29%) - 1 pt</option>
             </select>
           </div>
 
@@ -300,65 +262,64 @@
             <label class="block text-xs font-bold text-slate-700 mb-1">4. Life Orientation (LO)</label>
             <select id="subj4" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
+              <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
               <option value="5">Level 5 (60% - 69%) - 5 pts</option>
               <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-              <option value="2">Level 2 (30% - 39%) - 2 pts</option>
-              <option value="1">Level 1 (0% - 29%) - 1 pt</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">5. Elective Subject 1</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1">5. Elective 1 (e.g. Accounting/Geog/Science)</label>
             <select id="subj5" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
+              <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
               <option value="5">Level 5 (60% - 69%) - 5 pts</option>
               <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-              <option value="2">Level 2 (30% - 39%) - 2 pts</option>
-              <option value="1">Level 1 (0% - 29%) - 1 pt</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">6. Elective Subject 2</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1">6. Elective 2</label>
             <select id="subj6" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
               <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-              <option value="2">Level 2 (30% - 39%) - 2 pts</option>
-              <option value="1">Level 1 (0% - 29%) - 1 pt</option>
             </select>
           </div>
 
           <div class="sm:col-span-2">
-            <label class="block text-xs font-bold text-slate-700 mb-1">7. Elective Subject 3</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1">7. Elective 3</label>
             <select id="subj7" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
               <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-              <option value="2">Level 2 (30% - 39%) - 2 pts</option>
-              <option value="1">Level 1 (0% - 29%) - 1 pt</option>
             </select>
           </div>
         </div>
 
         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow text-sm transition-all mt-4">
-          Calculate Score
+          Calculate Score & Show Qualifying Careers
         </button>
       </form>
 
-      <!-- RESULT BOX -->
-      <div id="apsResult" class="hidden mt-4 p-4 rounded-xl border border-blue-200 bg-blue-50 text-center">
-        <p class="text-xs font-bold text-slate-600 uppercase">Your Total Calculated APS Score</p>
-        <p class="text-4xl font-black text-blue-700 my-1" id="apsScoreValue">0</p>
-        <p class="text-xs text-slate-600" id="apsBreakdownText"></p>
+      <!-- RESULTS & CAREER PATHWAYS CONTAINER -->
+      <div id="apsResultsContainer" class="hidden mt-6 space-y-4 pt-4 border-t border-slate-200">
+        <div class="p-4 rounded-xl border border-blue-200 bg-blue-50 text-center">
+          <p class="text-xs font-bold text-slate-600 uppercase">Your Total Calculated APS Score (Best 6 excl. LO)</p>
+          <p class="text-4xl font-black text-blue-700 my-1" id="apsScoreValue">0</p>
+          <p class="text-xs text-slate-600" id="apsBreakdownText"></p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-briefcase text-emerald-600"></i> Qualifying Courses & Real-World Career Paths:
+          </h4>
+          <div id="careerPathwaysList" class="space-y-3">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -372,211 +333,19 @@
 
   <!-- DATA & SCRIPTS -->
   <script>
-    // COMPLETE 26 SOUTH AFRICAN UNIVERSITIES + TVET & BURSARIES WITH APPLICATION FEES
+    // UNIVERSITIES, BURSARIES & TVET COLLEGES (INCLUDING TNC, SWGC, ORBIT, ETC.)
     const studentPortals = [
-      {
-        name: "Tshwane University of Technology (TUT)",
-        category: "university",
-        fee: "R240",
-        link: "https://applications-prod.tut.ac.za/",
-        desc: "Direct online application portal for TUT undergraduate and postgraduate programs."
-      },
-      {
-        name: "University of Pretoria (UP)",
-        category: "university",
-        fee: "R300 (Free if Income < R150k)",
-        link: "https://upnet.up.ac.za/psc/upapply/EMPLOYEE/SA/c/UP_OAP_MENU.UP_OAP_LOGIN_FL.GBL?&",
-        desc: "Direct UP Student Online Application portal (UPNet PeopleSoft system)."
-      },
-      {
-        name: "Sefako Makgatho Health Sciences University (SMU)",
-        category: "university",
-        fee: "R300",
-        link: "https://www.smu.ac.za/students/apply/",
-        desc: "Direct SMU online application gateway for health and medical sciences."
-      },
-      {
-        name: "University of Johannesburg (UJ)",
-        category: "university",
-        fee: "FREE",
-        link: "https://registration.uj.ac.za/pls/prodi41/gen.gw1pkg.gw1view",
-        desc: "Direct UJ prospective student online application and registration portal."
-      },
-      {
-        name: "University of the Witwatersrand (Wits)",
-        category: "university",
-        fee: "R100",
-        link: "https://self-service.wits.ac.za/psc/csprodonl/UW_SELF_SERVICE/SA/c/VC_OA_LOGIN_MENU.VC_OA_LOGIN_FL.GBL",
-        desc: "Direct Wits Self-Service online student application gateway."
-      },
-      {
-        name: "Vaal University of Technology (VUT)",
-        category: "university",
-        fee: "R200",
-        link: "https://ienablerprod.vut.ac.za/pls/prodi41/w99pkg.mi_login",
-        desc: "Direct VUT ITS iEnabler prospective student application login."
-      },
-      {
-        name: "University of Limpopo (UL)",
-        category: "university",
-        fee: "R200",
-        link: "https://ulc-prod-webserver.ul.ac.za/pls/prodi41/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP",
-        desc: "Direct UL online student application system."
-      },
-      {
-        name: "University of Venda (UNIVEN)",
-        category: "university",
-        fee: "R110",
-        link: "https://univenierp01.univen.ac.za/pls/prodi41/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP",
-        desc: "Direct UNIVEN online application portal."
-      },
-      {
-        name: "University of Mpumalanga (UMP)",
-        category: "university",
-        fee: "R200",
-        link: "https://ienabler.ump.ac.za/pls/prodi41/w99pkg.mi_login",
-        desc: "Direct University of Mpumalanga ITS iEnabler online application system."
-      },
-      {
-        name: "Central University of Technology (CUT)",
-        category: "university",
-        fee: "FREE",
-        link: "https://www.cut.ac.za/application-process",
-        desc: "Direct online application portal for CUT campuses."
-      },
-      {
-        name: "University of the Free State (UFS)",
-        category: "university",
-        fee: "FREE",
-        link: "https://www.ufs.ac.za/natagri/departments-and-divisions/centre-for-environmental-management-home/apply",
-        desc: "Direct UFS online undergraduate and postgraduate application system."
-      },
-      {
-        name: "Walter Sisulu University (WSU)",
-        category: "university",
-        fee: "FREE",
-        link: "https://ieweb.wsu.ac.za/pls/prodi41/w99pkg.mi_login",
-        desc: "Direct WSU ITS iEnabler online student application system."
-      },
-      {
-        name: "University of Fort Hare (UFH)",
-        category: "university",
-        fee: "R120",
-        link: "https://ienabler.ufh.ac.za/pls/prodi41/w99pkg.mi_login",
-        desc: "Direct UFH ITS iEnabler online application portal."
-      },
-      {
-        name: "Nelson Mandela University (NMU)",
-        category: "university",
-        fee: "FREE",
-        link: "https://www.mandela.ac.za/study-at-mandela/application/apply-undergraduate",
-        desc: "Direct Nelson Mandela University undergraduate online application portal."
-      },
-      {
-        name: "Cape Peninsula University of Technology (CPUT)",
-        category: "university",
-        fee: "FREE",
-        link: "https://alecto.cput.ac.za/pls/prodi41/w99pkg.mi_login",
-        desc: "Direct CPUT online application system (ITS iEnabler Portal)."
-      },
-      {
-        name: "University of Cape Town (UCT)",
-        category: "university",
-        fee: "R100",
-        link: "https://publicaccess.uct.ac.za/psc/public/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?LP=UCT_ONLINE_APP_PUBLIC",
-        desc: "Direct UCT Public Online Application gateway."
-      },
-      {
-        name: "University of the Western Cape (UWC)",
-        category: "university",
-        fee: "FREE",
-        link: "https://student.uwc.ac.za/",
-        desc: "Direct UWC student portal for online admissions and applications."
-      },
-      {
-        name: "North-West University (NWU)",
-        category: "university",
-        fee: "FREE",
-        link: "https://vssweb.nwu.ac.za/aaa-webclient/#/top",
-        desc: "Direct NWU prospective student web application portal."
-      },
-      {
-        name: "University of South Africa (UNISA)",
-        category: "university",
-        fee: "R140",
-        link: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission",
-        desc: "Direct online distance learning undergraduate and postgraduate application portal."
-      },
-      {
-        name: "Stellenbosch University (SU)",
-        category: "university",
-        fee: "R100",
-        link: "https://student.sun.ac.za/",
-        desc: "Direct Stellenbosch University prospective student application portal."
-      },
-      {
-        name: "University of KwaZulu-Natal (UKZN / CAO)",
-        category: "university",
-        fee: "R250 (One CAO fee for all KZN unis)",
-        link: "https://www.cao.ac.za/",
-        desc: "Direct Central Applications Office portal for UKZN, DUT, MUT, and UniZulu."
-      },
-      {
-        name: "Durban University of Technology (DUT)",
-        category: "university",
-        fee: "R250 (via CAO)",
-        link: "https://www.cao.ac.za/",
-        desc: "Direct application intake portal for DUT via CAO."
-      },
-      {
-        name: "Mangosuthu University of Technology (MUT)",
-        category: "university",
-        fee: "R250 (via CAO)",
-        link: "https://www.cao.ac.za/",
-        desc: "Direct application intake portal for MUT via CAO."
-      },
-      {
-        name: "University of Zululand (UNIZULU)",
-        category: "university",
-        fee: "R250 (via CAO)",
-        link: "https://www.cao.ac.za/",
-        desc: "Direct application intake portal for UniZulu via CAO."
-      },
-      {
-        name: "Sol Plaatje University (SPU)",
-        category: "university",
-        fee: "FREE",
-        link: "https://www.spu.ac.za/index.php/how-to-apply/",
-        desc: "Direct Sol Plaatje University online admissions portal."
-      },
-      {
-        name: "Rhodes University (RU)",
-        category: "university",
-        fee: "R100",
-        link: "https://ross.ru.ac.za/",
-        desc: "Direct Rhodes Online Student System (ROSS) application login."
-      },
-      {
-        name: "NSFAS Official Student Bursary Portal",
-        category: "bursary",
-        fee: "FREE (Government Grant)",
-        link: "https://my.nsfas.org.za/",
-        desc: "Direct online student bursary application and account login."
-      },
-      {
-        name: "TVET Colleges Application Gateway",
-        category: "college",
-        fee: "FREE Application",
-        link: "https://admissionportal.coltech.co.za/Student/Login?ReturnUrl=/student/application/create",
-        desc: "Direct portal connecting to DHET public TVET college registration."
-      },
-      {
-        name: "Fundi Student Loans & Bursaries",
-        category: "bursary",
-        fee: "FREE Application",
-        link: "https://www.fundi.co.za/",
-        desc: "Direct application for study finance, accommodation, and device loans."
-      }
+      { name: "Tshwane University of Technology (TUT)", category: "university", fee: "R240", link: "https://applications-prod.tut.ac.za/", desc: "Direct online application portal for TUT undergraduate and postgraduate programs." },
+      { name: "University of Pretoria (UP)", category: "university", fee: "R300 (Free if Income < R150k)", link: "https://upnet.up.ac.za/psc/upapply/EMPLOYEE/SA/c/UP_OAP_MENU.UP_OAP_LOGIN_FL.GBL?&", desc: "Direct UP Student Online Application portal (UPNet PeopleSoft system)." },
+      { name: "University of Johannesburg (UJ)", category: "university", fee: "FREE (Online) / R200 (Manual)", link: "https://registration.uj.ac.za/pls/prodi41/gen.gw1pkg.gw1view", desc: "Direct UJ prospective student online application and registration portal." },
+      { name: "University of the Witwatersrand (Wits)", category: "university", fee: "R100", link: "https://self-service.wits.ac.za/psc/csprodonl/UW_SELF_SERVICE/SA/c/VC_OA_LOGIN_MENU.VC_OA_LOGIN_FL.GBL", desc: "Direct Wits Self-Service online student application gateway." },
+      { name: "Tshwane North TVET College (TNC)", category: "college", fee: "FREE Application", link: "https://www.tnc.edu.za/", desc: "Direct registration portal for Engineering, Business, and Utility studies in Gauteng." },
+      { name: "South West Gauteng TVET College (SWGC)", category: "college", fee: "FREE Application", link: "https://www.swgc.co.za/", desc: "Direct application portal for vocational certificates and diplomas in Johannesburg." },
+      { name: "Orbit TVET College", category: "college", fee: "FREE Application", link: "https://orbitcollege.co.za/", desc: "Direct North West province TVET college online application portal." },
+      { name: "Ekurhuleni East TVET College (EEC)", category: "college", fee: "FREE Application", link: "https://www.eec.edu.za/", desc: "Direct application portal for technical training and vocational courses." },
+      { name: "Vhembe TVET College", category: "college", fee: "FREE Application", link: "https://vhembetvet.edu.co.za/", desc: "Direct registration portal for Limpopo public technical training." },
+      { name: "NSFAS Official Student Bursary Portal", category: "bursary", fee: "FREE (Government Grant)", link: "https://my.nsfas.org.za/", desc: "Direct online student bursary application and account login." },
+      { name: "Fundi Student Loans & Bursaries", category: "bursary", fee: "FREE Application", link: "https://www.fundi.co.za/", desc: "Direct application for study finance, accommodation, and device loans." }
     ];
 
     // VIEW CONTROLLER
@@ -594,6 +363,7 @@
     let selectedStudentCategory = "all";
     let currentPage = 1;
     const itemsPerPage = 6;
+    let attachedImageBase64 = null;
 
     function handleStudentSearch() {
       studentSearchQuery = document.getElementById('studentSearchInput').value.toLowerCase().trim();
@@ -616,7 +386,6 @@
       renderStudents();
     }
 
-    // RENDER STUDENT PORTALS WITH PAGINATION
     function renderStudents() {
       const grid = document.getElementById('studentGrid');
       
@@ -680,7 +449,7 @@
       window.scrollTo({ top: 200, behavior: 'smooth' });
     }
 
-    // APS CALCULATOR LOGIC
+    // APS CALCULATOR & CAREER PATHWAYS
     function openApsModal() {
       document.getElementById('apsModal').classList.remove('hidden');
     }
@@ -689,7 +458,7 @@
       document.getElementById('apsModal').classList.add('hidden');
     }
 
-    function calculateAps(e) {
+    function calculateApsAndCareers(e) {
       e.preventDefault();
       const s1 = parseInt(document.getElementById('subj1').value);
       const s2 = parseInt(document.getElementById('subj2').value);
@@ -701,61 +470,153 @@
 
       const electives = [s1, s2, s3, s5, s6, s7];
       electives.sort((a, b) => b - a);
-
       const top6NoLO = electives.reduce((sum, val) => sum + val, 0);
-      const totalWithLO = top6NoLO + s4;
 
       document.getElementById('apsScoreValue').innerText = `${top6NoLO} Points`;
-      document.getElementById('apsBreakdownText').innerText = `Standard Best-6 Subjects Score: ${top6NoLO} / 42 pts (Total with LO: ${totalWithLO} / 49 pts)`;
-      document.getElementById('apsResult').classList.remove('hidden');
+      document.getElementById('apsBreakdownText').innerText = `Based on your best 6 subjects (excluding Life Orientation). Maximum possible is 42 points.`;
+
+      let pathwaysHtml = '';
+      if (top6NoLO >= 35) {
+        pathwaysHtml = `
+          <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+            <h5 class="font-bold text-emerald-900 text-sm">🌟 Elite Tier (35+ Points)</h5>
+            <p class="text-xs text-emerald-700 mt-1">You qualify for competitive programs like Medicine, Engineering (Civil/Electrical/Mechanical), Computer Science, and LLB Law at top institutions like Wits, UCT, UP, and UJ.</p>
+            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Designing infrastructure, writing medical diagnostics software, building public policy.</p>
+          </div>
+          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
+            <h5 class="font-bold text-blue-900 text-sm">🎓 Standard University Degree Tier (28 - 34 Points)</h5>
+            <p class="text-xs text-blue-700 mt-1">You qualify for Bachelor of Commerce (BCom), Bachelor of Science (BSc General), Education (BEd), and Public Management across TUT, NWU, UFS, and UWC.</p>
+            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Financial accounting, data analysis, shaping young minds in education.</p>
+          </div>
+        `;
+      } else if (top6NoLO >= 22) {
+        pathwaysHtml = `
+          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
+            <h5 class="font-bold text-blue-900 text-sm">🚀 National Diploma & Bachelor Tier (22 - 27 Points)</h5>
+            <p class="text-xs text-blue-700 mt-1">You qualify for National Diplomas in Information Technology, Geomatics, Accounting, Tourism, and Journalism at TUT, VUT, CPUT, and MUT.</p>
+            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Practical technical engineering support, GIS mapping, media production.</p>
+          </div>
+          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
+            <h5 class="font-bold term-amber-900 text-sm">⚡ TVET Colleges & Higher Certificates (18 - 21 Points)</h5>
+            <p class="text-xs text-amber-700 mt-1">Highly recommended: National Certificates (N4-N6) at Tshwane North TVET (TNC), SWGC, or Orbit College leading directly to trade certifications or university articulation.</p>
+            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Electrical contracting, mechanical fitting, professional office administration.</p>
+          </div>
+        `;
+      } else {
+        pathwaysHtml = `
+          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
+            <h5 class="font-bold text-amber-900 text-sm">🛠️ TVET Colleges & Foundational Programmes (Under 22 Points)</h5>
+            <p class="text-xs text-amber-700 mt-1">Ideal starting point: Occupational certificates and NC(V) programs at TNC, Ekurhuleni East TVET, or Vhembe TVET. These build foundational workplace skills with zero high entry barriers.</p>
+            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Skilled artisanal trade work, carpentry, automotive repair, hospitality services.</p>
+          </div>
+        `;
+      }
+
+      document.getElementById('careerPathwaysList').innerHTML = pathwaysHtml;
+      document.getElementById('apsResultsContainer').classList.remove('hidden');
     }
 
-    // AI HELPER LOGIC SIMULATOR
-    function runAiHelper() {
-      const uni = document.getElementById('aiUniSelect').value.toUpperCase();
-      const issue = document.getElementById('aiIssueSelect').value;
-      const fileInput = document.getElementById('aiScreenshotInput');
-      const box = document.getElementById('aiResponseBox');
-      const badge = document.getElementById('aiStatusBadge');
+    // GEMINI-STYLE INTERACTIVE CHAT AI HELPER
+    function handleImageAttachment(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(uploadEvent) {
+          attachedImageBase64 = uploadEvent.target.result;
+          document.getElementById('imagePreviewThumb').src = attachedImageBase64;
+          document.getElementById('imagePreviewContainer').classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
 
-      badge.innerText = "Analyzing...";
-      badge.className = "text-xs bg-amber-100 text-amber-700 font-bold px-2.5 py-1 rounded-md";
+    function clearAttachedImage() {
+      attachedImageBase64 = null;
+      document.getElementById('imagePreviewContainer').classList.add('hidden');
+      document.getElementById('chatImageInput').value = '';
+    }
 
-      setTimeout(() => {
-        badge.innerText = "Guide Ready";
-        badge.className = "text-xs bg-emerald-100 text-emerald-700 font-bold px-2.5 py-1 rounded-md";
+    function handleChatKey(e) {
+      if (e.key === 'Enter') {
+        sendChatMessage();
+      }
+    }
 
-        let guideHtml = `
-          <div class="p-4 bg-purple-50 rounded-xl border border-purple-200">
-            <h4 class="font-bold text-purple-900 mb-1 flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-600"></i> AI Action Plan for ${uni}</h4>
-            <p class="text-xs text-purple-700">Based on your selection, follow these exact steps to complete your application successfully without errors.</p>
+    function sendChatMessage() {
+      const inputField = document.getElementById('chatInputText');
+      const text = inputField.value.trim();
+      const chatContainer = document.getElementById('chatMessages');
+
+      if (!text && !attachedImageBase64) return;
+
+      // 1. Append User Message
+      let userHtml = `
+        <div class="flex items-start gap-3 justify-end">
+          <div class="bg-purple-600 text-white p-4 rounded-2xl rounded-tr-none max-w-xl text-sm shadow-sm space-y-2">
+      `;
+      if (attachedImageBase64) {
+        userHtml += `<img src="${attachedImageBase64}" alt="Uploaded screenshot" class="max-w-xs rounded-lg border border-purple-400">`;
+      }
+      if (text) {
+        userHtml += `<p>${escapeHtml(text)}</p>`;
+      }
+      userHtml += `
           </div>
-          <ol class="space-y-3 list-decimal list-inside text-sm font-medium text-slate-800">
-            <li class="p-3 bg-white border border-slate-200 rounded-lg">
-              <span class="font-bold">Step 1: Check System Status</span>
-              <p class="text-xs text-slate-600 font-normal mt-1">Make sure you are using Google Chrome or Microsoft Edge. Clear your browser cache or open an Incognito window if the login button is greyed out.</p>
-            </li>
-            <li class="p-3 bg-white border border-slate-200 rounded-lg">
-              <span class="font-bold">Step 2: Student Number & PIN Recovery</span>
-              <p class="text-xs text-slate-600 font-normal mt-1">If this is your first time applying to ${uni}, click on "New Student Registration" or "Create Login Profile". Do not use a temporary email address; use your personal Gmail or Outlook.</p>
-            </li>
-            <li class="p-3 bg-white border border-slate-200 rounded-lg">
-              <span class="font-bold">Step 3: Document Upload Requirements</span>
-              <p class="text-xs text-slate-600 font-normal mt-1">Ensure your South African ID document and Grade 11 final report or Grade 12 results are certified (under 3 months old) and saved in <b>PDF format</b> under 2MB.</p>
-            </li>
-            <li class="p-3 bg-white border border-slate-200 rounded-lg">
-              <span class="font-bold">Step 4: Submission & Reference Number</span>
-              <p class="text-xs text-slate-600 font-normal mt-1">Once submitted successfully, take a screenshot of your <b>Student / Reference Number</b> and keep it safe. You will need it to track your admission status.</p>
-            </li>
-          </ol>
+          <div class="w-8 h-8 rounded-lg bg-slate-700 text-white flex items-center justify-center flex-shrink-0 text-sm">
+            <i class="fa-solid fa-user"></i>
+          </div>
+        </div>
+      `;
+      chatContainer.insertAdjacentHTML('beforeend', userHtml);
+
+      // Clear input & image preview
+      inputField.value = '';
+      const sentImage = attachedImageBase64;
+      clearAttachedImage();
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      // 2. Simulate Gemini AI Typing / Response
+      setTimeout(() => {
+        const aiResponseText = generateGeminiResponse(text, sentImage);
+        
+        let aiHtml = `
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center flex-shrink-0 text-sm">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="bg-slate-100 text-slate-800 p-4 rounded-2xl rounded-tl-none max-w-xl text-sm shadow-sm space-y-2">
+              <p>${aiResponseText}</p>
+            </div>
+          </div>
         `;
+        chatContainer.insertAdjacentHTML('beforeend', aiHtml);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }, 700);
+    }
 
-        if(fileInput.files && fileInput.files[0]) {
-          guideHtml += `<div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-800 font-semibold"><i class="fa-solid fa-camera mr-1"></i> Screenshot successfully scanned! The AI detected your portal login screen and matched it with the instructions above.</div>`;
-        }
+    function generateGeminiResponse(query, hasImage) {
+      const q = query.toLowerCase();
+      if (hasImage) {
+        return `I have successfully scanned your attached screenshot! It looks like you are on a standard South African student login or document upload screen. Make sure your files are saved in <b>PDF format under 2MB</b> and that your ID number has no spaces. Would you like me to guide you on how to reset your PIN or check your status?`;
+      }
+      if (q.includes('tut') || q.includes('tshwane')) {
+        return `For <b>TUT (Tshwane University of Technology)</b>, applications are done directly via <a href="https://applications-prod.tut.ac.za/" target="_blank" class="text-purple-600 underline font-bold">applications-prod.tut.ac.za</a>. The application fee is R240. Ensure you have your certified ID copy and final Grade 11 or 12 results ready. What specific step are you stuck on?`;
+      }
+      if (q.includes('up') || q.includes('pretoria')) {
+        return `For the <b>University of Pretoria (UP)</b>, use the UPNet PeopleSoft gateway. Application fee is R300 (or free if household income is under R150,000). Are you trying to log in as a new applicant or upload supporting documents?`;
+      }
+      if (q.includes('nsfas') || q.includes('bursary')) {
+        return `To apply for <b>NSFAS</b>, visit <a href="https://my.nsfas.org.za/" target="_blank" class="text-purple-600 underline font-bold">my.nsfas.org.za</a>. You will need your ID copy, parental proof of income (or SASSA confirmation), and a working cellphone number. Do you need help resetting your NSFAS password?`;
+      }
+      if (q.includes('pin') || q.includes('password') || q.includes('forgot')) {
+        return `If you forgot your student portal PIN or password, look for the <b>"Forgotten PIN"</b> or <b>"Reset Password"</b> link right below the login boxes. It will send a temporary reset link or OTP to your registered cellphone number or email.`;
+      }
+      return `I understand. When applying to South African universities or TVET colleges (like TNC or SWGC), always ensure your documents are certified by the South African Police Service (SAPS) and dated within the last 3 months. Let me know if you need help with a specific institution or document requirement!`;
+    }
 
-        box.innerHTML = guideHtml;
-      }, 600);
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
     }
 
     // INITIAL LOAD
