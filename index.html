@@ -525,9 +525,42 @@
       document.getElementById("apsResultsContainer").classList.remove("hidden");
     }
     const universityProspectuses=[
-      ["Cape Peninsula University of Technology (CPUT)","CPUT","https://www.cput.ac.za/"],["Central University of Technology (CUT)","CUT","https://www.cut.ac.za/"],["Durban University of Technology (DUT)","DUT","https://www.dut.ac.za/"],["Mangosuthu University of Technology (MUT)","MUT","https://www.mut.ac.za/"],["Nelson Mandela University","NMU","https://www.mandela.ac.za/"],["North-West University","NWU","https://www.nwu.ac.za/"],["Rhodes University","RU","https://www.ru.ac.za/"],["Sefako Makgatho Health Sciences University","SMU","https://www.smu.ac.za/"],["Sol Plaatje University","SPU","https://www.spu.ac.za/"],["Stellenbosch University","SU","https://www.sun.ac.za/"],["Tshwane University of Technology","TUT","https://www.tut.ac.za/"],["University of Cape Town","UCT","https://www.uct.ac.za/"],["University of Fort Hare","UFH","https://www.ufh.ac.za/"],["University of the Free State","UFS","https://www.ufs.ac.za/"],["University of Johannesburg","UJ","https://www.uj.ac.za/admissions-aid/"],["University of KwaZulu-Natal","UKZN","https://www.ukzn.ac.za/"],["University of Limpopo","UL","https://www.ul.ac.za/"],["University of Mpumalanga","UMP","https://www.ump.ac.za/"],["University of Pretoria","UP","https://www.up.ac.za/students/admission-information"],["University of South Africa","UNISA","https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission"],["University of the Western Cape","UWC","https://www.uwc.ac.za/"],["University of the Witwatersrand","Wits","https://www.wits.ac.za/"],["University of Venda","UNIVEN","https://www.univen.ac.za/"],["University of Zululand","UNIZULU","https://www.unizulu.ac.za/"],["Vaal University of Technology","VUT","https://www.vut.ac.za/"],["Walter Sisulu University","WSU","https://www.wsu.ac.za/"]
+      ["Cape Peninsula University of Technology (CPUT)","CPUT","https://www.cput.ac.za/study-at-cput/undergraduate/apply/step-1"],
+      ["Central University of Technology (CUT)","CUT","https://www.cut.ac.za/"],
+      ["Durban University of Technology (DUT)","DUT","https://www.dut.ac.za/"],
+      ["Mangosuthu University of Technology (MUT)","MUT","https://www.mut.ac.za/"],
+      ["Nelson Mandela University","NMU","https://www.mandela.ac.za/"],
+      ["North-West University","NWU","https://www.nwu.ac.za/"],
+      ["Rhodes University","RU","https://www.ru.ac.za/"],
+      ["Sefako Makgatho Health Sciences University","SMU","https://www.smu.ac.za/"],
+      ["Sol Plaatje University","SPU","https://www.spu.ac.za/"],
+      ["Stellenbosch University","SU","https://www.sun.ac.za/"],
+      ["Tshwane University of Technology","TUT","https://www.tut.ac.za/"],
+      ["University of Cape Town","UCT","https://uct.ac.za/students/prospective-students/undergraduate-prospectus"],
+      ["University of Fort Hare","UFH","https://www.ufh.ac.za/"],
+      ["University of the Free State","UFS","https://www.ufs.ac.za/"],
+      ["University of Johannesburg","UJ","https://www.uj.ac.za/"],
+      ["University of KwaZulu-Natal","UKZN","https://saa.ukzn.ac.za/handbooks/"],
+      ["University of Limpopo","UL","https://www.ul.ac.za/"],
+      ["University of Mpumalanga","UMP","https://www.ump.ac.za/"],
+      ["University of Pretoria","UP","https://www.up.ac.za/students/admission-information"],
+      ["University of South Africa","UNISA","https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission"],
+      ["University of the Western Cape","UWC","https://www.uwc.ac.za/"],
+      ["University of the Witwatersrand","Wits","https://www.wits.ac.za/"],
+      ["University of Venda","UNIVEN","https://www.univen.ac.za/"],
+      ["University of Zululand","UNIZULU","https://www.unizulu.ac.za/"],
+      ["Vaal University of Technology","VUT","https://www.vut.ac.za/"],
+      ["Walter Sisulu University","WSU","https://www.wsu.ac.za/"]
     ];
-    function renderProspectuses(){const q=(document.getElementById("prospectusSearch")?.value||"").toLowerCase().trim();const list=universityProspectuses.filter(u=>(u[0]+" "+u[1]).toLowerCase().includes(q));document.getElementById("prospectusGrid").innerHTML=list.map(u=>'<article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3"><div><p class="text-xs text-violet-700 font-bold mb-1">'+u[1]+'</p><h3 class="font-bold text-slate-900 text-sm">'+u[0]+'</h3><p class="text-xs text-slate-500 mt-2">Official university website — find the 2027 prospectus and confirm programme requirements.</p></div><a href="'+u[2]+'" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center bg-violet-700 hover:bg-violet-800 text-white font-bold text-xs rounded-lg px-3 py-2">Open official website ↗</a></article>').join("")||'<p class="text-sm text-slate-500">No universities match your search.</p>';}
+    const prospectusPdfDirectory = "https://universityqualifications.co.za/undergraduate/pdf-prospectus/2027";
+    function renderProspectuses(){
+      const search=document.getElementById("prospectusSearch");
+      const grid=document.getElementById("prospectusGrid");
+      if(!grid) return;
+      const q=(search?.value||"").toLowerCase().trim();
+      const list=universityProspectuses.filter(u=>(u[0]+" "+u[1]).toLowerCase().includes(q));
+      grid.innerHTML=list.map(u=>'<article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3"><div><p class="text-xs text-violet-700 font-bold mb-1">'+u[1]+'</p><h3 class="font-bold text-slate-900 text-sm">'+u[0]+'</h3><p class="text-xs text-slate-500 mt-2">Open the 2027 prospectus directory to find this university’s available PDF. Check the university’s own site for the latest official version.</p></div><div class="flex flex-col gap-2"><a href="'+prospectusPdfDirectory+'" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center bg-violet-700 hover:bg-violet-800 text-white font-bold text-xs rounded-lg px-3 py-2">Find 2027 prospectus PDF ↗</a><a href="'+u[2]+'" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university site ↗</a></div></article>').join("")||'<p class="text-sm text-slate-500">No universities match your search.</p>';
+    }
 
     window.onload = function() {
       renderStudents();
