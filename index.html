@@ -4,75 +4,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casenova Connection - All SA Universities & TVET Direct Portal</title>
-  
+
   <!-- Google AdSense Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9822525707731833" crossorigin="anonymous"></script>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     .gradient-bg {
       background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #064e3b 100%);
     }
+
     .card-hover:hover {
       transform: translateY(-4px);
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
+
 <body class="bg-slate-50 font-sans text-slate-800 flex flex-col min-h-screen">
 
-  <!-- ================= NAVBAR ================= -->
+  <!-- NAVBAR -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('home')">
         <span class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-black text-xl tracking-wider">CC</span>
-        <span class="font-bold text-base sm:text-lg text-slate-900">Casenova Connection <span class="hidden sm:inline-block text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">SA All Unis Portal</span></span>
+        <span class="font-bold text-base sm:text-lg text-slate-900">
+          Casenova Connection
+          <span class="hidden sm:inline-block text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">SA All Unis Portal</span>
+        </span>
       </div>
-      
+
       <div class="flex items-center gap-1 sm:gap-2">
         <button onclick="switchView('home')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Home</button>
         <button onclick="switchView('portals')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Applications</button>
         <button onclick="openApsModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow transition-all flex items-center gap-1.5">
-          <i class="fa-solid fa-calculator"></i> <span class="hidden xs:inline">APS Calc</span>
+          <i class="fa-solid fa-calculator"></i>
+          <span class="hidden xs:inline">APS Calc</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ================= MAIN CONTENT VIEWS ================= -->
+  <!-- MAIN CONTENT -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
 
-    <!-- VIEW 1: HOME LANDING -->
+    <!-- HOME -->
     <div id="view-home" class="space-y-8">
       <div class="gradient-bg text-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-8">
         <div>
           <span class="bg-emerald-500/30 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-400/30">Official Student Gateway</span>
           <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold mt-3 mb-4">Welcome to Casenova Connection</h1>
-          <p class="text-emerald-100 max-w-xl text-xs sm:text-sm md:text-base mb-6">Your ultimate South African tertiary hub. Access direct application portals for all 26 public universities & TVET colleges, calculate your APS score, or chat live with our AI Assistant.</p>
+          <p class="text-emerald-100 max-w-xl text-xs sm:text-sm md:text-base mb-6">
+            Your ultimate South African tertiary hub. Access direct application portals for all 26 public universities & TVET colleges, calculate your APS score, or chat live with our AI Assistant.
+          </p>
         </div>
+
         <div class="w-full md:w-auto bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
           <div class="text-4xl font-black mb-1">26+</div>
           <div class="text-xs text-emerald-200 uppercase tracking-wider font-semibold">SA Public Universities & Colleges</div>
         </div>
       </div>
 
-      <!-- DESTINATION CARDS -->
       <div>
         <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-4 flex items-center gap-2">
-          <i class="fa-solid fa-circle-chevron-right text-emerald-600"></i> Select what you want to do today:
+          <i class="fa-solid fa-circle-chevron-right text-emerald-600"></i>
+          Select what you want to do today:
         </h2>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
           <div onclick="switchView('portals')" class="bg-white p-6 rounded-2xl border-2 border-slate-200 hover:border-emerald-600 card-hover cursor-pointer flex flex-col justify-between">
             <div>
               <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl mb-4">
                 <i class="fa-solid fa-graduation-cap"></i>
               </div>
               <h3 class="text-lg font-bold text-slate-900 mb-2">1. University & College Applications</h3>
-              <p class="text-sm text-slate-600 mb-6">Browse all 26 public universities, TVET colleges, and bursaries with direct official application links and fee details.</p>
+              <p class="text-sm text-slate-600 mb-6">
+                Browse all 26 public universities, TVET colleges, and bursaries with direct official application links and fee details.
+              </p>
             </div>
             <div class="text-emerald-600 font-bold text-sm flex items-center gap-2">
               Open Portals <i class="fa-solid fa-arrow-right"></i>
@@ -85,30 +98,31 @@
                 <i class="fa-solid fa-calculator"></i>
               </div>
               <h3 class="text-lg font-bold text-slate-900 mb-2">2. National APS Calculator & Careers</h3>
-              <p class="text-sm text-slate-600 mb-6">Calculate your exact Admission Point Score and instantly discover qualifying courses, target universities, and real-world career paths.</p>
+              <p class="text-sm text-slate-600 mb-6">
+                Calculate your Admission Point Score and discover possible courses and career paths.
+              </p>
             </div>
             <div class="text-blue-600 font-bold text-sm flex items-center gap-2">
               Calculate Score <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
-
         </div>
       </div>
     </div>
 
-    <!-- VIEW 2: PORTALS PAGE -->
+    <!-- PORTALS -->
     <div id="view-portals" class="hidden space-y-6">
       <div class="bg-gradient-to-r from-emerald-600 to-teal-800 text-white rounded-2xl p-6 shadow flex flex-col md:flex-row justify-between items-center gap-4">
         <div>
           <h2 class="text-xl sm:text-2xl font-extrabold mb-1">Direct Tertiary Application Portals</h2>
           <p class="text-emerald-100 text-xs">Click any institution to open their official online system directly.</p>
         </div>
+
         <button onclick="document.getElementById('casenova-box').classList.toggle('open')" class="bg-white text-emerald-800 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 shadow whitespace-nowrap">
           <i class="fa-solid fa-robot"></i> Stuck? Ask AI Helper
         </button>
       </div>
 
-      <!-- Search & Filters -->
       <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
         <div class="relative w-full md:w-96">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
@@ -125,15 +139,13 @@
         </div>
       </div>
 
-      <!-- Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="studentGrid"></div>
 
-      <!-- Pagination -->
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-between border-t border-slate-200 pt-6 gap-4">
         <button id="prevBtn" onclick="changePage(-1)" class="w-full sm:w-auto bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold px-5 py-2.5 rounded-xl text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
           <i class="fa-solid fa-chevron-left text-xs"></i> Previous Page
         </button>
-        
+
         <span id="pageIndicator" class="text-sm font-semibold text-slate-600 bg-slate-100 px-4 py-2 rounded-xl">Page 1 of 1</span>
 
         <button id="nextBtn" onclick="changePage(1)" class="w-full sm:w-auto bg-slate-900 text-white hover:bg-slate-800 font-bold px-5 py-2.5 rounded-xl text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
@@ -141,10 +153,9 @@
         </button>
       </div>
     </div>
-
   </main>
 
-  <!-- ================= APS CALCULATOR & CAREER PATHWAYS MODAL ================= -->
+  <!-- APS MODAL -->
   <div id="apsModal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-3xl w-full p-4 sm:p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
       <button onclick="closeApsModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2">
@@ -157,7 +168,7 @@
         </div>
         <div>
           <h3 class="text-lg sm:text-xl font-bold text-slate-900">APS Calculator & Career Pathways</h3>
-          <p class="text-slate-500 text-xs">Calculate your points and discover matching university courses and real-world careers</p>
+          <p class="text-slate-500 text-xs">Calculate your points and discover matching courses and careers.</p>
         </div>
       </div>
 
@@ -165,7 +176,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">1. Home Language (HL)</label>
-            <select id="subj1" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+            <select id="subj1" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
               <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
@@ -175,8 +186,8 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">2. First Add. Language (FAL)</label>
-            <select id="subj2" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+            <label class="block text-xs font-bold text-slate-700 mb-1">2. First Additional Language (FAL)</label>
+            <select id="subj2" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
               <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
@@ -187,7 +198,7 @@
 
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">3. Mathematics / Maths Lit</label>
-            <select id="subj3" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+            <select id="subj3" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
               <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
@@ -198,7 +209,7 @@
 
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">4. Life Orientation (LO)</label>
-            <select id="subj4" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+            <select id="subj4" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
               <option value="5">Level 5 (60% - 69%) - 5 pts</option>
@@ -207,8 +218,8 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">5. Elective 1 (e.g. Accounting/Geog/Science)</label>
-            <select id="subj5" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+            <label class="block text-xs font-bold text-slate-700 mb-1">5. Elective 1</label>
+            <select id="subj5" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
               <option value="5">Level 5 (60% - 69%) - 5 pts</option>
@@ -218,7 +229,7 @@
 
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">6. Elective 2</label>
-            <select id="subj6" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+            <select id="subj6" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
               <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
@@ -228,7 +239,7 @@
 
           <div class="sm:col-span-2">
             <label class="block text-xs font-bold text-slate-700 mb-1">7. Elective 3</label>
-            <select id="subj7" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+            <select id="subj7" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
               <option value="7">Level 7 (80% - 100%) - 7 pts</option>
               <option value="6">Level 6 (70% - 79%) - 6 pts</option>
               <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
@@ -237,12 +248,11 @@
           </div>
         </div>
 
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow text-sm transition-all mt-4">
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow text-sm mt-4">
           Calculate Score & Show Qualifying Careers
         </button>
       </form>
 
-      <!-- RESULTS & CAREER PATHWAYS CONTAINER -->
       <div id="apsResultsContainer" class="hidden mt-6 space-y-4 pt-4 border-t border-slate-200">
         <div class="p-4 rounded-xl border border-blue-200 bg-blue-50 text-center">
           <p class="text-xs font-bold text-slate-600 uppercase">Your Total Calculated APS Score (Best 6 excl. LO)</p>
@@ -252,11 +262,10 @@
 
         <div>
           <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
-            <i class="fa-solid fa-briefcase text-emerald-600"></i> Qualifying Courses & Real-World Career Paths:
+            <i class="fa-solid fa-briefcase text-emerald-600"></i>
+            Qualifying Courses & Real-World Career Paths:
           </h4>
-          <div id="careerPathwaysList" class="space-y-3">
-            <!-- Populated dynamically -->
-          </div>
+          <div id="careerPathwaysList" class="space-y-3"></div>
         </div>
       </div>
     </div>
@@ -269,9 +278,8 @@
     </div>
   </footer>
 
-  <!-- DATA & SCRIPTS -->
+  <!-- WEBSITE DATA AND FUNCTIONS -->
   <script>
-    // ALL 26 SOUTH AFRICAN PUBLIC UNIVERSITIES + TVET COLLEGES & BURSARIES
     const studentPortals = [
       { name: "Tshwane University of Technology (TUT)", category: "university", fee: "R240", link: "https://applications-prod.tut.ac.za/", desc: "Direct online application portal for TUT undergraduate and postgraduate programs." },
       { name: "University of Pretoria (UP)", category: "university", fee: "R300 (Free if Income < R150k)", link: "https://upnet.up.ac.za/psc/upapply/EMPLOYEE/SA/c/UP_OAP_MENU.UP_OAP_LOGIN_FL.GBL?&", desc: "Direct UP Student Online Application portal (UPNet PeopleSoft system)." },
@@ -308,16 +316,13 @@
       { name: "Fundi Student Loans & Bursaries", category: "bursary", fee: "FREE Application", link: "https://www.fundi.co.za/", desc: "Direct application for study finance, accommodation, and device loans." }
     ];
 
-    // VIEW CONTROLLER
     function switchView(viewName) {
       document.getElementById('view-home').classList.add('hidden');
       document.getElementById('view-portals').classList.add('hidden');
-
       document.getElementById(`view-${viewName}`).classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // STATE & PAGINATION VARIABLES
     let studentSearchQuery = "";
     let selectedStudentCategory = "all";
     let currentPage = 1;
@@ -336,6 +341,7 @@
       document.querySelectorAll('.student-cat-btn').forEach(btn => {
         btn.className = "student-cat-btn bg-white border border-slate-200 text-slate-600 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold hover:border-slate-400";
       });
+
       const activeBtn = document.getElementById(`catBtn-${cat}`);
       if (activeBtn) {
         activeBtn.className = "student-cat-btn bg-slate-900 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold";
@@ -346,17 +352,16 @@
 
     function renderStudents() {
       const grid = document.getElementById('studentGrid');
-      
-      let filtered = studentPortals.filter(s => {
+
+      const filtered = studentPortals.filter(s => {
         const matchesCat = selectedStudentCategory === 'all' || s.category === selectedStudentCategory;
-        const matchesSearch = s.name.toLowerCase().includes(studentSearchQuery) || 
-                              s.desc.toLowerCase().includes(studentSearchQuery);
+        const matchesSearch = s.name.toLowerCase().includes(studentSearchQuery) || s.desc.toLowerCase().includes(studentSearchQuery);
         return matchesCat && matchesSearch;
       });
 
       const totalItems = filtered.length;
       const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
-      
+
       if (currentPage > totalPages) currentPage = totalPages;
       if (currentPage < 1) currentPage = 1;
 
@@ -370,7 +375,7 @@
         document.getElementById('nextBtn').disabled = true;
         return;
       }
-      
+
       grid.innerHTML = paginatedItems.map(portal => `
         <div class="bg-white p-6 rounded-2xl border border-slate-200 card-hover flex flex-col justify-between">
           <div>
@@ -397,8 +402,8 @@
       `).join('');
 
       document.getElementById('pageIndicator').innerText = `Page ${currentPage} of ${totalPages}`;
-      document.getElementById('prevBtn').disabled = (currentPage === 1);
-      document.getElementById('nextBtn').disabled = (currentPage === totalPages);
+      document.getElementById('prevBtn').disabled = currentPage === 1;
+      document.getElementById('nextBtn').disabled = currentPage === totalPages;
     }
 
     function changePage(direction) {
@@ -407,7 +412,6 @@
       window.scrollTo({ top: 200, behavior: 'smooth' });
     }
 
-    // APS CALCULATOR & CAREER PATHWAYS
     function openApsModal() {
       document.getElementById('apsModal').classList.remove('hidden');
     }
@@ -418,232 +422,669 @@
 
     function calculateApsAndCareers(e) {
       e.preventDefault();
-      const s1 = parseInt(document.getElementById('subj1').value);
-      const s2 = parseInt(document.getElementById('subj2').value);
-      const s3 = parseInt(document.getElementById('subj3').value);
-      const s4 = parseInt(document.getElementById('subj4').value);
-      const s5 = parseInt(document.getElementById('subj5').value);
-      const s6 = parseInt(document.getElementById('subj6').value);
-      const s7 = parseInt(document.getElementById('subj7').value);
 
-      const electives = [s1, s2, s3, s5, s6, s7];
-      electives.sort((a, b) => b - a);
-      const top6NoLO = electives.reduce((sum, val) => sum + val, 0);
+      const subjects = [
+        parseInt(document.getElementById('subj1').value),
+        parseInt(document.getElementById('subj2').value),
+        parseInt(document.getElementById('subj3').value),
+        parseInt(document.getElementById('subj5').value),
+        parseInt(document.getElementById('subj6').value),
+        parseInt(document.getElementById('subj7').value)
+      ];
 
-      document.getElementById('apsScoreValue').innerText = `${top6NoLO} Points`;
-      document.getElementById('apsBreakdownText').innerText = `Based on your best 6 subjects (excluding Life Orientation). Maximum possible is 42 points.`;
+      subjects.sort((a, b) => b - a);
+      const total = subjects.reduce((sum, value) => sum + value, 0);
+
+      document.getElementById('apsScoreValue').innerText = `${total} Points`;
+      document.getElementById('apsBreakdownText').innerText =
+        `Based on your best 6 subjects (excluding Life Orientation). Maximum possible is 42 points.`;
 
       let pathwaysHtml = '';
-      if (top6NoLO >= 35) {
+
+      if (total >= 35) {
         pathwaysHtml = `
           <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
             <h5 class="font-bold text-emerald-900 text-sm">🌟 Elite Tier (35+ Points)</h5>
-            <p class="text-xs text-emerald-700 mt-1">You qualify for competitive programs like Medicine, Engineering (Civil/Electrical/Mechanical), Computer Science, and LLB Law at top institutions like Wits, UCT, UP, and UJ.</p>
-            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Designing infrastructure, writing medical diagnostics software, building public policy.</p>
+            <p class="text-xs text-emerald-700 mt-1">You may be competitive for programmes such as Medicine, Engineering, Computer Science and Law, depending on each institution's subject requirements and selection rules.</p>
+            <p class="text-xs text-slate-600 mt-2 font-medium">Career possibilities include healthcare, engineering, software development and law.</p>
           </div>
           <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-            <h5 class="font-bold text-blue-900 text-sm">🎓 Standard University Degree Tier (28 - 34 Points)</h5>
-            <p class="text-xs text-blue-700 mt-1">You qualify for Bachelor of Commerce (BCom), Bachelor of Science (BSc General), Education (BEd), and Public Management across TUT, NWU, UFS, and UWC.</p>
-            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Financial accounting, data analysis, shaping young minds in education.</p>
+            <h5 class="font-bold text-blue-900 text-sm">🎓 University Degree Options</h5>
+            <p class="text-xs text-blue-700 mt-1">Consider BCom, BSc, Education and Public Management programmes. Requirements differ by institution and course.</p>
           </div>
         `;
-      } else if (top6NoLO >= 22) {
+      } else if (total >= 22) {
         pathwaysHtml = `
           <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-            <h5 class="font-bold text-blue-900 text-sm">🚀 National Diploma & Bachelor Tier (22 - 27 Points)</h5>
-            <p class="text-xs text-blue-700 mt-1">You qualify for National Diplomas in Information Technology, Geomatics, Accounting, Tourism, and Journalism at TUT, VUT, CPUT, and MUT.</p>
-            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Practical technical engineering support, GIS mapping, media production.</p>
+            <h5 class="font-bold text-blue-900 text-sm">🚀 Diploma and Degree Options</h5>
+            <p class="text-xs text-blue-700 mt-1">Explore IT, accounting, tourism, journalism and other diploma or degree programmes, subject to admission requirements.</p>
           </div>
           <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <h5 class="font-bold text-amber-900 text-sm">⚡ TVET Colleges & Higher Certificates (18 - 21 Points)</h5>
-            <p class="text-xs text-amber-700 mt-1">Highly recommended: National Certificates (N4-N6) at Tshwane North TVET (TNC), SWGC, or Orbit College leading directly to trade certifications or university articulation.</p>
-            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Electrical contracting, mechanical fitting, professional office administration.</p>
+            <h5 class="font-bold text-amber-900 text-sm">⚡ TVET Colleges and Higher Certificates</h5>
+            <p class="text-xs text-amber-700 mt-1">Explore NC(V), N4-N6 and occupational programmes at public TVET colleges.</p>
           </div>
         `;
       } else {
         pathwaysHtml = `
           <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <h5 class="font-bold text-amber-900 text-sm">🛠️ TVET Colleges & Foundational Programmes (Under 22 Points)</h5>
-            <p class="text-xs text-amber-700 mt-1">Ideal starting point: Occupational certificates and NC(V) programs at TNC, Ekurhuleni East TVET, or Vhembe TVET. These build foundational workplace skills with zero high entry barriers.</p>
-            <p class="text-xs text-slate-600 mt-2 font-medium">Real-world impact: Skilled artisanal trade work, carpentry, automotive repair, hospitality services.</p>
+            <h5 class="font-bold text-amber-900 text-sm">🛠️ Foundational and TVET Programmes</h5>
+            <p class="text-xs text-amber-700 mt-1">Consider TVET, occupational and foundational programmes. Check the relevant college's subject and entry requirements.</p>
           </div>
         `;
       }
+
+      pathwaysHtml += `
+        <p class="text-xs text-slate-500 mt-3">
+          This is a general guide, not an admission decision. Each university calculates APS differently and may require specific subjects and minimum marks. Always check the official course requirements.
+        </p>
+      `;
 
       document.getElementById('careerPathwaysList').innerHTML = pathwaysHtml;
       document.getElementById('apsResultsContainer').classList.remove('hidden');
     }
 
-    // INITIAL LOAD
     window.onload = function() {
       renderStudents();
     };
   </script>
 
-  <!-- ===== CASENOVA AI CHATBOT v3 - ANSWERS ANYTHING - PASTE BEFORE </body> ===== -->
+  <!-- CASENOVA CHATBOT -->
   <style>
-  #casenova-fab{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#14b8a6;border-radius:50%;border:0;font-size:28px;cursor:pointer;z-index:9999;box-shadow:0 8px 25px rgba(0,0,0,.3)}
-  #casenova-box{display:none;position:fixed;bottom:90px;right:20px;width:min(430px,calc(100vw - 24px));height:640px;max-height:82vh;background:#f8fafc;border-radius:18px;overflow:hidden;flex-direction:column;z-index:9999;box-shadow:0 15px 40px rgba(0,0,0,.3);border:1px solid #e2e8f0;font-family:Inter,system-ui,Arial,sans-serif}
-  #casenova-box.open{display:flex}
-  .cc-header{background:#0f172a;color:#fff;padding:14px;display:flex;gap:10px;align-items:center}
-  .cc-logo{width:40px;height:40px;background:#14b8a6;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#fff;flex-shrink:0}
-  .cc-header h3{font-size:15px;margin:0}.cc-header p{font-size:11px;opacity:.75;margin:2px 0 0}
-  .cc-close{margin-left:auto;background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer}
-  #cc-chat{flex:1;padding:12px;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
-  .cc-msg{max-width:90%;padding:11px 13px;border-radius:16px;line-height:1.55;font-size:14px;white-space:pre-wrap}
-  .cc-msg.ai{background:#fff;border:1px solid #e2e8f0;color:#111}
-  .cc-msg.user{background:#0f172a;color:#fff;margin-left:auto}
-  .cc-msg img{max-width:100%;border-radius:10px;margin-top:8px;display:block}
-  .cc-chips{display:flex;gap:6px;overflow-x:auto;padding:0 10px 8px}.cc-chips button{white-space:nowrap;border:1px solid #cbd5e1;background:#fff;padding:6px 10px;border-radius:999px;cursor:pointer;font-size:12px}
-  #cc-preview{display:flex;gap:8px;align-items:center;padding:8px 10px;background:#fef9c3;font-size:12px;color:#111}.cc-hidden{display:none!important}
-  #cc-pasteHint{display:none;background:#dcfce7;padding:8px 10px;font-size:12px;color:#111}#cc-pasteHint.show{display:block}
-  .cc-composer{display:flex;gap:6px;padding:10px;background:#fff;border-top:1px solid #e2e8f0;align-items:flex-end}
-  .cc-composer textarea{flex:1;border:1px solid #cbd5e1;border-radius:12px;padding:9px;resize:none;font-family:inherit;font-size:14px}
-  .cc-send{background:#14b8a6;border:0;width:42px;height:42px;border-radius:50%;font-size:17px;cursor:pointer}
-  .cc-privacy{text-align:center;font-size:10px;color:#64748b;padding:6px;background:#fff}
+    #casenova-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #14b8a6;
+      border-radius: 50%;
+      border: 0;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 8px 25px rgba(0,0,0,.3);
+    }
+
+    #casenova-box {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: min(430px, calc(100vw - 24px));
+      height: 640px;
+      max-height: 82vh;
+      background: #f8fafc;
+      border-radius: 18px;
+      overflow: hidden;
+      flex-direction: column;
+      z-index: 9999;
+      box-shadow: 0 15px 40px rgba(0,0,0,.3);
+      border: 1px solid #e2e8f0;
+      font-family: Inter, system-ui, Arial, sans-serif;
+    }
+
+    #casenova-box.open {
+      display: flex;
+    }
+
+    .cc-header {
+      background: #0f172a;
+      color: #fff;
+      padding: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cc-logo {
+      width: 40px;
+      height: 40px;
+      background: #14b8a6;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 22px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .cc-header h3 {
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .cc-header p {
+      font-size: 11px;
+      opacity: .75;
+      margin: 2px 0 0;
+    }
+
+    .cc-close {
+      margin-left: auto;
+      background: transparent;
+      border: 0;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    #cc-chat {
+      flex: 1;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .cc-msg {
+      max-width: 90%;
+      padding: 11px 13px;
+      border-radius: 16px;
+      line-height: 1.55;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .cc-msg.ai {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      color: #111;
+    }
+
+    .cc-msg.user {
+      background: #0f172a;
+      color: #fff;
+      margin-left: auto;
+    }
+
+    .cc-msg img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 8px;
+      display: block;
+    }
+
+    .cc-chips {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 0 10px 8px;
+    }
+
+    .cc-chips button {
+      white-space: nowrap;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    #cc-preview {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 10px;
+      background: #fef9c3;
+      font-size: 12px;
+      color: #111;
+    }
+
+    .cc-hidden {
+      display: none !important;
+    }
+
+    #cc-pasteHint {
+      display: none;
+      background: #dcfce7;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #111;
+    }
+
+    #cc-pasteHint.show {
+      display: block;
+    }
+
+    .cc-composer {
+      display: flex;
+      gap: 6px;
+      padding: 10px;
+      background: #fff;
+      border-top: 1px solid #e2e8f0;
+      align-items: flex-end;
+    }
+
+    .cc-composer textarea {
+      flex: 1;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 9px;
+      resize: none;
+      font-family: inherit;
+      font-size: 14px;
+      min-width: 0;
+    }
+
+    .cc-send {
+      background: #14b8a6;
+      border: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .cc-send:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .cc-privacy {
+      text-align: center;
+      font-size: 10px;
+      color: #64748b;
+      padding: 6px;
+      background: #fff;
+    }
   </style>
 
-  <button id="casenova-fab" onclick="document.getElementById('casenova-box').classList.toggle('open')">💬</button>
+  <button id="casenova-fab" aria-label="Open Casenova AI chat" onclick="document.getElementById('casenova-box').classList.toggle('open')">💬</button>
 
   <div id="casenova-box">
     <div class="cc-header">
       <div class="cc-logo">C</div>
-      <div><h3>Casenova Connection</h3><p>AI Assistant • Ask Me Anything</p></div>
-      <button class="cc-close" onclick="document.getElementById('casenova-box').classList.remove('open')">✕</button>
+      <div>
+        <h3>Casenova Connection</h3>
+        <p>AI Assistant • Ask Me Anything</p>
+      </div>
+      <button class="cc-close" aria-label="Close chat" onclick="document.getElementById('casenova-box').classList.remove('open')">✕</button>
     </div>
+
     <div id="cc-chat">
-      <div class="cc-msg ai"><b>Casenova AI 🤖</b><br><br>Hi! 👋 I'm your Casenova AI. Ask me ANYTHING — Hi, how are you, maths, jokes, life, or university applications.<br><br>Try: "Hi" / "How to upload documents?" / "Tell me a joke" / "What is 25 x 4?"</div>
+      <div class="cc-msg ai"><b>Casenova AI 🤖</b><br><br>Hi! 👋 I'm your Casenova AI. Ask me about university applications, NSFAS, documents, maths, general knowledge or other questions.<br><br>Try: "Hi" / "How do I upload documents?" / "Tell me a joke" / "What is 25 x 4?"</div>
     </div>
+
     <div class="cc-chips">
-      <button onclick="ccAsk('Hi')">👋 Hi</button>
-      <button onclick="ccAsk('How to upload documents?')">Upload Docs</button>
-      <button onclick="ccAsk('What are NSFAS requirements?')">NSFAS</button>
-      <button onclick="ccAsk('Tell me a joke')">Joke</button>
+      <button type="button" onclick="ccAsk('Hi')">👋 Hi</button>
+      <button type="button" onclick="ccAsk('How do I upload documents?')">Upload Docs</button>
+      <button type="button" onclick="ccAsk('What are NSFAS requirements?')">NSFAS</button>
+      <button type="button" onclick="ccAsk('Tell me a joke')">Joke</button>
     </div>
-    <div id="cc-preview" class="cc-hidden"><img id="cc-previewImg" style="width:60px;height:40px;object-fit:cover;border-radius:8px"><span>Screenshot ready</span><button onclick="ccClear()" style="border:0;background:#0f172a;color:#fff;padding:4px 8px;border-radius:999px;cursor:pointer">✕</button></div>
+
+    <div id="cc-preview" class="cc-hidden">
+      <img id="cc-previewImg" style="width:60px;height:40px;object-fit:cover;border-radius:8px" alt="Selected screenshot preview">
+      <span>Screenshot ready — image analysis is not enabled yet.</span>
+      <button type="button" onclick="ccClear()" style="border:0;background:#0f172a;color:#fff;padding:4px 8px;border-radius:999px;cursor:pointer">✕</button>
+    </div>
+
     <div id="cc-pasteHint">Pasted content detected</div>
+
     <form id="cc-form" class="cc-composer">
-      <label style="font-size:22px;cursor:pointer">📷<input type="file" id="cc-file" accept="image/*" hidden></label>
+      <label style="font-size:22px;cursor:pointer" aria-label="Attach screenshot">
+        📷
+        <input type="file" id="cc-file" accept="image/*" hidden>
+      </label>
       <textarea id="cc-input" placeholder="Ask me anything..." rows="1"></textarea>
-      <button type="submit" class="cc-send">➤</button>
+      <button type="submit" class="cc-send" aria-label="Send message">➤</button>
     </form>
-    <p class="cc-privacy">⚠️ Blur ID & student number before uploading</p>
+
+    <p class="cc-privacy">⚠️ Avoid sharing ID numbers, passwords or private student information.</p>
   </div>
 
+  <!-- CHATBOT JAVASCRIPT: CONNECTED TO GEMINI BACKEND -->
   <script>
-  const OPENAI_API_KEY = ""; // Optional - if you add key, it uses GPT-4o for everything
-  let ccLastTopic = "";
-  let ccUserName = "";
+    const CASENOVA_API_URL = "https://casenovaconnection-ai.onrender.com/api/chat";
 
-  // 1. UNIVERSITY KNOWLEDGE - Still accurate for applications
-  const CC_KNOW = [
-    {topic:"TUT", keys:["tut","tshwane"], t:"TUT - How to Apply:\n1. Go to www.tut.ac.za > Apply\n2. Create profile with email + ID\n3. Choose 2 courses\n4. Pay R240\n5. Upload documents\n6. Submit\n\nClosing: 30 Sept (some 31 July)\nAPS: 20-30"},
-    {topic:"UPLOAD", keys:["upload","uploading","submit document","attach","add document","upload document","upload docs","how to upload","send document"], t:"How to Upload Documents (ALL Universities):\n\n1. Login to your portal\n2. Click 'My Application' / 'Upload Documents'\n3. Prepare:\n• Certified ID copy\n• Grade 11 / 12 results\n• Proof of payment\n4. Must be PDF/JPG, clear, under 2MB\n5. Upload one by one, click SAVE\n6. Status becomes 'Documents Received'\n\nTip: Must be CERTIFIED (stamped at SAPS/Post Office, not older than 3 months). Use CamScanner, not blurry WhatsApp photo."},
-    {topic:"NSFAS", keys:["nsfas","funding","bursary"], t:"NSFAS 2026:\n• SA citizens, household income under R350,000 (R600k if disabled)\n• Covers tuition, accommodation, books\n• Apply at my.nsfas.org.za\n• Need: Certified ID, parent ID, proof of income"},
-    {topic:"UP", keys:["university of pretoria","tuks","pretoria"], t:"UP:\n• 1 April - 30 June\n• APS 30+ for most degrees\n• Apply at www.up.ac.za/online-application"},
-    {topic:"UJ", keys:["uj","johannesburg"], t:"UJ:\n• Closes 30 Sept, FREE\n• APS 26+ diploma, 28+ degree\n• www.uj.ac.za"},
-    {topic:"CAO", keys:["cao"], t:"CAO (KZN): DUT, UKZN, MUT, UNIZULU via cao.ac.za. Fee R250."},
-    {topic:"CACH", keys:["cach"], t:"CACH: If no place after matric, register Jan at cach.dhet.gov.za"},
-    {topic:"PROVISIONAL", keys:["provisional","accepted"], t:"'Provisional Acceptance' = ACCEPTED IF you meet final matric results. Accept it on portal, pass matric, upload final results."},
-    {topic:"PENDING", keys:["pending","awaiting","evaluation"], t:"'Pending' = Still processing. Do NOT re-apply. Check documents, wait 2-4 weeks."},
-    {topic:"UNSUCCESSFUL", keys:["unsuccessful","rejected","declined"], t:"'Unsuccessful' = Did not meet requirements. Try other course / university / TVET / CACH in Jan."},
-    {topic:"APS", keys:["aps","points"], t:"APS = Sum of points for best 6 subjects (excl LO). 80%=7, 70%=6, 60%=5, 50%=4\n\nSend your subjects + marks and I'll calculate."},
-    {topic:"CERTIFIED", keys:["certified","certify"], t:"Certified = Take ORIGINAL + COPY to SAPS / Post Office / Commissioner of Oaths. They stamp + sign. Must not be older than 3 months."}
-  ];
+    let ccLastTopic = "";
+    let ccUserName = "";
 
-  function ccFindUni(q){
-    const clean=q.toLowerCase().replace(/[?.,!]/g,"");
-    let best=null, bestScore=0;
-    for(const it of CC_KNOW){
-      let s=0; it.keys.forEach(k=>{ if(clean.includes(k)) s+=10; });
-      if(ccLastTopic && it.topic.includes(ccLastTopic)) s+=3;
-      if(s>bestScore){ bestScore=s; best=it; }
-    }
-    if(best && bestScore>=10){
-      if(["TUT","UP","UJ","NSFAS","CAO"].includes(best.topic)) ccLastTopic=best.topic;
-      return best.t;
-    }
-    return null;
-  }
-
-  // 2. GREETINGS + SMALL TALK
-  function ccSmallTalk(q){
-    const l=q.toLowerCase().trim();
-    const nameMatch = q.match(/my name is (\w+)|i am (\w+)|i'm (\w+)/i);
-    if(nameMatch){ ccUserName = nameMatch[1]||nameMatch[2]||nameMatch[3]; return `Nice to meet you, ${ccUserName}! 😊 How can I help you today? Ask me about applications, or anything else.`; }
-    if(/^(hi+|hello+|hey+|hola|sawubona|dumela|molweni|avuxeni|good morning|good afternoon|good evening|yo|sup|howzit)\b/.test(l)) return `Hi${ccUserName?" "+ccUserName:""}! 👋 Great to see you! How are you doing today?\n\nI can help you with anything - university applications, NSFAS, documents, maths, jokes, advice, anything. What do you want to ask?`;
-    if(l.includes("how are you")||l.includes("how r u")||l.includes("howzit")||l.includes("how is it")) return `I'm doing great, thanks for asking! 😊 Ready to help you with anything.\n\nHow are YOU doing? Are you applying for university this year?`;
-    if(l.includes("who are you")||l.includes("your name")||l.includes("what are you")) return `I'm Casenova AI 🤖 - your Casenova Connection Assistant. I help students apply to all tertiary institutions, but I can also chat about anything - maths, life, jokes, advice. Ask me anything!`;
-    if(l.includes("thank")||l==="thanks"||l.includes("ngiyabonga")||l.includes("ke a leboga")) return `You're welcome! 🙏 Anytime. Is there anything else you want to ask? I'm here for you.`;
-    if(l.includes("bye")||l.includes("goodbye")||l.includes("see you")) return `Bye${ccUserName?" "+ccUserName:""}! 👋 Good luck with your applications! Come back anytime if you need help. Casenova Connection is rooting for you! 💪`;
-    if(l.includes("joke")||l.includes("funny")||l.includes("make me laugh")){ const jokes=["Why did the student bring a ladder to university? Because they heard the courses were high level! 😂","Why did the maths book look sad? It had too many problems! 📚","What do you call a fake noodle? An impasta! 🍝","Why did the scarecrow win an award? Because he was outstanding in his field! 🌾"]; return jokes[Math.floor(Math.random()*jokes.length)]+"\n\nWant another one?"; }
-    if(l.includes("love")||l.includes("crush")||l.includes("boyfriend")||l.includes("girlfriend")) return `Ah, matters of the heart! ❤️\n\nMy advice: Focus on your goals + be kind + be honest. If you like someone, be brave and tell them respectfully. And don't let love distract you from your applications - you can have both!\n\nWant to talk about it more? I'm listening, no judgment.`;
-    if(l.includes("sad")||l.includes("depressed")||l.includes("stressed")||l.includes("anxious")||l.includes("tired")) return `I'm really sorry you're feeling like that. 💛 That is totally normal, especially with applications + matric pressure.\n\nTake a deep breath. One step at a time. You don't have to do everything today.\n\nIf it's serious, please talk to someone you trust, a teacher, or call SADAG 0800 567 567 (free, 24h in SA).\n\nI'm here to chat if you want. What is stressing you the most?`;
-    if(l.includes("what can you do")||l.includes("what do you do")||l.includes("help me")) return `I can do a LOT! 😊\n\n• University applications: TUT, UP, UJ, UNISA, CAO, CACH, NSFAS\n• How to upload documents step-by-step\n• APS calculation\n• Explain your portal status / screenshot\n• Maths, English, general knowledge\n• Jokes, advice, motivation\n• Anything you ask me!\n\nJust type your question - no limits!`;
-    return null;
-  }
-
-  // 3. MATHS - Simple calculator
-  function ccMaths(q){
-    const m=q.toLowerCase().replace(/x/g,"*").replace(/÷/g,"/").match(/(\d+)\s*([\+\-\*\/])\s*(\d+)/);
-    if(m && (q.toLowerCase().includes("what")||q.toLowerCase().includes("calculate")||q.toLowerCase().includes("plus")||q.toLowerCase().includes("minus")||q.toLowerCase().includes("times")||/^\d/.test(q.trim()))){
-      const a=parseFloat(m[1]), b=parseFloat(m[3]), op=m[2];
-      let r = op==="+"?a+b: op==="-"?a-b: op==="*"?a*b: a/b;
-      return `${a} ${op} ${b} = ${r}\n\nWant me to solve another one? Send it like "15 x 6" or "100 / 4".`;
-    }
-    return null;
-  }
-
-  // 4. FREE AI FOR ANYTHING ELSE
-  async function ccAskFreeAI(question){
-    try{
-      const prompt = encodeURIComponent(`You are Casenova Connection AI Assistant, a friendly helpful assistant for South African students. You help with university applications but also answer ANY question simply, clearly, in a friendly tone. Question: ${question}. Answer in under 150 words, simple English, helpful.`);
-      const res = await fetch(`https://text.pollinations.ai/${prompt}?model=openai`);
-      if(!res.ok) throw new Error("AI busy");
-      const text = await res.text();
-      return text.trim().slice(0,1200);
-    }catch(e){ return null; }
-  }
-
-  const ccChat=document.getElementById('cc-chat'), ccForm=document.getElementById('cc-form'), ccInput=document.getElementById('cc-input'), ccFile=document.getElementById('cc-file'), ccPreview=document.getElementById('cc-preview'), ccPreviewImg=document.getElementById('cc-previewImg'), ccHint=document.getElementById('cc-pasteHint');
-  let ccImg=null, ccPasted="";
-  function ccAdd(t,who,img){ const d=document.createElement('div'); d.className='cc-msg '+who; d.textContent=t; if(img){ const im=document.createElement('img'); im.src=img; d.appendChild(im); } ccChat.appendChild(d); ccChat.scrollTop=ccChat.scrollHeight; return d; }
-  function ccAsk(t){ ccInput.value=t; ccForm.dispatchEvent(new Event('submit')); }
-  function ccClear(){ ccImg=null; ccPreview.classList.add('cc-hidden'); ccFile.value=''; }
-  ccFile.addEventListener('change',e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); });
-  document.addEventListener('paste',e=>{ for(let it of e.clipboardData.items){ if(it.type.startsWith('image/')){ const f=it.getAsFile(); const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); ccHint.textContent='📷 Pasted screenshot detected'; ccHint.classList.add('show'); } } const txt=e.clipboardData.getData('text'); if(txt&&txt.length>20){ ccPasted=txt; ccHint.textContent='📋 Pasted text: '+txt.slice(0,60)+'...'; ccHint.classList.add('show'); } });
-  document.addEventListener('dragover',e=>e.preventDefault());
-  document.addEventListener('drop',e=>{ e.preventDefault(); const f=e.dataTransfer.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ ccImg=r.result; ccPreviewImg.src=r.result; ccPreview.classList.remove('cc-hidden'); }; r.readAsDataURL(f); });
-  ccForm.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const msg=ccInput.value.trim();
-    if(!msg&&!ccImg&&!ccPasted) return;
-    const full=msg+(ccPasted?"\n\nPasted: "+ccPasted:"");
-    ccAdd(msg||"Please analyse this screenshot",'user',ccImg);
-    ccInput.value=''; ccHint.classList.remove('show');
-    const typing=ccAdd('Casenova AI is thinking...','ai');
-    try{
-      let reply=null;
-      if(OPENAI_API_KEY && ccImg){
-        const res=await fetch("https://api.openai.com/v1/chat/completions",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+OPENAI_API_KEY},body:JSON.stringify({model:"gpt-4o",messages:[{role:"system",content:"You are Casenova Connection AI Assistant. Answer ANYTHING helpfully. Explain simply."},{role:"user",content:[{type:"text",text:full},{type:"image_url",image_url:{url:ccImg}}]}],max_tokens:800})});
-        const data=await res.json(); reply=data.choices[0].message.content;
+    const CC_KNOW = [
+      {
+        topic: "TUT",
+        keys: ["tut", "tshwane"],
+        t: "TUT - How to Apply:\n1. Visit the official TUT website.\n2. Open the Applications section.\n3. Create your applicant profile.\n4. Choose your programme.\n5. Follow the portal instructions for documents and payment.\n6. Submit your application.\n\nAlways confirm current application dates and fees on the official TUT website."
+      },
+      {
+        topic: "UPLOAD",
+        keys: ["upload", "uploading", "submit document", "attach", "add document", "upload document", "upload docs", "how to upload", "send document"],
+        t: "How to Upload Documents:\n\n1. Log in to your university application portal.\n2. Open 'My Application' or 'Upload Documents'.\n3. Prepare the documents requested by that institution.\n4. Check the required file format and size.\n5. Upload each document in the correct category.\n6. Save or submit the documents.\n7. Check your portal again to confirm that they were received.\n\nRequirements differ between institutions. Follow the instructions on your own application portal."
+      },
+      {
+        topic: "NSFAS",
+        keys: ["nsfas", "funding", "bursary"],
+        t: "NSFAS provides financial assistance to qualifying students at public universities and TVET colleges.\n\nFor current eligibility rules, required documents and application dates, use the official NSFAS website: https://www.nsfas.org.za/\n\nDo not pay anyone who promises to approve your NSFAS application."
+      },
+      {
+        topic: "UP",
+        keys: ["university of pretoria", "tuks", "pretoria"],
+        t: "University of Pretoria:\n\nUse the official website to find the latest application dates, programme requirements and application instructions: https://www.up.ac.za/\n\nAdmission requirements differ by programme."
+      },
+      {
+        topic: "UJ",
+        keys: ["uj", "johannesburg"],
+        t: "University of Johannesburg:\n\nUse the official UJ website for application information, dates, fees and admission requirements: https://www.uj.ac.za/\n\nCheck the specific programme requirements before applying."
+      },
+      {
+        topic: "CAO",
+        keys: ["cao"],
+        t: "The Central Applications Office (CAO) handles applications for several institutions in KwaZulu-Natal.\n\nOfficial website: https://www.cao.ac.za/\n\nCheck the institution and programme choices available for the current application cycle."
+      },
+      {
+        topic: "CACH",
+        keys: ["cach"],
+        t: "CACH is a government-supported service that can help eligible applicants explore available study opportunities after receiving their matric results.\n\nCheck current availability and instructions through the Department of Higher Education and Training."
+      },
+      {
+        topic: "PROVISIONAL",
+        keys: ["provisional", "accepted"],
+        t: "Provisional acceptance usually means an institution may admit you if you meet its final requirements, including your final matric results. Read the exact conditions on your applicant portal and follow any instructions about accepting an offer."
+      },
+      {
+        topic: "PENDING",
+        keys: ["pending", "awaiting", "evaluation"],
+        t: "A 'Pending' application status generally means the institution has not completed its decision. Check whether documents are outstanding and monitor the official portal. Contact the admissions office if the status remains unchanged or the institution requests action."
+      },
+      {
+        topic: "UNSUCCESSFUL",
+        keys: ["unsuccessful", "rejected", "declined"],
+        t: "An 'Unsuccessful' status usually means the application was not successful for that programme. Check the institution's explanation and whether another programme, campus or application route is available. You can also explore other universities and TVET colleges."
+      },
+      {
+        topic: "APS",
+        keys: ["aps", "points"],
+        t: "APS means Admission Point Score. Universities calculate it using subject results, but their rules differ. Some exclude Life Orientation; others use different methods. Send me your subjects, marks and the university or course you're interested in, and I can help estimate it."
+      },
+      {
+        topic: "CERTIFIED",
+        keys: ["certified", "certify"],
+        t: "A certified copy is a copy of an original document that has been officially stamped and signed by an authorised commissioner of oaths or other accepted official. Check the institution's rules for how recent the certification must be."
       }
-      else if(ccImg){
-        const uni=ccFindUni(full);
-        reply = "I can see your screenshot 📷\n\n" + (uni?uni:"This looks like a portal / status page.\n\nTell me:\n1. Which university is it?\n2. What does the status say?\n\nAnd I'll give you exact next steps.\n\nTip: Blur your ID number before sharing.");
+    ];
+
+    function ccFindUni(q) {
+      const clean = q.toLowerCase().replace(/[?.,!]/g, "");
+      let best = null;
+      let bestScore = 0;
+
+      for (const item of CC_KNOW) {
+        let score = 0;
+        item.keys.forEach(key => {
+          if (clean.includes(key)) score += 10;
+        });
+
+        if (ccLastTopic && item.topic.includes(ccLastTopic)) score += 3;
+
+        if (score > bestScore) {
+          bestScore = score;
+          best = item;
+        }
       }
-      else if(ccSmallTalk(full)) reply=ccSmallTalk(full);
-      else if(ccMaths(full)) reply=ccMaths(full);
-      else if(ccFindUni(full)) reply=ccFindUni(full);
-      else {
-        reply = await ccAskFreeAI(full);
-        if(!reply) reply = `Good question! 🤔\n\nAbout "${full}" - here's what I know:\n\nI want to give you the best answer. Can you tell me a bit more? For example, is this about university, or general knowledge?\n\nIn the meantime, try asking me: "How to upload documents?" or "What is NSFAS?" or anything else - I answer everything!`;
+
+      if (best && bestScore >= 10) {
+        ccLastTopic = best.topic;
+        return best.t;
       }
-      typing.remove(); ccAdd(reply,'ai');
-    }catch(err){ typing.remove(); ccAdd('Sorry, connection error. Try again!','ai'); }
-    ccPasted=""; ccClear();
-  });
+
+      return null;
+    }
+
+    function ccSmallTalk(q) {
+      const l = q.toLowerCase().trim();
+      const nameMatch = q.match(/my name is (\w+)|i am (\w+)|i'm (\w+)/i);
+
+      if (nameMatch) {
+        ccUserName = nameMatch[1] || nameMatch[2] || nameMatch[3];
+        return `Nice to meet you, ${ccUserName}! 😊 How can I help you today?`;
+      }
+
+      if (/^(hi+|hello+|hey+|hola|sawubona|dumela|molweni|avuxeni|good morning|good afternoon|good evening|yo|sup|howzit)\b/.test(l)) {
+        return `Hi${ccUserName ? " " + ccUserName : ""}! 👋 Great to see you! How can I help you today? You can ask about university applications, NSFAS, documents, maths or general questions.`;
+      }
+
+      if (l.includes("how are you") || l.includes("how r u") || l.includes("howzit")) {
+        return "I'm doing great, thanks for asking! 😊 Ready to help. What would you like to talk about?";
+      }
+
+      if (l.includes("who are you") || l.includes("your name") || l.includes("what are you")) {
+        return "I'm Casenova AI 🤖, the Casenova Connection assistant. I can help with South African university applications, student funding, documents, study choices and general questions.";
+      }
+
+      if (l.includes("thank") || l === "thanks" || l.includes("ngiyabonga") || l.includes("ke a leboga")) {
+        return "You're welcome! 🙏 Is there anything else I can help you with?";
+      }
+
+      if (l.includes("bye") || l.includes("goodbye") || l.includes("see you")) {
+        return `Goodbye${ccUserName ? " " + ccUserName : ""}! 👋 Good luck with your studies and applications.`;
+      }
+
+      if (l.includes("joke") || l.includes("funny") || l.includes("make me laugh")) {
+        const jokes = [
+          "Why did the student bring a ladder to university? Because they heard the courses were high level! 😂",
+          "Why did the maths book look sad? It had too many problems! 📚",
+          "What do you call a fake noodle? An impasta! 🍝",
+          "Why did the scarecrow win an award? Because he was outstanding in his field! 🌾"
+        ];
+        return jokes[Math.floor(Math.random() * jokes.length)];
+      }
+
+      if (l.includes("sad") || l.includes("stressed") || l.includes("anxious") || l.includes("tired")) {
+        return "I'm sorry things feel difficult right now. 💛 Take things one step at a time and consider speaking with someone you trust, such as a friend, family member, teacher or counsellor. If you feel unsafe or overwhelmed, please seek help from a qualified support service. I'm here to listen too.";
+      }
+
+      if (l.includes("what can you do") || l.includes("what do you do") || l.includes("help me")) {
+        return "I can help with:\n\n• University and TVET applications\n• NSFAS and student funding information\n• Uploading documents\n• Understanding application statuses\n• APS calculations\n• Study and career questions\n• Maths and general knowledge\n• Everyday questions\n\nType your question and I'll do my best to help.";
+      }
+
+      return null;
+    }
+
+    function ccMaths(q) {
+      const m = q.toLowerCase()
+        .replace(/x/g, "*")
+        .replace(/÷/g, "/")
+        .match(/(\d+(?:\.\d+)?)\s*([\+\-\*\/])\s*(\d+(?:\.\d+)?)/);
+
+      if (m && (
+        q.toLowerCase().includes("what") ||
+        q.toLowerCase().includes("calculate") ||
+        /^\d/.test(q.trim())
+      )) {
+        const a = parseFloat(m[1]);
+        const b = parseFloat(m[3]);
+        const op = m[2];
+
+        if (op === "/" && b === 0) {
+          return "You cannot divide by zero. Please try another calculation.";
+        }
+
+        const result = op === "+" ? a + b :
+          op === "-" ? a - b :
+          op === "*" ? a * b : a / b;
+
+        return `${a} ${op} ${b} = ${result}\n\nWould you like me to solve another one?`;
+      }
+
+      return null;
+    }
+
+    // THIS FUNCTION CONNECTS THE CHATBOT TO YOUR LIVE GEMINI BACKEND.
+    async function ccAskFreeAI(question) {
+      const response = await fetch(CASENOVA_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: question
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Casenova backend returned HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (!data || typeof data.reply !== "string" || !data.reply.trim()) {
+        throw new Error("The AI server returned an empty response.");
+      }
+
+      return data.reply.trim();
+    }
+
+    const ccChat = document.getElementById("cc-chat");
+    const ccForm = document.getElementById("cc-form");
+    const ccInput = document.getElementById("cc-input");
+    const ccFile = document.getElementById("cc-file");
+    const ccPreview = document.getElementById("cc-preview");
+    const ccPreviewImg = document.getElementById("cc-previewImg");
+    const ccHint = document.getElementById("cc-pasteHint");
+    const ccSend = ccForm.querySelector(".cc-send");
+
+    let ccImg = null;
+    let ccPasted = "";
+
+    function ccAdd(message, who, img) {
+      const div = document.createElement("div");
+      div.className = "cc-msg " + who;
+      div.textContent = message;
+
+      if (img) {
+        const image = document.createElement("img");
+        image.src = img;
+        image.alt = "User uploaded screenshot";
+        div.appendChild(image);
+      }
+
+      ccChat.appendChild(div);
+      ccChat.scrollTop = ccChat.scrollHeight;
+      return div;
+    }
+
+    function ccAsk(text) {
+      ccInput.value = text;
+      ccForm.requestSubmit();
+    }
+
+    function ccClear() {
+      ccImg = null;
+      ccPreview.classList.add("cc-hidden");
+      ccFile.value = "";
+    }
+
+    function ccShowImage(file) {
+      if (!file || !file.type.startsWith("image/")) return;
+
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        ccImg = reader.result;
+        ccPreviewImg.src = reader.result;
+        ccPreview.classList.remove("cc-hidden");
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    ccFile.addEventListener("change", event => {
+      const file = event.target.files[0];
+      if (file) ccShowImage(file);
+    });
+
+    document.addEventListener("paste", event => {
+      const items = event.clipboardData?.items || [];
+
+      for (const item of items) {
+        if (item.type.startsWith("image/")) {
+          const file = item.getAsFile();
+          if (file) {
+            ccShowImage(file);
+            ccHint.textContent = "📷 Screenshot pasted. Image analysis is not enabled yet.";
+            ccHint.classList.add("show");
+          }
+        }
+      }
+
+      const pastedText = event.clipboardData?.getData("text");
+
+      if (pastedText && pastedText.length > 20) {
+        ccPasted = pastedText;
+        ccHint.textContent = "📋 Pasted text detected.";
+        ccHint.classList.add("show");
+      }
+    });
+
+    document.addEventListener("dragover", event => {
+      event.preventDefault();
+    });
+
+    document.addEventListener("drop", event => {
+      event.preventDefault();
+      const file = event.dataTransfer?.files?.[0];
+      if (file) ccShowImage(file);
+    });
+
+    ccForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const message = ccInput.value.trim();
+
+      if (!message && !ccImg && !ccPasted) return;
+
+      const fullMessage = message + (ccPasted ? "\n\nPasted text:\n" + ccPasted : "");
+
+      ccAdd(message || "I selected a screenshot.", "user", ccImg);
+
+      ccInput.value = "";
+      ccHint.classList.remove("show");
+
+      const typing = ccAdd("Casenova AI is thinking...", "ai");
+
+      ccSend.disabled = true;
+
+      try {
+        let reply = null;
+
+        if (ccImg && !message && !ccPasted) {
+          reply = "I've received your screenshot preview 📷. However, image analysis is not connected yet. Please type the university name and the status or message shown in the screenshot, and I'll help you understand it.";
+        } else if (ccSmallTalk(fullMessage)) {
+          reply = ccSmallTalk(fullMessage);
+        } else if (ccMaths(fullMessage)) {
+          reply = ccMaths(fullMessage);
+        } else if (ccFindUni(fullMessage)) {
+          reply = ccFindUni(fullMessage);
+        } else {
+          // Send other questions to the live Gemini backend.
+          reply = await ccAskFreeAI(fullMessage);
+        }
+
+        typing.remove();
+        ccAdd(reply, "ai");
+
+      } catch (error) {
+        console.error("Casenova AI connection error:", error);
+
+        typing.remove();
+
+        ccAdd(
+          "I'm having trouble connecting to Casenova AI right now. Please try again shortly. If this continues, the website administrator may need to check the backend connection.",
+          "ai"
+        );
+
+      } finally {
+        ccSend.disabled = false;
+        ccPasted = "";
+        ccClear();
+      }
+    });
   </script>
-  <!-- ===== END OF CHATBOT v3 ===== -->
+
 </body>
 </html>
