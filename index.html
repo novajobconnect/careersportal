@@ -383,6 +383,7 @@
     function switchView(viewName) {
       document.getElementById('view-home').classList.add('hidden');
       document.getElementById('view-portals').classList.add('hidden');
+      document.getElementById('view-prospectuses').classList.add('hidden');
       document.getElementById(`view-${viewName}`).classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
