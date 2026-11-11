@@ -15,6 +15,47 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    #cc-welcome-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(15, 23, 42, .72);
+      backdrop-filter: blur(5px);
+    }
+    #cc-welcome-overlay.show { display: flex; }
+    .cc-welcome-card {
+      width: min(480px, 100%);
+      padding: 30px 24px;
+      border-radius: 24px;
+      background: white;
+      color: #0f172a;
+      text-align: center;
+      box-shadow: 0 24px 70px rgba(0,0,0,.3);
+      position: relative;
+    }
+    .cc-welcome-icon {
+      width: 64px; height: 64px; margin: 0 auto 14px;
+      display: grid; place-items: center; border-radius: 20px;
+      background: #d1fae5; color: #047857; font-size: 30px;
+    }
+    .cc-welcome-card h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    .cc-welcome-card p { color: #475569; font-size: 14px; line-height: 1.6; }
+    .cc-welcome-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
+    .cc-welcome-actions button {
+      border: 0; border-radius: 12px; padding: 11px 16px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+    }
+    #cc-play-welcome { background: #059669; color: white; }
+    #cc-close-welcome { background: #e2e8f0; color: #334155; }
+    #cc-welcome-status { display: block; min-height: 18px; margin-top: 12px; font-size: 11px; color: #64748b; }
+    @media (prefers-reduced-motion: reduce) {
+      #cc-welcome-overlay { backdrop-filter: none; }
+    }
+
     .gradient-bg {
       background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #064e3b 100%);
     }
@@ -27,6 +68,21 @@
 </head>
 
 <body class="bg-slate-50 font-sans text-slate-800 flex flex-col min-h-screen">
+
+  <!-- CASENOVA WELCOME VOICE POP-UP -->
+  <div id="cc-welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="cc-welcome-title">
+    <div class="cc-welcome-card">
+      <div class="cc-welcome-icon" aria-hidden="true">🎓</div>
+      <h2 id="cc-welcome-title">Welcome to Casenova Connection!</h2>
+      <p>Your journey towards a brighter future starts here. Explore university and TVET applications, discover funding opportunities and take your next step with confidence.</p>
+      <p><strong>We wish you the very best of luck with your applications. Believe in yourself — your future is worth working for!</strong></p>
+      <div class="cc-welcome-actions">
+        <button type="button" id="cc-play-welcome">🔊 Play welcome message</button>
+        <button type="button" id="cc-close-welcome">Continue to website</button>
+      </div>
+      <span id="cc-welcome-status" aria-live="polite">Tap “Play welcome message” to hear our greeting.</span>
+    </div>
+  </div>
 
   <!-- NAVBAR -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
@@ -279,6 +335,53 @@
   </footer>
 
   <!-- WEBSITE DATA AND FUNCTIONS -->
+  <script>
+    // Welcome voice uses the browser's built-in speech voice.
+    // Browsers require a user tap before playing audio.
+    (function setupCasenovaWelcome() {
+      const overlay = document.getElementById("cc-welcome-overlay");
+      const playButton = document.getElementById("cc-play-welcome");
+      const closeButton = document.getElementById("cc-close-welcome");
+      const status = document.getElementById("cc-welcome-status");
+      const welcomeText = "Welcome to Casenova Connection! Your journey towards a brighter future starts here. Explore university and TVET applications, discover funding opportunities and take your next step with confidence. We wish you the very best of luck with your applications. Believe in yourself. Your future is worth working for!";
+      let speech = null;
+
+      function closeWelcome() {
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        overlay.classList.remove("show");
+      }
+
+      playButton.addEventListener("click", () => {
+        if (!("speechSynthesis" in window)) {
+          status.textContent = "Voice playback is not supported by this browser. You can still read the welcome message above.";
+          return;
+        }
+
+        window.speechSynthesis.cancel();
+        speech = new SpeechSynthesisUtterance(welcomeText);
+        speech.lang = "en-ZA";
+        speech.rate = 0.92;
+        speech.pitch = 1;
+        speech.onstart = () => { status.textContent = "Playing welcome message…"; };
+        speech.onend = () => { status.textContent = "Thank you for visiting. Good luck with your applications!"; };
+        speech.onerror = () => { status.textContent = "Voice playback could not start. Please try again or continue to the website."; };
+        window.speechSynthesis.speak(speech);
+      });
+
+      closeButton.addEventListener("click", closeWelcome);
+      overlay.addEventListener("click", event => {
+        if (event.target === overlay) closeWelcome();
+      });
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && overlay.classList.contains("show")) closeWelcome();
+      });
+
+      window.addEventListener("load", () => {
+        window.setTimeout(() => overlay.classList.add("show"), 450);
+      });
+    })();
+  </script>
+
   <script>
     const studentPortals = [
       { name: "Tshwane University of Technology (TUT)", category: "university", fee: "R240", link: "https://applications-prod.tut.ac.za/", desc: "Direct online application portal for TUT undergraduate and postgraduate programs." },
