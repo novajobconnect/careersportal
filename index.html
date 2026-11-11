@@ -915,6 +915,9 @@
     }
 
     // THIS FUNCTION CONNECTS THE CHATBOT TO YOUR LIVE GEMINI BACKEND.
+    // Keep recent turns so the Render-hosted Gemini assistant can follow context.
+    let ccConversationHistory = [];
+
     async function ccAskFreeAI(question) {
       const response = await fetch(CASENOVA_API_URL, {
         method: "POST",
@@ -922,21 +925,28 @@
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: question
+          message: question,
+          history: ccConversationHistory.slice(-10)
         })
       });
 
-      if (!response.ok) {
-        throw new Error(`Casenova backend returned HTTP ${response.status}`);
-      }
+      const data = await response.json().catch(() => ({}));
 
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || `Casenova backend returned HTTP ${response.status}`);
+      }
 
       if (!data || typeof data.reply !== "string" || !data.reply.trim()) {
         throw new Error("The AI server returned an empty response.");
       }
 
-      return data.reply.trim();
+      const answer = data.reply.trim();
+      ccConversationHistory.push(
+        { role: "user", text: question },
+        { role: "model", text: answer }
+      );
+      ccConversationHistory = ccConversationHistory.slice(-10);
+      return answer;
     }
 
     const ccChat = document.getElementById("cc-chat");
