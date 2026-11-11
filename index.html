@@ -105,6 +105,7 @@
 
       <div class="flex items-center gap-1 sm:gap-2">
         <button onclick="switchView('home')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Home</button>
+        <button onclick="switchView('prospectuses')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-violet-700 px-2 sm:px-3 py-2">Prospectuses</button>
         <button onclick="switchView('portals')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Applications</button>
         <button onclick="openApsModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow transition-all flex items-center gap-1.5">
           <i class="fa-solid fa-calculator"></i>
@@ -171,7 +172,28 @@
             </div>
           </div>
         </div>
+          <div onclick="switchView('prospectuses')" class="bg-white p-6 rounded-2xl border-2 border-slate-200 hover:border-violet-600 card-hover cursor-pointer flex flex-col justify-between">
+            <div><div class="w-12 h-12 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-book-open"></i></div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">3. 2027 University Prospectuses</h3>
+              <p class="text-sm text-slate-600 mb-6">Find official admissions and prospectus pages for all 26 public universities.</p></div>
+            <div class="text-violet-700 font-bold text-sm">Browse Prospectuses →</div>
+          </div>
       </div>
+    </div>
+
+    <!-- 2027 UNIVERSITY PROSPECTUSES -->
+    <div id="view-prospectuses" class="hidden space-y-6">
+      <div class="bg-gradient-to-r from-violet-700 to-indigo-800 text-white rounded-2xl p-6 shadow">
+        <h2 class="text-xl sm:text-2xl font-extrabold mb-2">2027 Public University Prospectuses</h2>
+        <p class="text-violet-100 text-sm">Browse official university websites and admissions pages. Where a verified 2027 PDF link is not available, use the official university page to find the latest published prospectus.</p>
+      </div>
+      <div class="bg-white p-4 rounded-2xl border border-slate-200">
+        <label for="prospectusSearch" class="block text-xs font-bold text-slate-700 mb-2">Search universities</label>
+        <input id="prospectusSearch" oninput="renderProspectuses()" placeholder="Search university or abbreviation..." class="w-full border border-slate-300 rounded-xl p-3 text-sm">
+      </div>
+      <div id="prospectusGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <p class="text-xs text-slate-500">Always confirm the 2027 course requirements, application dates and selection criteria on the university’s own website.</p>
+      <button onclick="switchView('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-4 py-2 rounded-xl text-sm">← Back home</button>
     </div>
 
     <!-- PORTALS -->
@@ -236,85 +258,15 @@
         </div>
       </div>
 
+      <p class="text-xs text-slate-600 mb-4">Add your Grade 12 subjects and percentages. This provides a general NSC points estimate; universities use different APS rules and course-specific requirements.</p>
       <form id="apsForm" onsubmit="calculateApsAndCareers(event)" class="space-y-3">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">1. Home Language (HL)</label>
-            <select id="subj1" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">2. First Additional Language (FAL)</label>
-            <select id="subj2" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">3. Mathematics / Maths Lit</label>
-            <select id="subj3" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">4. Life Orientation (LO)</label>
-            <select id="subj4" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">5. Elective 1</label>
-            <select id="subj5" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">6. Elective 2</label>
-            <select id="subj6" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-            </select>
-          </div>
-
-          <div class="sm:col-span-2">
-            <label class="block text-xs font-bold text-slate-700 mb-1">7. Elective 3</label>
-            <select id="subj7" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-            </select>
-          </div>
+        <div id="apsSubjectRows" class="space-y-2"></div>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" onclick="addApsSubject()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-3 py-2 rounded-lg text-xs"><i class="fa-solid fa-plus"></i> Add subject</button>
+          <button type="button" onclick="resetApsSubjects()" class="bg-white border border-slate-300 text-slate-700 font-bold px-3 py-2 rounded-lg text-xs">Reset subjects</button>
         </div>
-
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow text-sm mt-4">
-          Calculate Score & Show Qualifying Careers
-        </button>
+        <div class="rounded-xl bg-amber-50 border border-amber-200 p-3 text-xs text-amber-900">General NSC scale: Level 7 = 80–100%, Level 6 = 70–79%, Level 5 = 60–69%, Level 4 = 50–59%, Level 3 = 40–49%, Level 2 = 30–39%, Level 1 = 0–29%. This is not every university’s official APS method.</div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow text-sm mt-4">Calculate estimate &amp; view next steps</button>
       </form>
 
       <div id="apsResultsContainer" class="hidden mt-6 space-y-4 pt-4 border-t border-slate-200">
@@ -532,71 +484,38 @@
       document.getElementById('apsModal').classList.add('hidden');
     }
 
-    function calculateApsAndCareers(e) {
-      e.preventDefault();
-
-      const subjects = [
-        parseInt(document.getElementById('subj1').value),
-        parseInt(document.getElementById('subj2').value),
-        parseInt(document.getElementById('subj3').value),
-        parseInt(document.getElementById('subj5').value),
-        parseInt(document.getElementById('subj6').value),
-        parseInt(document.getElementById('subj7').value)
-      ];
-
-      subjects.sort((a, b) => b - a);
-      const total = subjects.reduce((sum, value) => sum + value, 0);
-
-      document.getElementById('apsScoreValue').innerText = `${total} Points`;
-      document.getElementById('apsBreakdownText').innerText =
-        `Based on your best 6 subjects (excluding Life Orientation). Maximum possible is 42 points.`;
-
-      let pathwaysHtml = '';
-
-      if (total >= 35) {
-        pathwaysHtml = `
-          <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
-            <h5 class="font-bold text-emerald-900 text-sm">🌟 Elite Tier (35+ Points)</h5>
-            <p class="text-xs text-emerald-700 mt-1">You may be competitive for programmes such as Medicine, Engineering, Computer Science and Law, depending on each institution's subject requirements and selection rules.</p>
-            <p class="text-xs text-slate-600 mt-2 font-medium">Career possibilities include healthcare, engineering, software development and law.</p>
-          </div>
-          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-            <h5 class="font-bold text-blue-900 text-sm">🎓 University Degree Options</h5>
-            <p class="text-xs text-blue-700 mt-1">Consider BCom, BSc, Education and Public Management programmes. Requirements differ by institution and course.</p>
-          </div>
-        `;
-      } else if (total >= 22) {
-        pathwaysHtml = `
-          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-            <h5 class="font-bold text-blue-900 text-sm">🚀 Diploma and Degree Options</h5>
-            <p class="text-xs text-blue-700 mt-1">Explore IT, accounting, tourism, journalism and other diploma or degree programmes, subject to admission requirements.</p>
-          </div>
-          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <h5 class="font-bold text-amber-900 text-sm">⚡ TVET Colleges and Higher Certificates</h5>
-            <p class="text-xs text-amber-700 mt-1">Explore NC(V), N4-N6 and occupational programmes at public TVET colleges.</p>
-          </div>
-        `;
-      } else {
-        pathwaysHtml = `
-          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <h5 class="font-bold text-amber-900 text-sm">🛠️ Foundational and TVET Programmes</h5>
-            <p class="text-xs text-amber-700 mt-1">Consider TVET, occupational and foundational programmes. Check the relevant college's subject and entry requirements.</p>
-          </div>
-        `;
-      }
-
-      pathwaysHtml += `
-        <p class="text-xs text-slate-500 mt-3">
-          This is a general guide, not an admission decision. Each university calculates APS differently and may require specific subjects and minimum marks. Always check the official course requirements.
-        </p>
-      `;
-
-      document.getElementById('careerPathwaysList').innerHTML = pathwaysHtml;
-      document.getElementById('apsResultsContainer').classList.remove('hidden');
+    const apsDefaultSubjects = [["Home Language",65,false],["First Additional Language",60,false],["Mathematics / Mathematical Literacy",55,false],["Life Orientation",70,true],["Subject 5",60,false],["Subject 6",55,false],["Subject 7",50,false]];
+    function apsLevel(mark){if(mark>=80)return 7;if(mark>=70)return 6;if(mark>=60)return 5;if(mark>=50)return 4;if(mark>=40)return 3;if(mark>=30)return 2;return 1;}
+    function addApsSubject(name="",mark=50,lo=false){
+      const row=document.createElement("div");row.className="grid grid-cols-1 sm:grid-cols-[1fr_100px_auto_auto] gap-2 items-center border border-slate-200 rounded-xl p-2";
+      const subject=document.createElement("input");subject.className="aps-subject-name min-w-0 border border-slate-300 rounded-lg p-2 text-xs";subject.placeholder="Subject name (e.g. Physical Sciences)";subject.value=name;subject.setAttribute("aria-label","Subject name");
+      const label=document.createElement("label");label.className="text-xs text-slate-600";label.textContent="Mark %";
+      const markInput=document.createElement("input");markInput.type="number";markInput.min="0";markInput.max="100";markInput.required=true;markInput.value=mark;markInput.className="aps-subject-mark w-full border border-slate-300 rounded-lg p-2 mt-1 text-xs";markInput.setAttribute("aria-label","Mark percentage");label.appendChild(markInput);
+      const loLabel=document.createElement("label");loLabel.className="flex items-center gap-1 text-xs text-slate-600";const loInput=document.createElement("input");loInput.type="checkbox";loInput.className="aps-subject-lo";loInput.checked=lo;loLabel.append(loInput,document.createTextNode("Life Orientation"));
+      const remove=document.createElement("button");remove.type="button";remove.className="text-red-600 text-xs font-bold px-2 py-2";remove.textContent="Remove";remove.setAttribute("aria-label","Remove subject");remove.onclick=()=>row.remove();
+      row.append(subject,label,loLabel,remove);document.getElementById("apsSubjectRows").appendChild(row);
     }
+    function resetApsSubjects(){document.getElementById("apsSubjectRows").innerHTML="";apsDefaultSubjects.forEach(s=>addApsSubject(s[0],s[1],s[2]));document.getElementById("apsResultsContainer").classList.add("hidden");}
+    function calculateApsAndCareers(e){
+      e.preventDefault();const rows=Array.from(document.querySelectorAll("#apsSubjectRows > div"));
+      const subjects=rows.map(row=>({name:row.querySelector(".aps-subject-name").value.trim()||"Unnamed subject",mark:Number(row.querySelector(".aps-subject-mark").value),lo:row.querySelector(".aps-subject-lo").checked})).filter(s=>Number.isFinite(s.mark)&&s.mark>=0&&s.mark<=100);
+      if(subjects.filter(s=>!s.lo).length<6){document.getElementById("careerPathwaysList").innerHTML='<p class="text-sm text-red-700">Please enter at least six non-Life Orientation subjects to calculate this general best-six estimate.</p>';document.getElementById("apsResultsContainer").classList.remove("hidden");return;}
+      const scored=subjects.map(s=>({...s,points:apsLevel(s.mark)}));const total=scored.filter(s=>!s.lo).sort((a,b)=>b.points-a.points).slice(0,6).reduce((sum,s)=>sum+s.points,0);
+      document.getElementById("apsScoreValue").innerText=total+" points";document.getElementById("apsBreakdownText").innerText="General NSC estimate: best six non-LO subjects, maximum 42 points. Not an official calculation for every university.";
+      const esc=v=>String(v).replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+      const breakdown=scored.map(s=>'<li class="flex justify-between gap-3 border-b border-slate-100 py-1"><span>'+esc(s.name)+(s.lo?' (LO)':'')+': '+s.mark+'% · Level '+s.points+'</span><strong>'+s.points+' pts</strong></li>').join("");
+      document.getElementById("careerPathwaysList").innerHTML='<div class="bg-white border border-slate-200 rounded-xl p-4"><h5 class="font-bold text-sm mb-2">Subject-by-subject breakdown</h5><ul class="text-xs text-slate-700">'+breakdown+'</ul></div><div class="bg-blue-50 border border-blue-200 rounded-xl p-4"><h5 class="font-bold text-sm text-blue-900">What this estimate means</h5><p class="text-xs text-blue-800 mt-1">Your general best-six estimate is '+total+'/42. APS alone cannot determine which courses you qualify for. Each institution can use a different points method and require particular subjects, minimum marks and selection criteria.</p><p class="text-xs text-blue-800 mt-2">Open the 2027 prospectus directory and compare your marks with exact programme requirements.</p><button type="button" onclick="closeApsModal();switchView(\'prospectuses\')" class="mt-3 bg-violet-700 hover:bg-violet-800 text-white font-bold rounded-lg px-3 py-2 text-xs">Open 2027 University Prospectuses</button></div><p class="text-xs text-slate-500">This is an estimate, not an admission decision. Course-by-course eligibility remains unverified until exact official programme requirements have been checked.</p>';
+      document.getElementById("apsResultsContainer").classList.remove("hidden");
+    }
+    const universityProspectuses=[
+      ["Cape Peninsula University of Technology (CPUT)","CPUT","https://www.cput.ac.za/"],["Central University of Technology (CUT)","CUT","https://www.cut.ac.za/"],["Durban University of Technology (DUT)","DUT","https://www.dut.ac.za/"],["Mangosuthu University of Technology (MUT)","MUT","https://www.mut.ac.za/"],["Nelson Mandela University","NMU","https://www.mandela.ac.za/"],["North-West University","NWU","https://www.nwu.ac.za/"],["Rhodes University","RU","https://www.ru.ac.za/"],["Sefako Makgatho Health Sciences University","SMU","https://www.smu.ac.za/"],["Sol Plaatje University","SPU","https://www.spu.ac.za/"],["Stellenbosch University","SU","https://www.sun.ac.za/"],["Tshwane University of Technology","TUT","https://www.tut.ac.za/"],["University of Cape Town","UCT","https://www.uct.ac.za/"],["University of Fort Hare","UFH","https://www.ufh.ac.za/"],["University of the Free State","UFS","https://www.ufs.ac.za/"],["University of Johannesburg","UJ","https://www.uj.ac.za/admissions-aid/"],["University of KwaZulu-Natal","UKZN","https://www.ukzn.ac.za/"],["University of Limpopo","UL","https://www.ul.ac.za/"],["University of Mpumalanga","UMP","https://www.ump.ac.za/"],["University of Pretoria","UP","https://www.up.ac.za/students/admission-information"],["University of South Africa","UNISA","https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission"],["University of the Western Cape","UWC","https://www.uwc.ac.za/"],["University of the Witwatersrand","Wits","https://www.wits.ac.za/"],["University of Venda","UNIVEN","https://www.univen.ac.za/"],["University of Zululand","UNIZULU","https://www.unizulu.ac.za/"],["Vaal University of Technology","VUT","https://www.vut.ac.za/"],["Walter Sisulu University","WSU","https://www.wsu.ac.za/"]
+    ];
+    function renderProspectuses(){const q=(document.getElementById("prospectusSearch")?.value||"").toLowerCase().trim();const list=universityProspectuses.filter(u=>(u[0]+" "+u[1]).toLowerCase().includes(q));document.getElementById("prospectusGrid").innerHTML=list.map(u=>'<article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3"><div><p class="text-xs text-violet-700 font-bold mb-1">'+u[1]+'</p><h3 class="font-bold text-slate-900 text-sm">'+u[0]+'</h3><p class="text-xs text-slate-500 mt-2">Official university website — find the 2027 prospectus and confirm programme requirements.</p></div><a href="'+u[2]+'" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center bg-violet-700 hover:bg-violet-800 text-white font-bold text-xs rounded-lg px-3 py-2">Open official website ↗</a></article>').join("")||'<p class="text-sm text-slate-500">No universities match your search.</p>';}
 
     window.onload = function() {
       renderStudents();
+      resetApsSubjects();
+      renderProspectuses();
     };
   </script>
 
