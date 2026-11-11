@@ -571,6 +571,21 @@
       cursor: pointer;
     }
 
+    .cc-development-notice {
+      padding: 9px 12px;
+      background: #fffbeb;
+      border-bottom: 1px solid #fde68a;
+      color: #78350f;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .cc-development-notice strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
     #cc-chat {
       flex: 1;
       padding: 12px;
@@ -706,6 +721,11 @@
         <p>AI Assistant • Ask Me Anything</p>
       </div>
       <button class="cc-close" aria-label="Close chat" onclick="document.getElementById('casenova-box').classList.remove('open')">✕</button>
+    </div>
+
+    <div class="cc-development-notice" role="status" aria-live="polite">
+      <strong>🚧 Casenova AI is still being developed.</strong>
+      <span>We’re working to improve its answers. Please double-check important information with the relevant university, college or funding provider.</span>
     </div>
 
     <div id="cc-chat">
