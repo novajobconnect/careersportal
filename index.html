@@ -1050,34 +1050,9 @@
       ccSend.disabled = true;
 
       try {
-        let reply = null;
-
-        if (ccImg && !message && !ccPasted) {
-          reply = "I've received your screenshot preview 📷. However, image analysis is not connected yet. Please type the university name and the status or message shown in the screenshot, and I'll help you understand it.";
-        } else {
-          // Evaluate each local handler once. This avoids duplicate calls and
-          // prevents stateful handlers or random responses from running twice.
-          const smallTalkReply = ccSmallTalk(fullMessage);
-
-          if (smallTalkReply) {
-            reply = smallTalkReply;
-          } else {
-            const mathsReply = ccMaths(fullMessage);
-
-            if (mathsReply) {
-              reply = mathsReply;
-            } else {
-              const universityReply = ccFindUni(fullMessage);
-
-              if (universityReply) {
-                reply = universityReply;
-              } else {
-                // Send other questions to the live Gemini backend.
-                reply = await ccAskFreeAI(fullMessage);
-              }
-            }
-          }
-        }
+        // Send every message to the Gemini backend so the live AI,
+        // rather than local scripted shortcuts, generates the response.
+        reply = await ccAskFreeAI(fullMessage);
 
         typing.remove();
         ccAdd(reply, "ai");
