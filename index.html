@@ -708,7 +708,7 @@
     </div>
 
     <div id="cc-chat">
-      <div class="cc-msg ai"><b>Casenova Connection Assistant</b><br><br>Hello! 👋 I’m the AI assistant for Casenova Connection. I can help you understand South African university and TVET applications, NSFAS and bursaries, admission requirements, application statuses and student documents. Ask me a question to get started.</div>
+      <div class="cc-msg ai"><b>Casenova Connection Assistant</b><br><br>Hello! 👋 I’m here to help with university and TVET applications, funding and bursaries. What would you like help with today?</div>
     </div>
 
     <div class="cc-chips">
@@ -759,7 +759,10 @@
           },
           body: JSON.stringify({
             message: question,
-            history: ccConversationHistory.slice(-10)
+            history: ccConversationHistory.slice(-10),
+            portalContext: studentPortals.map(({ name, category, fee, link, desc }) => ({
+              name, category, fee, link, desc
+            }))
           }),
           signal: controller.signal
         });
