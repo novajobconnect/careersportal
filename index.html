@@ -83,6 +83,7 @@
         </button>
         <button onclick="switchView('home')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Home</button>
         <button onclick="switchView('portals')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Applications</button>
+        <button onclick="switchView('prospectuses')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Prospectuses</button>
         <button onclick="openApsModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow transition-all flex items-center gap-1.5">
           <i class="fa-solid fa-calculator"></i>
           <span class="hidden xs:inline">APS Calc</span>
@@ -165,6 +166,19 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- PROSPECTUS LIBRARY -->
+    <div id="view-prospectuses" class="hidden space-y-6">
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-800 text-white rounded-2xl p-6 shadow">
+        <h2 class="text-xl sm:text-2xl font-extrabold mb-1">2027 University Prospectuses</h2>
+        <p class="text-emerald-100 text-sm">Find your institution and download its prospectus PDF.</p>
+      </div>
+      <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+        <input type="search" id="prospectusSearchInput" oninput="renderProspectuses()" placeholder="Search by institution name..." class="w-full border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+      </div>
+      <div id="prospectusGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <p class="text-xs text-slate-500">This library lists prospectus PDFs uploaded to Casenova Connection. More institutions can be added as their PDFs become available.</p>
     </div>
 
     <!-- PORTALS -->
@@ -364,6 +378,44 @@
       { name: "Musina Mayoral Bursary 2027", category: "bursary", fee: "Municipal Bursary", link: "https://www.musina.gov.za/download/musina-mayoral-bursary-application-form-2027/", desc: "2027 Mayoral Bursary application form from Musina Local Municipality. Published closing date: 30 November 2026. Check the official notice and form for residency, study-field and document requirements." }
     ];
 
+
+    // Hosted prospectuses: filenames match the PDFs currently in the GitHub folder.
+    const hostedProspectuses = [
+      ["DUT", "Durban University of Technology", "DUT-2027-Prospectus.pdf"],
+      ["MUT", "Mangosuthu University of Technology", "MUT-2027-Prospectus.pdf"],
+      ["NMU", "Nelson Mandela University", "NMU-2027-Prospectus.pdf"],
+      ["SMU", "Sefako Makgatho Health Sciences University", "SMU-2027-Prospectus.pdf"],
+      ["SU", "Stellenbosch University", "SU-2027-Prospectus.pdf"],
+      ["TUT", "Tshwane University of Technology", "TUT-2027-Prospectus.pdf"],
+      ["UCT", "University of Cape Town", "UCT-2027-Prospectus.pdf"],
+      ["UJ", "University of Johannesburg", "UJ-2027-Prospectus.pdf"],
+      ["UKZN", "University of KwaZulu-Natal", "UKZN-2027-Prospectus.pdf"],
+      ["UL", "University of Limpopo", "UL-2027-Prospectus.pdf"],
+      ["UNIVEN", "University of Venda", "UNIVEN-2027-Prospectus.pdf"],
+      ["UNIZULU", "University of Zululand", "UNIZULU-2027-Prospectus.pdf"],
+      ["UP", "University of Pretoria", "UP-2027-Prospectus.pdf"],
+      ["UWC", "University of the Western Cape", "UWC-2027-Prospectus.pdf"],
+      ["VUT", "Vaal University of Technology", "VUT-2027-Prospectus.pdf"],
+      ["WSU", "Walter Sisulu University", "WSU-2027-Prospectus.pdf"],
+      ["Wits", "University of the Witwatersrand", "wits-2027-Prospectus.pdf"]
+    ];
+    function prospectusDownloadUrl(fileName) {
+      return "https://raw.githubusercontent.com/novajobconnect/careersportal/main/prospectuses/" + encodeURIComponent(fileName);
+    }
+    function renderProspectuses() {
+      const grid = document.getElementById("prospectusGrid");
+      if (!grid) return;
+      const search = (document.getElementById("prospectusSearchInput")?.value || "").toLowerCase().trim();
+      const results = hostedProspectuses.filter(item => (item[0] + " " + item[1]).toLowerCase().includes(search));
+      grid.innerHTML = results.map(item =>
+        '<article class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between gap-4">' +
+          '<div><div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3"><i class="fa-solid fa-file-pdf"></i></div>' +
+          '<h3 class="font-bold text-slate-900">' + item[1] + '</h3><p class="text-xs text-slate-500 mt-1">' + item[0] + ' · 2027 Prospectus (PDF)</p></div>' +
+          '<a href="' + prospectusDownloadUrl(item[2]) + '" target="_blank" rel="noopener noreferrer" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2"><i class="fa-solid fa-download"></i> Download Prospectus</a>' +
+        '</article>'
+      ).join("") || '<div class="col-span-full bg-white border border-slate-200 rounded-xl p-8 text-center text-slate-500">No prospectuses match your search.</div>';
+    }
+
     let internalViewHistory = [];
 
     function switchView(viewName) {
@@ -376,6 +428,7 @@
       }
       document.querySelectorAll('main > [id^="view-"]').forEach(view => view.classList.add('hidden'));
       target.classList.remove('hidden');
+      if (viewName === "prospectuses") renderProspectuses();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -455,9 +508,7 @@
               <i class="fa-solid fa-clipboard-check"></i> Check Application Status
             </a>
             <p class="text-[11px] text-slate-500 text-center">Sign in to the university application system to view your status. Some institutions use a shared application portal.</p>
-            <a href="${portal.prospectusLink}" target="_blank" rel="noopener noreferrer" class="w-full bg-white border border-emerald-200 hover:bg-emerald-50 text-emerald-700 text-center font-semibold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-2">
-              <i class="fa-solid fa-book-open"></i> View Prospectus / Course Information
-            </a>
+            ${(() => { const hosted = hostedProspectuses.find(item => portal.name.toLowerCase().includes(item[1].toLowerCase()) || (item[0] === "Wits" && portal.name.includes("Wits"))); const url = hosted ? prospectusDownloadUrl(hosted[2]) : portal.prospectusLink; return url ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="w-full bg-white border border-emerald-200 hover:bg-emerald-50 text-emerald-700 text-center font-semibold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-2"><i class="fa-solid fa-book-open"></i> ${hosted ? "Download 2027 Prospectus (PDF)" : "View Prospectus / Course Information"}</a>` : ""; })()}
             ` : ""}
           </div>
         </div>
