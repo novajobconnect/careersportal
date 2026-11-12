@@ -61,6 +61,25 @@
     .subject-option { display:block; width:100%; padding:0.75rem 0.85rem; text-align:left; font-size:0.875rem; color:#334155; background:#fff; }
     .subject-option:active, .subject-option:hover, .subject-option[aria-selected="true"] { background:#eff6ff; color:#1d4ed8; }
     @media (max-width:640px) { .subject-options { max-height: min(45vh, 18rem); } .subject-option { padding:0.9rem 0.85rem; } }
+
+    /* Nova Job Connect brand palette: deep forest green and bright lime */
+    :root { --nova-deep: #003b1d; --nova-green: #006b2e; --nova-lime: #69e000; --nova-soft: #efffe5; }
+    .gradient-bg { background: linear-gradient(135deg, var(--nova-deep) 0%, var(--nova-green) 52%, #42b900 100%) !important; }
+    [class~="bg-emerald-600"], [class~="bg-emerald-700"] { background-color: var(--nova-green) !important; }
+    [class~="hover:bg-emerald-700"]:hover, [class~="hover:bg-emerald-800"]:hover { background-color: var(--nova-deep) !important; }
+    [class~="bg-emerald-500"] { background-color: #55c900 !important; }
+    [class~="bg-emerald-100"], [class~="bg-emerald-50"] { background-color: var(--nova-soft) !important; }
+    [class~="text-emerald-600"], [class~="text-emerald-700"] { color: var(--nova-green) !important; }
+    [class~="text-emerald-800"], [class~="text-emerald-900"] { color: var(--nova-deep) !important; }
+    [class~="text-emerald-100"], [class~="text-emerald-200"] { color: #e2ffd1 !important; }
+    [class~="border-emerald-600"], [class~="border-emerald-500"], [class~="hover:border-emerald-600"]:hover { border-color: var(--nova-lime) !important; }
+    [class~="border-emerald-400"] { border-color: #8bea3d !important; }
+    [class~="ring-emerald-500"] { --tw-ring-color: var(--nova-lime) !important; }
+    .subject-option:active, .subject-option:hover, .subject-option[aria-selected="true"] { background: var(--nova-soft) !important; color: var(--nova-deep) !important; }
+    header { box-shadow: 0 2px 14px rgba(0, 59, 29, 0.08); }
+    header img { display: block; }
+    @media (max-width: 420px) { header img { max-width: 145px; height: 2.75rem; } }
+
   </style>
 </head>
 
@@ -69,12 +88,8 @@
   <!-- NAVBAR -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('home')">
-        <span class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-black text-xl tracking-wider">CC</span>
-        <span class="font-bold text-base sm:text-lg text-slate-900">
-          Casenova Connection
-          <span class="hidden sm:inline-block text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">SA All Unis Portal</span>
-        </span>
+      <div class="flex items-center cursor-pointer min-w-0" onclick="switchView('home')" aria-label="Nova Job Connect home">
+        <img src="Nova%20Job%20Connect%20Logo.png" alt="Nova Job Connect — Your Future. Our Priority." class="h-12 sm:h-14 w-auto max-w-[190px] sm:max-w-[230px] object-contain object-left" fetchpriority="high">
       </div>
 
       <div class="flex items-center gap-1 sm:gap-2">
