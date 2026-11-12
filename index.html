@@ -15,57 +15,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    #cc-welcome-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      background: rgba(15, 23, 42, .72);
-      backdrop-filter: blur(5px);
-    }
-    #cc-welcome-overlay.show { display: flex; }
-    .cc-welcome-card {
-      width: min(480px, 100%);
-      padding: 30px 24px;
-      border-radius: 24px;
-      background: white;
-      color: #0f172a;
-      text-align: center;
-      box-shadow: 0 24px 70px rgba(0,0,0,.3);
-      position: relative;
-    }
-    .cc-welcome-icon {
-      width: 64px; height: 64px; margin: 0 auto 14px;
-      display: grid; place-items: center; border-radius: 20px;
-      background: #d1fae5; color: #047857; font-size: 30px;
-    }
-    .cc-welcome-card h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
-    .cc-welcome-card p { color: #475569; font-size: 14px; line-height: 1.6; }
-    .cc-welcome-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
-    .cc-welcome-actions button {
-      border: 0; border-radius: 12px; padding: 11px 16px;
-      font-size: 13px; font-weight: 700; cursor: pointer;
-    }
-    #cc-play-welcome { background: #059669; color: white; }
-    #cc-close-welcome { background: #e2e8f0; color: #334155; }
-    #cc-welcome-status { display: block; min-height: 18px; margin-top: 12px; font-size: 11px; color: #64748b; }
-    @media (prefers-reduced-motion: reduce) {
-      #cc-welcome-overlay { backdrop-filter: none; }
-    }
-
     .gradient-bg {
       background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #064e3b 100%);
-    }
-
-    /* Homepage hero background image with a dark overlay for readable text */
-    .hero-bg {
-      background-image: linear-gradient(rgba(2, 6, 23, .62), rgba(2, 6, 23, .62)), url('./background.png');
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
     }
 
     .card-hover:hover {
@@ -76,21 +27,6 @@
 </head>
 
 <body class="bg-slate-50 font-sans text-slate-800 flex flex-col min-h-screen">
-
-  <!-- CASENOVA WELCOME VOICE POP-UP -->
-  <div id="cc-welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="cc-welcome-title">
-    <div class="cc-welcome-card">
-      <div class="cc-welcome-icon" aria-hidden="true">🎓</div>
-      <h2 id="cc-welcome-title">Welcome to Casenova Connection!</h2>
-      <p>Your journey towards a brighter future starts here. Explore university and TVET applications, discover funding opportunities and take your next step with confidence.</p>
-      <p><strong>We wish you the very best of luck with your applications. Believe in yourself — your future is worth working for!</strong></p>
-      <div class="cc-welcome-actions">
-        <button type="button" id="cc-play-welcome">🔊 Play welcome message</button>
-        <button type="button" id="cc-close-welcome">Continue to website</button>
-      </div>
-      <span id="cc-welcome-status" aria-live="polite">Tap “Play welcome message” to hear our greeting.</span>
-    </div>
-  </div>
 
   <!-- NAVBAR -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
@@ -105,7 +41,6 @@
 
       <div class="flex items-center gap-1 sm:gap-2">
         <button onclick="switchView('home')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Home</button>
-        <button onclick="switchView('prospectuses')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-violet-700 px-2 sm:px-3 py-2">Prospectuses</button>
         <button onclick="switchView('portals')" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-600 px-2 sm:px-3 py-2">Applications</button>
         <button onclick="openApsModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow transition-all flex items-center gap-1.5">
           <i class="fa-solid fa-calculator"></i>
@@ -120,7 +55,7 @@
 
     <!-- HOME -->
     <div id="view-home" class="space-y-8">
-      <div class="hero-bg text-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="gradient-bg text-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-8">
         <div>
           <span class="bg-emerald-500/30 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-400/30">Official Student Gateway</span>
           <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold mt-3 mb-4">Welcome to Casenova Connection</h1>
@@ -171,55 +106,8 @@
               Calculate Score <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
-          <div onclick="switchView('prospectuses')" class="bg-white p-6 rounded-2xl border-2 border-slate-200 hover:border-violet-600 card-hover cursor-pointer flex flex-col justify-between">
-            <div><div class="w-12 h-12 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-book-open"></i></div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2">3. 2027 University Prospectuses</h3>
-              <p class="text-sm text-slate-600 mb-6">Find official admissions and prospectus pages for all 26 public universities.</p></div>
-            <div class="text-violet-700 font-bold text-sm">Browse Prospectuses →</div>
-          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- 2027 UNIVERSITY PROSPECTUSES -->
-    <div id="view-prospectuses" class="hidden space-y-6">
-      <div class="bg-gradient-to-r from-violet-700 to-indigo-800 text-white rounded-2xl p-6 shadow">
-        <h2 class="text-xl sm:text-2xl font-extrabold mb-2">2027 Public University Prospectuses</h2>
-        <p class="text-violet-100 text-sm">Browse official university websites and admissions pages. Where a verified 2027 PDF link is not available, use the official university page to find the latest published prospectus.</p>
-      </div>
-      <div class="bg-white p-4 rounded-2xl border border-slate-200">
-        <label for="prospectusSearch" class="block text-xs font-bold text-slate-700 mb-2">Search universities</label>
-        <input id="prospectusSearch" oninput="renderProspectuses()" placeholder="Search university or abbreviation..." class="w-full border border-slate-300 rounded-xl p-3 text-sm">
-      </div>
-      <div id="prospectusGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="cape peninsula university of technology (cput) cput"><div><p class="text-xs text-violet-700 font-bold mb-1">CPUT</p><h3 class="font-bold text-slate-900 text-sm">Cape Peninsula University of Technology (CPUT)</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.cput.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="central university of technology (cut) cut"><div><p class="text-xs text-violet-700 font-bold mb-1">CUT</p><h3 class="font-bold text-slate-900 text-sm">Central University of Technology (CUT)</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.cut.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="durban university of technology (dut) dut"><div><p class="text-xs text-violet-700 font-bold mb-1">DUT</p><h3 class="font-bold text-slate-900 text-sm">Durban University of Technology (DUT)</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.dut.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="mangosuthu university of technology (mut) mut"><div><p class="text-xs text-violet-700 font-bold mb-1">MUT</p><h3 class="font-bold text-slate-900 text-sm">Mangosuthu University of Technology (MUT)</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.mut.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="nelson mandela university nmu"><div><p class="text-xs text-violet-700 font-bold mb-1">NMU</p><h3 class="font-bold text-slate-900 text-sm">Nelson Mandela University</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.mandela.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="north-west university nwu"><div><p class="text-xs text-violet-700 font-bold mb-1">NWU</p><h3 class="font-bold text-slate-900 text-sm">North-West University</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.nwu.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="rhodes university ru"><div><p class="text-xs text-violet-700 font-bold mb-1">RU</p><h3 class="font-bold text-slate-900 text-sm">Rhodes University</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.ru.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="sefako makgatho health sciences university smu"><div><p class="text-xs text-violet-700 font-bold mb-1">SMU</p><h3 class="font-bold text-slate-900 text-sm">Sefako Makgatho Health Sciences University</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.smu.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="sol plaatje university spu"><div><p class="text-xs text-violet-700 font-bold mb-1">SPU</p><h3 class="font-bold text-slate-900 text-sm">Sol Plaatje University</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.spu.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="stellenbosch university su"><div><p class="text-xs text-violet-700 font-bold mb-1">SU</p><h3 class="font-bold text-slate-900 text-sm">Stellenbosch University</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.sun.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="tshwane university of technology tut"><div><p class="text-xs text-violet-700 font-bold mb-1">TUT</p><h3 class="font-bold text-slate-900 text-sm">Tshwane University of Technology</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.tut.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of cape town uct"><div><p class="text-xs text-violet-700 font-bold mb-1">UCT</p><h3 class="font-bold text-slate-900 text-sm">University of Cape Town</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.uct.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of fort hare ufh"><div><p class="text-xs text-violet-700 font-bold mb-1">UFH</p><h3 class="font-bold text-slate-900 text-sm">University of Fort Hare</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.ufh.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of the free state ufs"><div><p class="text-xs text-violet-700 font-bold mb-1">UFS</p><h3 class="font-bold text-slate-900 text-sm">University of the Free State</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.ufs.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of johannesburg uj"><div><p class="text-xs text-violet-700 font-bold mb-1">UJ</p><h3 class="font-bold text-slate-900 text-sm">University of Johannesburg</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.uj.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of kwazulu-natal ukzn"><div><p class="text-xs text-violet-700 font-bold mb-1">UKZN</p><h3 class="font-bold text-slate-900 text-sm">University of KwaZulu-Natal</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.ukzn.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of limpopo ul"><div><p class="text-xs text-violet-700 font-bold mb-1">UL</p><h3 class="font-bold text-slate-900 text-sm">University of Limpopo</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.ul.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of mpumalanga ump"><div><p class="text-xs text-violet-700 font-bold mb-1">UMP</p><h3 class="font-bold text-slate-900 text-sm">University of Mpumalanga</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.ump.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of pretoria up"><div><p class="text-xs text-violet-700 font-bold mb-1">UP</p><h3 class="font-bold text-slate-900 text-sm">University of Pretoria</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.up.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of south africa unisa"><div><p class="text-xs text-violet-700 font-bold mb-1">UNISA</p><h3 class="font-bold text-slate-900 text-sm">University of South Africa</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.unisa.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of the western cape uwc"><div><p class="text-xs text-violet-700 font-bold mb-1">UWC</p><h3 class="font-bold text-slate-900 text-sm">University of the Western Cape</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.uwc.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of the witwatersrand wits"><div><p class="text-xs text-violet-700 font-bold mb-1">Wits</p><h3 class="font-bold text-slate-900 text-sm">University of the Witwatersrand</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.wits.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of venda univen"><div><p class="text-xs text-violet-700 font-bold mb-1">UNIVEN</p><h3 class="font-bold text-slate-900 text-sm">University of Venda</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.univen.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="university of zululand unizulu"><div><p class="text-xs text-violet-700 font-bold mb-1">UNIZULU</p><h3 class="font-bold text-slate-900 text-sm">University of Zululand</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.unizulu.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="vaal university of technology vut"><div><p class="text-xs text-violet-700 font-bold mb-1">VUT</p><h3 class="font-bold text-slate-900 text-sm">Vaal University of Technology</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.vut.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-        <article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 prospectus-card" data-search="walter sisulu university wsu"><div><p class="text-xs text-violet-700 font-bold mb-1">WSU</p><h3 class="font-bold text-slate-900 text-sm">Walter Sisulu University</h3><p class="text-xs text-slate-500 mt-2">Add the direct 2027 prospectus URL in the universityProspectuses list in index.html.</p></div><div class="flex flex-col gap-2"><span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span><a href="https://www.wsu.ac.za/" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>
-      </div>
-      <p class="text-xs text-slate-500">Always confirm the 2027 course requirements, application dates and selection criteria on the university’s own website.</p>
-      <button onclick="switchView('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-4 py-2 rounded-xl text-sm">← Back home</button>
     </div>
 
     <!-- PORTALS -->
@@ -284,15 +172,85 @@
         </div>
       </div>
 
-      <p class="text-xs text-slate-600 mb-4">Add your Grade 12 subjects and percentages. This provides a general NSC points estimate; universities use different APS rules and course-specific requirements.</p>
       <form id="apsForm" onsubmit="calculateApsAndCareers(event)" class="space-y-3">
-        <div id="apsSubjectRows" class="space-y-2"></div>
-        <div class="flex flex-wrap gap-2">
-          <button type="button" onclick="addApsSubject()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-3 py-2 rounded-lg text-xs"><i class="fa-solid fa-plus"></i> Add subject</button>
-          <button type="button" onclick="resetApsSubjects()" class="bg-white border border-slate-300 text-slate-700 font-bold px-3 py-2 rounded-lg text-xs">Reset subjects</button>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">1. Home Language (HL)</label>
+            <select id="subj1" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
+              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
+              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
+              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
+              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">2. First Additional Language (FAL)</label>
+            <select id="subj2" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
+              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
+              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
+              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
+              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">3. Mathematics / Maths Lit</label>
+            <select id="subj3" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
+              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
+              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
+              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
+              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">4. Life Orientation (LO)</label>
+            <select id="subj4" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
+              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
+              <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
+              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
+              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">5. Elective 1</label>
+            <select id="subj5" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
+              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
+              <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
+              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
+              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">6. Elective 2</label>
+            <select id="subj6" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
+              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
+              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
+              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-bold text-slate-700 mb-1">7. Elective 3</label>
+            <select id="subj7" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
+              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
+              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
+              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
+              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
+            </select>
+          </div>
         </div>
-        <div class="rounded-xl bg-amber-50 border border-amber-200 p-3 text-xs text-amber-900">General NSC scale: Level 7 = 80–100%, Level 6 = 70–79%, Level 5 = 60–69%, Level 4 = 50–59%, Level 3 = 40–49%, Level 2 = 30–39%, Level 1 = 0–29%. This is not every university’s official APS method.</div>
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow text-sm mt-4">Calculate estimate &amp; view next steps</button>
+
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow text-sm mt-4">
+          Calculate Score & Show Qualifying Careers
+        </button>
       </form>
 
       <div id="apsResultsContainer" class="hidden mt-6 space-y-4 pt-4 border-t border-slate-200">
@@ -321,53 +279,6 @@
   </footer>
 
   <!-- WEBSITE DATA AND FUNCTIONS -->
-  <script>
-    // Welcome voice uses the browser's built-in speech voice.
-    // Browsers require a user tap before playing audio.
-    (function setupCasenovaWelcome() {
-      const overlay = document.getElementById("cc-welcome-overlay");
-      const playButton = document.getElementById("cc-play-welcome");
-      const closeButton = document.getElementById("cc-close-welcome");
-      const status = document.getElementById("cc-welcome-status");
-      const welcomeText = "Welcome to Casenova Connection! Your journey towards a brighter future starts here. Explore university and TVET applications, discover funding opportunities and take your next step with confidence. We wish you the very best of luck with your applications. Believe in yourself. Your future is worth working for!";
-      let speech = null;
-
-      function closeWelcome() {
-        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-        overlay.classList.remove("show");
-      }
-
-      playButton.addEventListener("click", () => {
-        if (!("speechSynthesis" in window)) {
-          status.textContent = "Voice playback is not supported by this browser. You can still read the welcome message above.";
-          return;
-        }
-
-        window.speechSynthesis.cancel();
-        speech = new SpeechSynthesisUtterance(welcomeText);
-        speech.lang = "en-ZA";
-        speech.rate = 0.92;
-        speech.pitch = 1;
-        speech.onstart = () => { status.textContent = "Playing welcome message…"; };
-        speech.onend = () => { status.textContent = "Thank you for visiting. Good luck with your applications!"; };
-        speech.onerror = () => { status.textContent = "Voice playback could not start. Please try again or continue to the website."; };
-        window.speechSynthesis.speak(speech);
-      });
-
-      closeButton.addEventListener("click", closeWelcome);
-      overlay.addEventListener("click", event => {
-        if (event.target === overlay) closeWelcome();
-      });
-      document.addEventListener("keydown", event => {
-        if (event.key === "Escape" && overlay.classList.contains("show")) closeWelcome();
-      });
-
-      window.addEventListener("load", () => {
-        window.setTimeout(() => overlay.classList.add("show"), 450);
-      });
-    })();
-  </script>
-
   <script>
     const studentPortals = [
       { name: "Tshwane University of Technology (TUT)", category: "university", fee: "R240", link: "https://applications-prod.tut.ac.za/", desc: "Direct online application portal for TUT undergraduate and postgraduate programs." },
@@ -399,7 +310,6 @@
       { name: "Tshwane North TVET College (TNC)", category: "college", fee: "FREE Application", link: "https://ienabler.tnc.edu.za/pls/prodi41/w99pkg.mi_login", desc: "Direct registration portal for Engineering, Business, and Utility studies in Gauteng." },
       { name: "South West Gauteng TVET College (SWGC)", category: "college", fee: "FREE Application", link: "https://ienabler.swgc.co.za/pls/prodi41/w99pkg.mi_login", desc: "Direct application portal for vocational certificates and diplomas in Johannesburg." },
       { name: "Orbit TVET College", category: "college", fee: "FREE Application", link: "https://ienabler.orbitcollege.co.za/pls/prodi41/w99pkg.mi_login", desc: "Direct North West province TVET college online application portal." },
-      { name: "Coltech Central Admission Portal", category: "college", fee: "Fees vary by institution", link: "https://admissionportal.coltech.co.za/", desc: "Direct Coltech central student admission portal for participating South African TVET and private colleges. Select your institution after opening the portal and confirm its current application process and fees." },
       { name: "Ekurhuleni East TVET College (EEC)", category: "college", fee: "FREE Application", link: "https://ienabler.eec.edu.za/pls/prodi41/w99pkg.mi_login", desc: "Direct application portal for technical training and vocational courses." },
       { name: "Vhembe TVET College", category: "college", fee: "FREE Application", link: "https://ienabler.vhembecollege.edu.za/pls/prodi41/w99pkg.mi_login", desc: "Direct registration portal for Limpopo public technical training." },
       { name: "NSFAS Official Student Bursary Portal", category: "bursary", fee: "FREE (Government Grant)", link: "https://my.nsfas.org.za/", desc: "Direct online student bursary application and account login." },
@@ -407,13 +317,9 @@
     ];
 
     function switchView(viewName) {
-      ['home','portals','prospectuses'].forEach(name => {
-        const view = document.getElementById('view-' + name);
-        if (view) view.classList.add('hidden');
-      });
-      const target = document.getElementById('view-' + viewName);
-      if (target) target.classList.remove('hidden');
-      if (viewName === 'prospectuses' && typeof renderProspectuses === 'function') renderProspectuses();
+      document.getElementById('view-home').classList.add('hidden');
+      document.getElementById('view-portals').classList.add('hidden');
+      document.getElementById(`view-${viewName}`).classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -514,91 +420,71 @@
       document.getElementById('apsModal').classList.add('hidden');
     }
 
-    const apsDefaultSubjects = [["Home Language",65],["First Additional Language",60],["Mathematics / Mathematical Literacy",55],["Life Orientation",70],["Subject 5",60],["Subject 6",55],["Subject 7",50]];
-    function apsLevel(mark){if(mark>=80)return 7;if(mark>=70)return 6;if(mark>=60)return 5;if(mark>=50)return 4;if(mark>=40)return 3;if(mark>=30)return 2;return 1;}
-    function addApsSubject(name="",mark=50){
-      const row=document.createElement("div");
-      row.className="grid grid-cols-1 sm:grid-cols-[1fr_110px_auto] gap-2 items-center border border-slate-200 rounded-xl p-2";
-      const subject=document.createElement("input");
-      subject.className="aps-subject-name min-w-0 border border-slate-300 rounded-lg p-2 text-xs";
-      subject.placeholder="Subject name (e.g. Physical Sciences)";
-      subject.value=name;
-      subject.setAttribute("aria-label","Subject name");
-      const label=document.createElement("label");
-      label.className="text-xs text-slate-600";
-      label.textContent="Mark %";
-      const markInput=document.createElement("input");
-      markInput.type="number";markInput.min="0";markInput.max="100";markInput.required=true;markInput.value=mark;
-      markInput.className="aps-subject-mark w-full border border-slate-300 rounded-lg p-2 mt-1 text-xs";
-      markInput.setAttribute("aria-label","Mark percentage");
-      label.appendChild(markInput);
-      const remove=document.createElement("button");
-      remove.type="button";remove.className="text-red-600 text-xs font-bold px-2 py-2";
-      remove.textContent="Remove";remove.setAttribute("aria-label","Remove subject");
-      remove.onclick=()=>row.remove();
-      row.append(subject,label,remove);
-      document.getElementById("apsSubjectRows").appendChild(row);
-    }
-    function resetApsSubjects(){document.getElementById("apsSubjectRows").innerHTML="";apsDefaultSubjects.forEach(s=>addApsSubject(s[0],s[1]));document.getElementById("apsResultsContainer").classList.add("hidden");}
-    function calculateApsAndCareers(e){
-      e.preventDefault();const rows=Array.from(document.querySelectorAll("#apsSubjectRows > div"));
-      const subjects=rows.map(row=>({name:row.querySelector(".aps-subject-name").value.trim()||"Unnamed subject",mark:Number(row.querySelector(".aps-subject-mark").value)})).filter(s=>Number.isFinite(s.mark)&&s.mark>=0&&s.mark<=100);
-      if(subjects.filter(s=>!/^life\\s*orientation$/i.test(s.name)).length<6){document.getElementById("careerPathwaysList").innerHTML='<p class="text-sm text-red-700">Please enter at least six non-Life Orientation subjects to calculate this general best-six estimate.</p>';document.getElementById("apsResultsContainer").classList.remove("hidden");return;}
-      const scored=subjects.map(s=>({...s,points:apsLevel(s.mark)}));const total=scored.filter(s=>!/^life\\s*orientation$/i.test(s.name)).sort((a,b)=>b.points-a.points).slice(0,6).reduce((sum,s)=>sum+s.points,0);
-      document.getElementById("apsScoreValue").innerText=total+" points";document.getElementById("apsBreakdownText").innerText="General NSC estimate: best six non-LO subjects, maximum 42 points. Not an official calculation for every university.";
-      const esc=v=>String(v).replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
-      const breakdown=scored.map(s=>'<li class="flex justify-between gap-3 border-b border-slate-100 py-1"><span>'+esc(s.name)+(/^life\\s*orientation$/i.test(s.name)?' (excluded from this estimate)':'')+': '+s.mark+'% · Level '+s.points+'</span><strong>'+s.points+' pts</strong></li>').join("");
-      document.getElementById("careerPathwaysList").innerHTML='<div class="bg-white border border-slate-200 rounded-xl p-4"><h5 class="font-bold text-sm mb-2">Subject-by-subject breakdown</h5><ul class="text-xs text-slate-700">'+breakdown+'</ul></div><div class="bg-blue-50 border border-blue-200 rounded-xl p-4"><h5 class="font-bold text-sm text-blue-900">What this estimate means</h5><p class="text-xs text-blue-800 mt-1">Your general best-six estimate is '+total+'/42. APS alone cannot determine which courses you qualify for. Each institution can use a different points method and require particular subjects, minimum marks and selection criteria.</p><p class="text-xs text-blue-800 mt-2">Open the 2027 prospectus directory and compare your marks with exact programme requirements.</p><button type="button" onclick="closeApsModal();switchView(\'prospectuses\')" class="mt-3 bg-violet-700 hover:bg-violet-800 text-white font-bold rounded-lg px-3 py-2 text-xs">Open 2027 University Prospectuses</button></div><p class="text-xs text-slate-500">This is an estimate, not an admission decision. Course-by-course eligibility remains unverified until exact official programme requirements have been checked.</p>';
-      document.getElementById("apsResultsContainer").classList.remove("hidden");
-    }
-    // Add each university's 2027 prospectus URL in the fourth field (currently empty).
-    const universityProspectuses=[
-      ["Cape Peninsula University of Technology (CPUT)","CPUT","https://www.cput.ac.za/",""],
-      ["Central University of Technology (CUT)","CUT","https://www.cut.ac.za/",""],
-      ["Durban University of Technology (DUT)","DUT","https://www.dut.ac.za/",""],
-      ["Mangosuthu University of Technology (MUT)","MUT","https://www.mut.ac.za/",""],
-      ["Nelson Mandela University","NMU","https://www.mandela.ac.za/",""],
-      ["North-West University","NWU","https://www.nwu.ac.za/",""],
-      ["Rhodes University","RU","https://www.ru.ac.za/",""],
-      ["Sefako Makgatho Health Sciences University","SMU","https://www.smu.ac.za/",""],
-      ["Sol Plaatje University","SPU","https://www.spu.ac.za/",""],
-      ["Stellenbosch University","SU","https://www.sun.ac.za/",""],
-      ["Tshwane University of Technology","TUT","https://www.tut.ac.za/",""],
-      ["University of Cape Town","UCT","https://www.uct.ac.za/",""],
-      ["University of Fort Hare","UFH","https://www.ufh.ac.za/",""],
-      ["University of the Free State","UFS","https://www.ufs.ac.za/",""],
-      ["University of Johannesburg","UJ","https://www.uj.ac.za/",""],
-      ["University of KwaZulu-Natal","UKZN","https://www.ukzn.ac.za/",""],
-      ["University of Limpopo","UL","https://www.ul.ac.za/",""],
-      ["University of Mpumalanga","UMP","https://www.ump.ac.za/",""],
-      ["University of Pretoria","UP","https://www.up.ac.za/",""],
-      ["University of South Africa","UNISA","https://www.unisa.ac.za/",""],
-      ["University of the Western Cape","UWC","https://www.uwc.ac.za/",""],
-      ["University of the Witwatersrand","Wits","https://www.wits.ac.za/",""],
-      ["University of Venda","UNIVEN","https://www.univen.ac.za/",""],
-      ["University of Zululand","UNIZULU","https://www.unizulu.ac.za/",""],
-      ["Vaal University of Technology","VUT","https://www.vut.ac.za/",""],
-      ["Walter Sisulu University","WSU","https://www.wsu.ac.za/",""]
-    ];
-    function renderProspectuses(){
-      const search=document.getElementById("prospectusSearch");
-      const grid=document.getElementById("prospectusGrid");
-      if(!grid) return;
-      const q=(search?.value||"").toLowerCase().trim();
-      const list=universityProspectuses.filter(u=>(u[0]+" "+u[1]).toLowerCase().includes(q));
-      grid.innerHTML=list.map((u,i)=>{
-        const prospectusLink=u[3]||"";
-        const prospectusButton=prospectusLink
-          ? '<a href="'+prospectusLink+'" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center bg-violet-700 hover:bg-violet-800 text-white font-bold text-xs rounded-lg px-3 py-2">Open 2027 Prospectus PDF ↗</a>'
-          : '<span class="inline-flex justify-center bg-slate-100 text-slate-500 font-bold text-xs rounded-lg px-3 py-2 border border-dashed border-slate-300">2027 prospectus link to be added</span>';
-        return '<article class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3"><div><p class="text-xs text-violet-700 font-bold mb-1">'+u[1]+'</p><h3 class="font-bold text-slate-900 text-sm">'+u[0]+'</h3><p class="text-xs text-slate-500 mt-2">2027 prospectus link can be added to this university card.</p></div><div class="flex flex-col gap-2">'+prospectusButton+'<a href="'+u[2]+'" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg px-3 py-2">Official university website ↗</a></div></article>';
-      }).join("")||'<p class="text-sm text-slate-500">No universities match your search.</p>';
+    function calculateApsAndCareers(e) {
+      e.preventDefault();
+
+      const subjects = [
+        parseInt(document.getElementById('subj1').value),
+        parseInt(document.getElementById('subj2').value),
+        parseInt(document.getElementById('subj3').value),
+        parseInt(document.getElementById('subj5').value),
+        parseInt(document.getElementById('subj6').value),
+        parseInt(document.getElementById('subj7').value)
+      ];
+
+      subjects.sort((a, b) => b - a);
+      const total = subjects.reduce((sum, value) => sum + value, 0);
+
+      document.getElementById('apsScoreValue').innerText = `${total} Points`;
+      document.getElementById('apsBreakdownText').innerText =
+        `Based on your best 6 subjects (excluding Life Orientation). Maximum possible is 42 points.`;
+
+      let pathwaysHtml = '';
+
+      if (total >= 35) {
+        pathwaysHtml = `
+          <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+            <h5 class="font-bold text-emerald-900 text-sm">🌟 Elite Tier (35+ Points)</h5>
+            <p class="text-xs text-emerald-700 mt-1">You may be competitive for programmes such as Medicine, Engineering, Computer Science and Law, depending on each institution's subject requirements and selection rules.</p>
+            <p class="text-xs text-slate-600 mt-2 font-medium">Career possibilities include healthcare, engineering, software development and law.</p>
+          </div>
+          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
+            <h5 class="font-bold text-blue-900 text-sm">🎓 University Degree Options</h5>
+            <p class="text-xs text-blue-700 mt-1">Consider BCom, BSc, Education and Public Management programmes. Requirements differ by institution and course.</p>
+          </div>
+        `;
+      } else if (total >= 22) {
+        pathwaysHtml = `
+          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
+            <h5 class="font-bold text-blue-900 text-sm">🚀 Diploma and Degree Options</h5>
+            <p class="text-xs text-blue-700 mt-1">Explore IT, accounting, tourism, journalism and other diploma or degree programmes, subject to admission requirements.</p>
+          </div>
+          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
+            <h5 class="font-bold text-amber-900 text-sm">⚡ TVET Colleges and Higher Certificates</h5>
+            <p class="text-xs text-amber-700 mt-1">Explore NC(V), N4-N6 and occupational programmes at public TVET colleges.</p>
+          </div>
+        `;
+      } else {
+        pathwaysHtml = `
+          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
+            <h5 class="font-bold text-amber-900 text-sm">🛠️ Foundational and TVET Programmes</h5>
+            <p class="text-xs text-amber-700 mt-1">Consider TVET, occupational and foundational programmes. Check the relevant college's subject and entry requirements.</p>
+          </div>
+        `;
+      }
+
+      pathwaysHtml += `
+        <p class="text-xs text-slate-500 mt-3">
+          This is a general guide, not an admission decision. Each university calculates APS differently and may require specific subjects and minimum marks. Always check the official course requirements.
+        </p>
+      `;
+
+      document.getElementById('careerPathwaysList').innerHTML = pathwaysHtml;
+      document.getElementById('apsResultsContainer').classList.remove('hidden');
     }
 
     window.onload = function() {
       renderStudents();
-      resetApsSubjects();
-      renderProspectuses();
     };
   </script>
 
@@ -682,21 +568,6 @@
       color: #fff;
       font-size: 20px;
       cursor: pointer;
-    }
-
-    .cc-development-notice {
-      padding: 9px 12px;
-      background: #fffbeb;
-      border-bottom: 1px solid #fde68a;
-      color: #78350f;
-      font-size: 11px;
-      line-height: 1.45;
-    }
-
-    .cc-development-notice strong {
-      display: block;
-      font-size: 12px;
-      margin-bottom: 2px;
     }
 
     #cc-chat {
@@ -836,20 +707,15 @@
       <button class="cc-close" aria-label="Close chat" onclick="document.getElementById('casenova-box').classList.remove('open')">✕</button>
     </div>
 
-    <div class="cc-development-notice" role="status" aria-live="polite">
-      <strong>🚧 Casenova AI is still being developed.</strong>
-      <span>We’re working to improve its answers. Please double-check important information with the relevant university, college or funding provider.</span>
-    </div>
-
     <div id="cc-chat">
-      <div class="cc-msg ai"><b>Casenova Connection Assistant</b><br><br>Hello! 👋 I’m here to help with university and TVET applications, funding and bursaries. What would you like help with today?</div>
+      <div class="cc-msg ai"><b>Casenova AI 🤖</b><br><br>Hi! 👋 I'm your Casenova AI. Ask me about university applications, NSFAS, documents, maths, general knowledge or other questions.<br><br>Try: "Hi" / "How do I upload documents?" / "Tell me a joke" / "What is 25 x 4?"</div>
     </div>
 
     <div class="cc-chips">
       <button type="button" onclick="ccAsk('Hi')">👋 Hi</button>
       <button type="button" onclick="ccAsk('How do I upload documents?')">Upload Docs</button>
       <button type="button" onclick="ccAsk('What are NSFAS requirements?')">NSFAS</button>
-      <button type="button" onclick="ccAsk('How can I check my university application status?')">Application Status</button>
+      <button type="button" onclick="ccAsk('Tell me a joke')">Joke</button>
     </div>
 
     <div id="cc-preview" class="cc-hidden">
@@ -876,56 +742,201 @@
   <script>
     const CASENOVA_API_URL = "https://casenovaconnection-ai.onrender.com/api/chat";
 
-    // All chatbot replies are generated by the Render-hosted Gemini assistant.
-    // THIS FUNCTION CONNECTS THE CHATBOT TO YOUR LIVE GEMINI BACKEND.
-    // Keep recent turns so the Render-hosted Gemini assistant can follow context.
-    let ccConversationHistory = [];
+    let ccLastTopic = "";
+    let ccUserName = "";
 
-    async function ccAskFreeAI(question) {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 40000);
-      let response;
-      try {
-        response = await fetch(CASENOVA_API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            message: question,
-            history: ccConversationHistory.slice(-10),
-            portalContext: studentPortals.map(({ name, category, fee, link, desc }) => ({
-              name, category, fee, link, desc
-            }))
-          }),
-          signal: controller.signal
+    const CC_KNOW = [
+      {
+        topic: "TUT",
+        keys: ["tut", "tshwane"],
+        t: "TUT - How to Apply:\n1. Visit the official TUT website.\n2. Open the Applications section.\n3. Create your applicant profile.\n4. Choose your programme.\n5. Follow the portal instructions for documents and payment.\n6. Submit your application.\n\nAlways confirm current application dates and fees on the official TUT website."
+      },
+      {
+        topic: "UPLOAD",
+        keys: ["upload", "uploading", "submit document", "attach", "add document", "upload document", "upload docs", "how to upload", "send document"],
+        t: "How to Upload Documents:\n\n1. Log in to your university application portal.\n2. Open 'My Application' or 'Upload Documents'.\n3. Prepare the documents requested by that institution.\n4. Check the required file format and size.\n5. Upload each document in the correct category.\n6. Save or submit the documents.\n7. Check your portal again to confirm that they were received.\n\nRequirements differ between institutions. Follow the instructions on your own application portal."
+      },
+      {
+        topic: "NSFAS",
+        keys: ["nsfas", "funding", "bursary"],
+        t: "NSFAS provides financial assistance to qualifying students at public universities and TVET colleges.\n\nFor current eligibility rules, required documents and application dates, use the official NSFAS website: https://www.nsfas.org.za/\n\nDo not pay anyone who promises to approve your NSFAS application."
+      },
+      {
+        topic: "UP",
+        keys: ["university of pretoria", "tuks", "pretoria"],
+        t: "University of Pretoria:\n\nUse the official website to find the latest application dates, programme requirements and application instructions: https://www.up.ac.za/\n\nAdmission requirements differ by programme."
+      },
+      {
+        topic: "UJ",
+        keys: ["uj", "johannesburg"],
+        t: "University of Johannesburg:\n\nUse the official UJ website for application information, dates, fees and admission requirements: https://www.uj.ac.za/\n\nCheck the specific programme requirements before applying."
+      },
+      {
+        topic: "CAO",
+        keys: ["cao"],
+        t: "The Central Applications Office (CAO) handles applications for several institutions in KwaZulu-Natal.\n\nOfficial website: https://www.cao.ac.za/\n\nCheck the institution and programme choices available for the current application cycle."
+      },
+      {
+        topic: "CACH",
+        keys: ["cach"],
+        t: "CACH is a government-supported service that can help eligible applicants explore available study opportunities after receiving their matric results.\n\nCheck current availability and instructions through the Department of Higher Education and Training."
+      },
+      {
+        topic: "PROVISIONAL",
+        keys: ["provisional", "accepted"],
+        t: "Provisional acceptance usually means an institution may admit you if you meet its final requirements, including your final matric results. Read the exact conditions on your applicant portal and follow any instructions about accepting an offer."
+      },
+      {
+        topic: "PENDING",
+        keys: ["pending", "awaiting", "evaluation"],
+        t: "A 'Pending' application status generally means the institution has not completed its decision. Check whether documents are outstanding and monitor the official portal. Contact the admissions office if the status remains unchanged or the institution requests action."
+      },
+      {
+        topic: "UNSUCCESSFUL",
+        keys: ["unsuccessful", "rejected", "declined"],
+        t: "An 'Unsuccessful' status usually means the application was not successful for that programme. Check the institution's explanation and whether another programme, campus or application route is available. You can also explore other universities and TVET colleges."
+      },
+      {
+        topic: "APS",
+        keys: ["aps", "points"],
+        t: "APS means Admission Point Score. Universities calculate it using subject results, but their rules differ. Some exclude Life Orientation; others use different methods. Send me your subjects, marks and the university or course you're interested in, and I can help estimate it."
+      },
+      {
+        topic: "CERTIFIED",
+        keys: ["certified", "certify"],
+        t: "A certified copy is a copy of an original document that has been officially stamped and signed by an authorised commissioner of oaths or other accepted official. Check the institution's rules for how recent the certification must be."
+      }
+    ];
+
+    function ccFindUni(q) {
+      const clean = q.toLowerCase().replace(/[?.,!]/g, "");
+      let best = null;
+      let bestScore = 0;
+
+      for (const item of CC_KNOW) {
+        let score = 0;
+        item.keys.forEach(key => {
+          if (clean.includes(key)) score += 10;
         });
-      } catch (error) {
-        if (error.name === "AbortError") {
-          throw new Error("The AI server took too long to respond. Please try again.");
+
+        if (ccLastTopic && item.topic.includes(ccLastTopic)) score += 3;
+
+        if (score > bestScore) {
+          bestScore = score;
+          best = item;
         }
-        throw error;
-      } finally {
-        clearTimeout(timeoutId);
       }
 
-      const data = await response.json().catch(() => ({}));
+      if (best && bestScore >= 10) {
+        ccLastTopic = best.topic;
+        return best.t;
+      }
+
+      return null;
+    }
+
+    function ccSmallTalk(q) {
+      const l = q.toLowerCase().trim();
+      const nameMatch = q.match(/my name is (\w+)|i am (\w+)|i'm (\w+)/i);
+
+      if (nameMatch) {
+        ccUserName = nameMatch[1] || nameMatch[2] || nameMatch[3];
+        return `Nice to meet you, ${ccUserName}! 😊 How can I help you today?`;
+      }
+
+      if (/^(hi+|hello+|hey+|hola|sawubona|dumela|molweni|avuxeni|good morning|good afternoon|good evening|yo|sup|howzit)\b/.test(l)) {
+        return `Hi${ccUserName ? " " + ccUserName : ""}! 👋 Great to see you! How can I help you today? You can ask about university applications, NSFAS, documents, maths or general questions.`;
+      }
+
+      if (l.includes("how are you") || l.includes("how r u") || l.includes("howzit")) {
+        return "I'm doing great, thanks for asking! 😊 Ready to help. What would you like to talk about?";
+      }
+
+      if (l.includes("who are you") || l.includes("your name") || l.includes("what are you")) {
+        return "I'm Casenova AI 🤖, the Casenova Connection assistant. I can help with South African university applications, student funding, documents, study choices and general questions.";
+      }
+
+      if (l.includes("thank") || l === "thanks" || l.includes("ngiyabonga") || l.includes("ke a leboga")) {
+        return "You're welcome! 🙏 Is there anything else I can help you with?";
+      }
+
+      if (l.includes("bye") || l.includes("goodbye") || l.includes("see you")) {
+        return `Goodbye${ccUserName ? " " + ccUserName : ""}! 👋 Good luck with your studies and applications.`;
+      }
+
+      if (l.includes("joke") || l.includes("funny") || l.includes("make me laugh")) {
+        const jokes = [
+          "Why did the student bring a ladder to university? Because they heard the courses were high level! 😂",
+          "Why did the maths book look sad? It had too many problems! 📚",
+          "What do you call a fake noodle? An impasta! 🍝",
+          "Why did the scarecrow win an award? Because he was outstanding in his field! 🌾"
+        ];
+        return jokes[Math.floor(Math.random() * jokes.length)];
+      }
+
+      if (l.includes("sad") || l.includes("stressed") || l.includes("anxious") || l.includes("tired")) {
+        return "I'm sorry things feel difficult right now. 💛 Take things one step at a time and consider speaking with someone you trust, such as a friend, family member, teacher or counsellor. If you feel unsafe or overwhelmed, please seek help from a qualified support service. I'm here to listen too.";
+      }
+
+      if (l.includes("what can you do") || l.includes("what do you do") || l.includes("help me")) {
+        return "I can help with:\n\n• University and TVET applications\n• NSFAS and student funding information\n• Uploading documents\n• Understanding application statuses\n• APS calculations\n• Study and career questions\n• Maths and general knowledge\n• Everyday questions\n\nType your question and I'll do my best to help.";
+      }
+
+      return null;
+    }
+
+    function ccMaths(q) {
+      const m = q.toLowerCase()
+        .replace(/x/g, "*")
+        .replace(/÷/g, "/")
+        .match(/(\d+(?:\.\d+)?)\s*([\+\-\*\/])\s*(\d+(?:\.\d+)?)/);
+
+      if (m && (
+        q.toLowerCase().includes("what") ||
+        q.toLowerCase().includes("calculate") ||
+        /^\d/.test(q.trim())
+      )) {
+        const a = parseFloat(m[1]);
+        const b = parseFloat(m[3]);
+        const op = m[2];
+
+        if (op === "/" && b === 0) {
+          return "You cannot divide by zero. Please try another calculation.";
+        }
+
+        const result = op === "+" ? a + b :
+          op === "-" ? a - b :
+          op === "*" ? a * b : a / b;
+
+        return `${a} ${op} ${b} = ${result}\n\nWould you like me to solve another one?`;
+      }
+
+      return null;
+    }
+
+    // THIS FUNCTION CONNECTS THE CHATBOT TO YOUR LIVE GEMINI BACKEND.
+    async function ccAskFreeAI(question) {
+      const response = await fetch(CASENOVA_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: question
+        })
+      });
 
       if (!response.ok) {
-        throw new Error(data.error || `Casenova backend returned HTTP ${response.status}`);
+        throw new Error(`Casenova backend returned HTTP ${response.status}`);
       }
+
+      const data = await response.json();
 
       if (!data || typeof data.reply !== "string" || !data.reply.trim()) {
         throw new Error("The AI server returned an empty response.");
       }
 
-      const answer = data.reply.trim();
-      ccConversationHistory.push(
-        { role: "user", text: question },
-        { role: "model", text: answer }
-      );
-      ccConversationHistory = ccConversationHistory.slice(-10);
-      return answer;
+      return data.reply.trim();
     }
 
     const ccChat = document.getElementById("cc-chat");
@@ -1039,9 +1050,34 @@
       ccSend.disabled = true;
 
       try {
-        // Send every message to the Gemini backend so the live AI,
-        // rather than local scripted shortcuts, generates the response.
-        const reply = await ccAskFreeAI(fullMessage);
+        let reply = null;
+
+        if (ccImg && !message && !ccPasted) {
+          reply = "I've received your screenshot preview 📷. However, image analysis is not connected yet. Please type the university name and the status or message shown in the screenshot, and I'll help you understand it.";
+        } else {
+          // Evaluate each local handler once. This avoids duplicate calls and
+          // prevents stateful handlers or random responses from running twice.
+          const smallTalkReply = ccSmallTalk(fullMessage);
+
+          if (smallTalkReply) {
+            reply = smallTalkReply;
+          } else {
+            const mathsReply = ccMaths(fullMessage);
+
+            if (mathsReply) {
+              reply = mathsReply;
+            } else {
+              const universityReply = ccFindUni(fullMessage);
+
+              if (universityReply) {
+                reply = universityReply;
+              } else {
+                // Send other questions to the live Gemini backend.
+                reply = await ccAskFreeAI(fullMessage);
+              }
+            }
+          }
+        }
 
         typing.remove();
         ccAdd(reply, "ai");
@@ -1052,7 +1088,7 @@
         typing.remove();
 
         ccAdd(
-          error.message || "I'm having trouble connecting to Casenova AI right now. Please try again shortly.",
+          "I'm having trouble connecting to Casenova AI right now. Please try again shortly. If this continues, the website administrator may need to check the backend connection.",
           "ai"
         );
 
