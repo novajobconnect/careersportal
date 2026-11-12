@@ -56,6 +56,11 @@
       transform: translateY(-4px);
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     }
+
+    .subject-options { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    .subject-option { display:block; width:100%; padding:0.75rem 0.85rem; text-align:left; font-size:0.875rem; color:#334155; background:#fff; }
+    .subject-option:active, .subject-option:hover, .subject-option[aria-selected="true"] { background:#eff6ff; color:#1d4ed8; }
+    @media (max-width:640px) { .subject-options { max-height: min(45vh, 18rem); } .subject-option { padding:0.9rem 0.85rem; } }
   </style>
 </head>
 
@@ -226,68 +231,7 @@
         <p class="text-xs text-blue-800">Type the mark shown on your report (0–100) for each subject. The calculator converts each mark into a National Senior Certificate achievement level and APS points automatically.</p>
       </div>
 
-      <datalist id="nscSubjectOptions">
-        <option value="Accounting"></option>
-        <option value="Agricultural Management Practices"></option>
-        <option value="Agricultural Sciences"></option>
-        <option value="Agricultural Technology"></option>
-        <option value="Business Studies"></option>
-        <option value="Civil Technology"></option>
-        <option value="Computer Applications Technology"></option>
-        <option value="Consumer Studies"></option>
-        <option value="Dance Studies"></option>
-        <option value="Design"></option>
-        <option value="Dramatic Arts"></option>
-        <option value="Economics"></option>
-        <option value="Electrical Technology"></option>
-        <option value="Engineering Graphics and Design"></option>
-        <option value="Geography"></option>
-        <option value="History"></option>
-        <option value="Hospitality Studies"></option>
-        <option value="Information Technology"></option>
-        <option value="IsiNdebele Home Language"></option>
-        <option value="IsiNdebele First Additional Language"></option>
-        <option value="IsiXhosa Home Language"></option>
-        <option value="IsiXhosa First Additional Language"></option>
-        <option value="IsiZulu Home Language"></option>
-        <option value="IsiZulu First Additional Language"></option>
-        <option value="Life Orientation"></option>
-        <option value="Life Sciences"></option>
-        <option value="Mathematical Literacy"></option>
-        <option value="Mathematics"></option>
-        <option value="Mechanical Technology"></option>
-        <option value="Music"></option>
-        <option value="Physical Sciences"></option>
-        <option value="Religion Studies"></option>
-        <option value="Sepedi Home Language"></option>
-        <option value="Sepedi First Additional Language"></option>
-        <option value="Sesotho Home Language"></option>
-        <option value="Sesotho First Additional Language"></option>
-        <option value="Setswana Home Language"></option>
-        <option value="Setswana First Additional Language"></option>
-        <option value="Siswati Home Language"></option>
-        <option value="Siswati First Additional Language"></option>
-        <option value="Tshivenda Home Language"></option>
-        <option value="Tshivenda First Additional Language"></option>
-        <option value="Tourism"></option>
-        <option value="Visual Arts"></option>
-        <option value="English Home Language"></option>
-        <option value="English First Additional Language"></option>
-        <option value="Afrikaans Home Language"></option>
-        <option value="Afrikaans First Additional Language"></option>
-        <option value="French Second Additional Language"></option>
-        <option value="German Second Additional Language"></option>
-        <option value="Portuguese Second Additional Language"></option>
-        <option value="Arabic Second Additional Language"></option>
-        <option value="Chinese Second Additional Language"></option>
-        <option value="Gujarati Second Additional Language"></option>
-        <option value="Hebrew Second Additional Language"></option>
-        <option value="Hindi Second Additional Language"></option>
-        <option value="Tamil Second Additional Language"></option>
-        <option value="Telugu Second Additional Language"></option>
-        <option value="Urdu Second Additional Language"></option>
-        <option value="isiXhosa Second Additional Language"></option>
-      </datalist>
+      
       <form id="apsForm" onsubmit="calculateApsAndCareers(event)" class="space-y-4">
         <div class="rounded-xl bg-blue-50 border border-blue-100 p-4">
           <h4 class="font-bold text-blue-900 text-sm mb-1">Enter your 7 NSC subjects and percentages</h4>
@@ -296,43 +240,43 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
             <label for="subjectName1" class="block text-sm font-semibold text-slate-700 mb-2">Subject 1 · Home language</label>
-            <input id="subjectName1" name="subjectName1" type="text" list="nscSubjectOptions" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div class="relative"><input id="subjectName1" name="subjectName1" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions1" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj1" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj1" name="subj1" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
             <label for="subjectName2" class="block text-sm font-semibold text-slate-700 mb-2">Subject 2 · Additional language</label>
-            <input id="subjectName2" name="subjectName2" type="text" list="nscSubjectOptions" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div class="relative"><input id="subjectName2" name="subjectName2" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions2" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj2" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj2" name="subj2" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
             <label for="subjectName3" class="block text-sm font-semibold text-slate-700 mb-2">Subject 3 · Mathematics / Mathematical Literacy</label>
-            <input id="subjectName3" name="subjectName3" type="text" list="nscSubjectOptions" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div class="relative"><input id="subjectName3" name="subjectName3" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions3" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj3" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj3" name="subj3" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
             <label for="subjectName4" class="block text-sm font-semibold text-slate-700 mb-2">Subject 4 · Life Orientation (if taken)</label>
-            <input id="subjectName4" name="subjectName4" type="text" list="nscSubjectOptions" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div class="relative"><input id="subjectName4" name="subjectName4" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions4" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj4" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj4" name="subj4" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
             <label for="subjectName5" class="block text-sm font-semibold text-slate-700 mb-2">Subject 5 · Other subject</label>
-            <input id="subjectName5" name="subjectName5" type="text" list="nscSubjectOptions" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div class="relative"><input id="subjectName5" name="subjectName5" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions5" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj5" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj5" name="subj5" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
             <label for="subjectName6" class="block text-sm font-semibold text-slate-700 mb-2">Subject 6 · Other subject</label>
-            <input id="subjectName6" name="subjectName6" type="text" list="nscSubjectOptions" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div class="relative"><input id="subjectName6" name="subjectName6" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions6" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj6" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj6" name="subj6" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
             <label for="subjectName7" class="block text-sm font-semibold text-slate-700 mb-2">Subject 7 · Other subject</label>
-            <input id="subjectName7" name="subjectName7" type="text" list="nscSubjectOptions" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div class="relative"><input id="subjectName7" name="subjectName7" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions7" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj7" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj7" name="subj7" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
@@ -620,5 +564,50 @@
   </script>
 
 
+
+<script>
+(function () {
+  const subjects = ["Accounting","Agricultural Management Practices","Agricultural Sciences","Agricultural Technology","Business Studies","Civil Technology","Computer Applications Technology","Consumer Studies","Dance Studies","Design","Dramatic Arts","Economics","Electrical Technology","Engineering Graphics and Design","Geography","History","Hospitality Studies","Information Technology","IsiNdebele Home Language","IsiNdebele First Additional Language","IsiXhosa Home Language","IsiXhosa First Additional Language","IsiZulu Home Language","IsiZulu First Additional Language","Life Orientation","Life Sciences","Mathematical Literacy","Mathematics","Mechanical Technology","Music","Physical Sciences","Religion Studies","Sepedi Home Language","Sepedi First Additional Language","Sesotho Home Language","Sesotho First Additional Language","Setswana Home Language","Setswana First Additional Language","Siswati Home Language","Siswati First Additional Language","Tshivenda Home Language","Tshivenda First Additional Language","Tourism","Visual Arts","English Home Language","English First Additional Language","Afrikaans Home Language","Afrikaans First Additional Language","French Second Additional Language","German Second Additional Language","Portuguese Second Additional Language","Arabic Second Additional Language","Chinese Second Additional Language","Gujarati Second Additional Language","Hebrew Second Additional Language","Hindi Second Additional Language","Tamil Second Additional Language","Telugu Second Additional Language","Urdu Second Additional Language","isiXhosa Second Additional Language"];
+  document.querySelectorAll('#apsForm input[id^="subjectName"]').forEach(function (input) {
+    const menu = document.getElementById('subjectOptions' + input.id.replace('subjectName', ''));
+    if (!menu) return;
+    let activeIndex = -1;
+    function renderOptions() {
+      const query = input.value.trim().toLocaleLowerCase();
+      const matches = subjects.filter(function (subject) { return !query || subject.toLocaleLowerCase().includes(query); }).slice(0, 60);
+      menu.innerHTML = '';
+      activeIndex = -1;
+      if (!matches.length) {
+        const empty = document.createElement('div');
+        empty.className = 'px-3 py-3 text-sm text-slate-500';
+        empty.textContent = 'No matching subjects. Keep typing or check the subject name.';
+        menu.appendChild(empty);
+      } else {
+        matches.forEach(function (subject) {
+          const option = document.createElement('button');
+          option.type = 'button';
+          option.className = 'subject-option';
+          option.setAttribute('role', 'option');
+          option.textContent = subject;
+          option.addEventListener('pointerdown', function (event) { event.preventDefault(); input.value = subject; closeMenu(); input.dispatchEvent(new Event('change', { bubbles: true })); });
+          menu.appendChild(option);
+        });
+      }
+      menu.classList.remove('hidden');
+    }
+    function closeMenu() { menu.classList.add('hidden'); activeIndex = -1; }
+    input.addEventListener('focus', renderOptions);
+    input.addEventListener('input', renderOptions);
+    input.addEventListener('keydown', function (event) {
+      const options = menu.querySelectorAll('[role="option"]');
+      if (event.key === 'Escape') { closeMenu(); return; }
+      if (event.key === 'ArrowDown' && !menu.classList.contains('hidden') && options.length) { event.preventDefault(); activeIndex = Math.min(activeIndex + 1, options.length - 1); options.forEach((o,i) => o.setAttribute('aria-selected', String(i === activeIndex))); options[activeIndex].scrollIntoView({ block: 'nearest' }); }
+      if (event.key === 'ArrowUp' && !menu.classList.contains('hidden') && options.length) { event.preventDefault(); activeIndex = Math.max(activeIndex - 1, 0); options.forEach((o,i) => o.setAttribute('aria-selected', String(i === activeIndex))); options[activeIndex].scrollIntoView({ block: 'nearest' }); }
+      if (event.key === 'Enter' && activeIndex >= 0 && options[activeIndex]) { event.preventDefault(); options[activeIndex].click(); }
+    });
+    document.addEventListener('pointerdown', function (event) { if (!input.parentElement.contains(event.target)) closeMenu(); });
+  });
+})();
+</script>
 </body>
 </html>
