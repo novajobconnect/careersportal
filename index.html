@@ -19,7 +19,8 @@
       background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #064e3b 100%);
     }
 
-    body { position: relative; isolation: isolate; background: #f8fafc; }
+    html { width: 100%; overflow-x: hidden; }
+    body { position: relative; isolation: isolate; background: #f8fafc; overflow-x: hidden; }
     body::before {
       content: "";
       position: fixed;
@@ -29,9 +30,27 @@
       background-image: url("background.png");
       background-repeat: no-repeat;
       background-position: center center;
-      background-size: min(72vw, 760px) auto;
-      opacity: 0.075;
+      background-size: min(88vw, 980px) auto;
+      opacity: 0.19;
     }
+    @media (max-width: 640px) {
+      body::before {
+        background-size: 112vw auto;
+        background-position: center 42%;
+        opacity: 0.16;
+      }
+      header > div {
+        padding-left: 0.65rem !important;
+        padding-right: 0.65rem !important;
+        gap: 0.25rem;
+      }
+      header button { white-space: nowrap; }
+      main { padding-left: 0.85rem !important; padding-right: 0.85rem !important; }
+      #view-home, #view-portals { min-width: 0; }
+      .overflow-x-auto { -webkit-overflow-scrolling: touch; }
+      #welcomeModal > div { max-height: calc(100dvh - 2rem); overflow-y: auto; }
+    }
+    img, iframe, table { max-width: 100%; }
 
     .card-hover:hover {
       transform: translateY(-4px);
@@ -329,10 +348,18 @@
       { name: "Musina Mayoral Bursary 2027", category: "bursary", fee: "Municipal Bursary", link: "https://www.musina.gov.za/download/musina-mayoral-bursary-application-form-2027/", desc: "2027 Mayoral Bursary application form from Musina Local Municipality. Published closing date: 30 November 2026. Check the official notice and form for residency, study-field and document requirements." }
     ];
 
+    let internalViewHistory = [];
+
     function switchView(viewName) {
-      document.getElementById('view-home').classList.add('hidden');
-      document.getElementById('view-portals').classList.add('hidden');
-      document.getElementById(`view-${viewName}`).classList.remove('hidden');
+      const target = document.getElementById(`view-${viewName}`);
+      if (!target) return;
+      const currentView = document.querySelector('main > [id^="view-"]:not(.hidden)');
+      const currentName = currentView ? currentView.id.replace('view-', '') : null;
+      if (currentName && currentName !== viewName) {
+        internalViewHistory.push(currentName);
+      }
+      document.querySelectorAll('main > [id^="view-"]').forEach(view => view.classList.add('hidden'));
+      target.classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -429,10 +456,20 @@
     }
 
     function goToPreviousPage() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        switchView('home');
+      const previousView = internalViewHistory.pop();
+      if (previousView) {
+        document.querySelectorAll('main > [id^="view-"]').forEach(view => view.classList.add('hidden'));
+        const target = document.getElementById(`view-${previousView}`);
+        if (target) target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      // At the first site view, stay on this website instead of leaving it.
+      const home = document.getElementById('view-home');
+      if (home && home.classList.contains('hidden')) {
+        document.querySelectorAll('main > [id^="view-"]').forEach(view => view.classList.add('hidden'));
+        home.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
