@@ -50,6 +50,11 @@
     </div>
   </header>
 
+  <div role="status" aria-live="polite" class="bg-amber-100 border-b border-amber-300 text-amber-950 px-4 py-2 text-center text-xs sm:text-sm font-semibold">
+    <i class="fa-solid fa-hammer mr-1"></i> Casenova AI is currently being developed and improved. Some answers may be incomplete — please verify important application information with the institution.
+  </div>
+
+
   <!-- MAIN CONTENT -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
 
@@ -702,7 +707,7 @@
       <div class="cc-logo">C</div>
       <div>
         <h3>Casenova Connection</h3>
-        <p>AI Assistant • Ask Me Anything</p>
+        <p>AI Assistant • In development — answers may improve</p>
       </div>
       <button class="cc-close" aria-label="Close chat" onclick="document.getElementById('casenova-box').classList.remove('open')">✕</button>
     </div>
@@ -742,98 +747,7 @@
   <script>
     const CASENOVA_API_URL = "https://casenovaconnection-ai.onrender.com/api/chat";
 
-    let ccLastTopic = "";
     let ccUserName = "";
-
-    const CC_KNOW = [
-      {
-        topic: "TUT",
-        keys: ["tut", "tshwane"],
-        t: "TUT - How to Apply:\n1. Visit the official TUT website.\n2. Open the Applications section.\n3. Create your applicant profile.\n4. Choose your programme.\n5. Follow the portal instructions for documents and payment.\n6. Submit your application.\n\nAlways confirm current application dates and fees on the official TUT website."
-      },
-      {
-        topic: "UPLOAD",
-        keys: ["upload", "uploading", "submit document", "attach", "add document", "upload document", "upload docs", "how to upload", "send document"],
-        t: "How to Upload Documents:\n\n1. Log in to your university application portal.\n2. Open 'My Application' or 'Upload Documents'.\n3. Prepare the documents requested by that institution.\n4. Check the required file format and size.\n5. Upload each document in the correct category.\n6. Save or submit the documents.\n7. Check your portal again to confirm that they were received.\n\nRequirements differ between institutions. Follow the instructions on your own application portal."
-      },
-      {
-        topic: "NSFAS",
-        keys: ["nsfas", "funding", "bursary"],
-        t: "NSFAS provides financial assistance to qualifying students at public universities and TVET colleges.\n\nFor current eligibility rules, required documents and application dates, use the official NSFAS website: https://www.nsfas.org.za/\n\nDo not pay anyone who promises to approve your NSFAS application."
-      },
-      {
-        topic: "UP",
-        keys: ["university of pretoria", "tuks", "pretoria"],
-        t: "University of Pretoria:\n\nUse the official website to find the latest application dates, programme requirements and application instructions: https://www.up.ac.za/\n\nAdmission requirements differ by programme."
-      },
-      {
-        topic: "UJ",
-        keys: ["uj", "johannesburg"],
-        t: "University of Johannesburg:\n\nUse the official UJ website for application information, dates, fees and admission requirements: https://www.uj.ac.za/\n\nCheck the specific programme requirements before applying."
-      },
-      {
-        topic: "CAO",
-        keys: ["cao"],
-        t: "The Central Applications Office (CAO) handles applications for several institutions in KwaZulu-Natal.\n\nOfficial website: https://www.cao.ac.za/\n\nCheck the institution and programme choices available for the current application cycle."
-      },
-      {
-        topic: "CACH",
-        keys: ["cach"],
-        t: "CACH is a government-supported service that can help eligible applicants explore available study opportunities after receiving their matric results.\n\nCheck current availability and instructions through the Department of Higher Education and Training."
-      },
-      {
-        topic: "PROVISIONAL",
-        keys: ["provisional", "accepted"],
-        t: "Provisional acceptance usually means an institution may admit you if you meet its final requirements, including your final matric results. Read the exact conditions on your applicant portal and follow any instructions about accepting an offer."
-      },
-      {
-        topic: "PENDING",
-        keys: ["pending", "awaiting", "evaluation"],
-        t: "A 'Pending' application status generally means the institution has not completed its decision. Check whether documents are outstanding and monitor the official portal. Contact the admissions office if the status remains unchanged or the institution requests action."
-      },
-      {
-        topic: "UNSUCCESSFUL",
-        keys: ["unsuccessful", "rejected", "declined"],
-        t: "An 'Unsuccessful' status usually means the application was not successful for that programme. Check the institution's explanation and whether another programme, campus or application route is available. You can also explore other universities and TVET colleges."
-      },
-      {
-        topic: "APS",
-        keys: ["aps", "points"],
-        t: "APS means Admission Point Score. Universities calculate it using subject results, but their rules differ. Some exclude Life Orientation; others use different methods. Send me your subjects, marks and the university or course you're interested in, and I can help estimate it."
-      },
-      {
-        topic: "CERTIFIED",
-        keys: ["certified", "certify"],
-        t: "A certified copy is a copy of an original document that has been officially stamped and signed by an authorised commissioner of oaths or other accepted official. Check the institution's rules for how recent the certification must be."
-      }
-    ];
-
-    function ccFindUni(q) {
-      const clean = q.toLowerCase().replace(/[?.,!]/g, "");
-      let best = null;
-      let bestScore = 0;
-
-      for (const item of CC_KNOW) {
-        let score = 0;
-        item.keys.forEach(key => {
-          if (clean.includes(key)) score += 10;
-        });
-
-        if (ccLastTopic && item.topic.includes(ccLastTopic)) score += 3;
-
-        if (score > bestScore) {
-          bestScore = score;
-          best = item;
-        }
-      }
-
-      if (best && bestScore >= 10) {
-        ccLastTopic = best.topic;
-        return best.t;
-      }
-
-      return null;
-    }
 
     function ccSmallTalk(q) {
       const l = q.toLowerCase().trim();
@@ -922,15 +836,16 @@
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: question
+          message: question,
+          history: ccHistory.slice(-10),
+          portalContext: Array.isArray(studentPortals) ? studentPortals : []
         })
       });
 
+      const data = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error(`Casenova backend returned HTTP ${response.status}`);
+        throw new Error(data.error || `Casenova backend returned HTTP ${response.status}`);
       }
-
-      const data = await response.json();
 
       if (!data || typeof data.reply !== "string" || !data.reply.trim()) {
         throw new Error("The AI server returned an empty response.");
@@ -950,6 +865,7 @@
 
     let ccImg = null;
     let ccPasted = "";
+    const ccHistory = [];
 
     function ccAdd(message, who, img) {
       const div = document.createElement("div");
@@ -1062,25 +978,18 @@
           if (smallTalkReply) {
             reply = smallTalkReply;
           } else {
+            // Let the connected AI answer the student's actual question.
+            // Local shortcuts are limited to greetings, simple small talk and arithmetic.
             const mathsReply = ccMaths(fullMessage);
-
-            if (mathsReply) {
-              reply = mathsReply;
-            } else {
-              const universityReply = ccFindUni(fullMessage);
-
-              if (universityReply) {
-                reply = universityReply;
-              } else {
-                // Send other questions to the live Gemini backend.
-                reply = await ccAskFreeAI(fullMessage);
-              }
-            }
+            reply = mathsReply || await ccAskFreeAI(fullMessage);
           }
         }
 
         typing.remove();
         ccAdd(reply, "ai");
+        ccHistory.push({ role: "user", text: fullMessage });
+        ccHistory.push({ role: "model", text: reply });
+        if (ccHistory.length > 10) ccHistory.splice(0, ccHistory.length - 10);
 
       } catch (error) {
         console.error("Casenova AI connection error:", error);
