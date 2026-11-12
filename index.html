@@ -871,7 +871,7 @@
       const div = document.createElement("div");
       div.className = "cc-msg " + who;
       // Render plain text and safe HTTP(S) links without interpreting model HTML.
-      const urlPattern = /(https?:\\/\\/[^\\s<>"']+)/g;
+      const urlPattern = /(https?:\/\/[^\s<>"']+)/g;
       let lastIndex = 0;
       for (const match of message.matchAll(urlPattern)) {
         div.appendChild(document.createTextNode(message.slice(lastIndex, match.index)));
