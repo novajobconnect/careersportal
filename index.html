@@ -169,85 +169,61 @@
         </div>
       </div>
 
-      <form id="apsForm" onsubmit="calculateApsAndCareers(event)" class="space-y-3">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">1. Home Language (HL)</label>
-            <select id="subj1" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-            </select>
-          </div>
+      <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-4">
+        <h4 class="font-bold text-blue-900 text-sm mb-1">Enter your final subject percentages</h4>
+        <p class="text-xs text-blue-800">Type the mark shown on your report (0–100) for each subject. The calculator converts each mark into a National Senior Certificate achievement level and APS points automatically.</p>
+      </div>
 
+      <form id="apsForm" onsubmit="calculateApsAndCareers(event)" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">2. First Additional Language (FAL)</label>
-            <select id="subj2" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-            </select>
+            <label for="subj1" class="block text-sm font-semibold text-slate-700 mb-1">1. Home Language</label>
+            <div class="relative"><input id="subj1" type="number" min="0" max="100" step="1" required placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
-
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">3. Mathematics / Maths Lit</label>
-            <select id="subj3" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-              <option value="3">Level 3 (40% - 49%) - 3 pts</option>
-            </select>
+            <label for="subj2" class="block text-sm font-semibold text-slate-700 mb-1">2. First Additional Language</label>
+            <div class="relative"><input id="subj2" type="number" min="0" max="100" step="1" required placeholder="e.g. 68" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
-
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">4. Life Orientation (LO)</label>
-            <select id="subj4" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-            </select>
+            <label for="subj3" class="block text-sm font-semibold text-slate-700 mb-1">3. Mathematics / Mathematical Literacy</label>
+            <div class="relative"><input id="subj3" type="number" min="0" max="100" step="1" required placeholder="e.g. 72" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
-
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">5. Elective 1</label>
-            <select id="subj5" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6" selected>Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5">Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-            </select>
-          </div>
-
+            <label for="subj4" class="block text-sm font-semibold text-slate-700 mb-1">4. Life Orientation</label>
+            <div class="relative"><input id="subj4" type="number" min="0" max="100" step="1" required placeholder="e.g. 80" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
+            </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">6. Elective 2</label>
-            <select id="subj6" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-            </select>
+            <label for="subj5" class="block text-sm font-semibold text-slate-700 mb-1">5. Elective Subject 1</label>
+            <div class="relative"><input id="subj5" type="number" min="0" max="100" step="1" required placeholder="e.g. 65" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
-
+          <div>
+            <label for="subj6" class="block text-sm font-semibold text-slate-700 mb-1">6. Elective Subject 2</label>
+            <div class="relative"><input id="subj6" type="number" min="0" max="100" step="1" required placeholder="e.g. 59" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
+          </div>
           <div class="sm:col-span-2">
-            <label class="block text-xs font-bold text-slate-700 mb-1">7. Elective 3</label>
-            <select id="subj7" class="w-full border border-slate-300 rounded-lg p-2 text-xs">
-              <option value="7">Level 7 (80% - 100%) - 7 pts</option>
-              <option value="6">Level 6 (70% - 79%) - 6 pts</option>
-              <option value="5" selected>Level 5 (60% - 69%) - 5 pts</option>
-              <option value="4">Level 4 (50% - 59%) - 4 pts</option>
-            </select>
+            <label for="subj7" class="block text-sm font-semibold text-slate-700 mb-1">7. Elective Subject 3</label>
+            <div class="relative"><input id="subj7" type="number" min="0" max="100" step="1" required placeholder="e.g. 54" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
         </div>
 
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg shadow text-sm mt-4">
-          Calculate Score & Show Qualifying Careers
-        </button>
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-3">
+          <h5 class="text-sm font-bold text-slate-800 mb-2">NSC achievement-level guide</h5>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-slate-600">
+            <div><b>Level 7:</b> 80–100% (7 pts)</div>
+            <div><b>Level 6:</b> 70–79% (6 pts)</div>
+            <div><b>Level 5:</b> 60–69% (5 pts)</div>
+            <div><b>Level 4:</b> 50–59% (4 pts)</div>
+            <div><b>Level 3:</b> 40–49% (3 pts)</div>
+            <div><b>Level 2:</b> 30–39% (2 pts)</div>
+            <div><b>Level 1:</b> 0–29% (1 pt)</div>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-500">This estimate uses your best six subjects and excludes Life Orientation. Individual universities and programmes may calculate APS differently.</p>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow text-sm"><i class="fa-solid fa-calculator mr-1"></i> Calculate My APS</button>
+          <button type="reset" onclick="document.getElementById('apsResultsContainer').classList.add('hidden')" class="sm:w-auto border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold px-5 py-3 rounded-lg text-sm">Clear Marks</button>
+        </div>
       </form>
 
       <div id="apsResultsContainer" class="hidden mt-6 space-y-4 pt-4 border-t border-slate-200">
@@ -391,7 +367,12 @@
             <a href="${portal.link}" target="_blank" rel="noopener noreferrer" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-2">
               Apply Now (Direct Portal) <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
             </a>
-            
+            ${portal.category === "university" ? `
+            <a href="${portal.link}" target="_blank" rel="noopener noreferrer" class="w-full bg-white border border-blue-200 hover:bg-blue-50 text-blue-700 text-center font-semibold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-2">
+              <i class="fa-solid fa-clipboard-check"></i> Check Application Status
+            </a>
+            <p class="text-[11px] text-slate-500 text-center">Sign in to the university application system to view your status. Some institutions use a shared application portal.</p>
+            ` : ""}
           </div>
         </div>
       `).join('');
@@ -418,64 +399,87 @@
     function calculateApsAndCareers(e) {
       e.preventDefault();
 
-      const subjects = [
-        parseInt(document.getElementById('subj1').value),
-        parseInt(document.getElementById('subj2').value),
-        parseInt(document.getElementById('subj3').value),
-        parseInt(document.getElementById('subj5').value),
-        parseInt(document.getElementById('subj6').value),
-        parseInt(document.getElementById('subj7').value)
+      const subjectNames = [
+        "Home Language",
+        "First Additional Language",
+        "Mathematics / Mathematical Literacy",
+        "Life Orientation",
+        "Elective Subject 1",
+        "Elective Subject 2",
+        "Elective Subject 3"
       ];
+      const fields = ["subj1", "subj2", "subj3", "subj4", "subj5", "subj6", "subj7"];
+      const gradeFor = percentage => {
+        if (percentage >= 80) return 7;
+        if (percentage >= 70) return 6;
+        if (percentage >= 60) return 5;
+        if (percentage >= 50) return 4;
+        if (percentage >= 40) return 3;
+        if (percentage >= 30) return 2;
+        return 1;
+      };
 
-      subjects.sort((a, b) => b - a);
-      const total = subjects.reduce((sum, value) => sum + value, 0);
+      const marks = fields.map((id, index) => {
+        const input = document.getElementById(id);
+        const percentage = Number(input.value);
+        if (input.value === "" || !Number.isFinite(percentage) || percentage < 0 || percentage > 100) {
+          input.focus();
+          input.reportValidity();
+          throw new Error("Please enter a percentage from 0 to 100 for every subject.");
+        }
+        return { name: subjectNames[index], percentage, level: gradeFor(percentage), points: gradeFor(percentage), isLO: id === "subj4" };
+      });
 
-      document.getElementById('apsScoreValue').innerText = `${total} Points`;
-      document.getElementById('apsBreakdownText').innerText =
-        `Based on your best 6 subjects (excluding Life Orientation). Maximum possible is 42 points.`;
+      const counted = marks.filter(subject => !subject.isLO).sort((a, b) => b.points - a.points);
+      const bestSix = counted.slice(0, 6);
+      const total = bestSix.reduce((sum, subject) => sum + subject.points, 0);
+      const percentageAverage = bestSix.reduce((sum, subject) => sum + subject.percentage, 0) / bestSix.length;
 
-      let pathwaysHtml = '';
+      document.getElementById("apsScoreValue").innerText = total + " / 42";
+      document.getElementById("apsBreakdownText").innerText =
+        "Your best 6 subjects (Life Orientation excluded). Average percentage across these subjects: " + percentageAverage.toFixed(1) + "%.";
+
+      const breakdown = marks.map(subject => `
+        <div class="flex items-center justify-between gap-3 py-2 border-b border-slate-100 last:border-0 text-xs">
+          <span class="text-slate-700">${subject.name}${subject.isLO ? " (not counted)" : ""}</span>
+          <span class="font-semibold text-slate-800">${subject.percentage}% · Level ${subject.level} · ${subject.points} pt${subject.points === 1 ? "" : "s"}</span>
+        </div>
+      `).join("");
+
+      let pathwaysHtml = `
+        <div class="bg-white border border-slate-200 rounded-xl p-4">
+          <h5 class="font-bold text-slate-900 text-sm mb-2">Your subject breakdown</h5>
+          ${breakdown}
+          <p class="text-xs text-slate-500 mt-3">The six highest-scoring non-LO subjects are used for this estimate.</p>
+        </div>
+      `;
 
       if (total >= 35) {
-        pathwaysHtml = `
+        pathwaysHtml += `
           <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
-            <h5 class="font-bold text-emerald-900 text-sm">🌟 Elite Tier (35+ Points)</h5>
-            <p class="text-xs text-emerald-700 mt-1">You may be competitive for programmes such as Medicine, Engineering, Computer Science and Law, depending on each institution's subject requirements and selection rules.</p>
-            <p class="text-xs text-slate-600 mt-2 font-medium">Career possibilities include healthcare, engineering, software development and law.</p>
-          </div>
-          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-            <h5 class="font-bold text-blue-900 text-sm">🎓 University Degree Options</h5>
-            <p class="text-xs text-blue-700 mt-1">Consider BCom, BSc, Education and Public Management programmes. Requirements differ by institution and course.</p>
-          </div>
-        `;
+            <h5 class="font-bold text-emerald-900 text-sm">Strong APS range (35–42)</h5>
+            <p class="text-xs text-emerald-800 mt-1">Explore competitive degree programmes. Medicine, engineering, computer science and law may have additional subject, selection and assessment requirements.</p>
+          </div>`;
       } else if (total >= 22) {
-        pathwaysHtml = `
+        pathwaysHtml += `
           <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-            <h5 class="font-bold text-blue-900 text-sm">🚀 Diploma and Degree Options</h5>
-            <p class="text-xs text-blue-700 mt-1">Explore IT, accounting, tourism, journalism and other diploma or degree programmes, subject to admission requirements.</p>
-          </div>
-          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <h5 class="font-bold text-amber-900 text-sm">⚡ TVET Colleges and Higher Certificates</h5>
-            <p class="text-xs text-amber-700 mt-1">Explore NC(V), N4-N6 and occupational programmes at public TVET colleges.</p>
-          </div>
-        `;
+            <h5 class="font-bold text-blue-900 text-sm">Explore degree, diploma and higher-certificate options</h5>
+            <p class="text-xs text-blue-800 mt-1">Check programmes in IT, commerce, education, tourism, public management and other fields against each institution's specific entry requirements.</p>
+          </div>`;
       } else {
-        pathwaysHtml = `
+        pathwaysHtml += `
           <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <h5 class="font-bold text-amber-900 text-sm">🛠️ Foundational and TVET Programmes</h5>
-            <p class="text-xs text-amber-700 mt-1">Consider TVET, occupational and foundational programmes. Check the relevant college's subject and entry requirements.</p>
-          </div>
-        `;
+            <h5 class="font-bold text-amber-900 text-sm">Explore access and vocational pathways</h5>
+            <p class="text-xs text-amber-800 mt-1">Consider TVET, occupational and higher-certificate routes, and check the minimum entry requirements for each programme.</p>
+          </div>`;
       }
 
       pathwaysHtml += `
-        <p class="text-xs text-slate-500 mt-3">
-          This is a general guide, not an admission decision. Each university calculates APS differently and may require specific subjects and minimum marks. Always check the official course requirements.
-        </p>
-      `;
+        <p class="text-xs text-slate-500 mt-3">This is an estimate using a common NSC 7-level points scale, not an admission decision. APS rules vary between universities and qualifications; some count Life Orientation or apply subject-specific minimums. Always confirm the exact rules with the institution.</p>`;
 
-      document.getElementById('careerPathwaysList').innerHTML = pathwaysHtml;
-      document.getElementById('apsResultsContainer').classList.remove('hidden');
+      document.getElementById("careerPathwaysList").innerHTML = pathwaysHtml;
+      document.getElementById("apsResultsContainer").classList.remove("hidden");
+      document.getElementById("apsResultsContainer").scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
     window.onload = function() {
