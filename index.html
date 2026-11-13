@@ -280,11 +280,12 @@
         <button onclick="switchView('opportunities')" class="text-sm font-semibold text-emerald-700 mb-4"><i class="fa-solid fa-arrow-left mr-2"></i>All opportunities</button>
         <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl"><i class="fa-solid fa-user-graduate"></i></span><div><h2 class="text-2xl font-extrabold text-slate-900">International Scholarships</h2><p class="text-sm text-slate-500">Scholarships for South Africans to study abroad</p></div></div>
       </div>
-      <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><input id="learnershipsSearch" type="search" oninput="filterOpportunitySpace('learnerships')" placeholder="Search international scholarships..." class="w-full border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"></div>
-      <div class="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-        <strong>Important:</strong> These are international scholarship programmes and official information pages. Some are restricted to particular universities, study levels or professional groups, and not every call is open now. Check each provider's current eligibility, application route and deadline before applying. Never pay an unverified agent for a scholarship.
+      <div class="rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-600 to-teal-700 p-8 sm:p-10 text-center text-white shadow-sm">
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-2xl"><i class="fa-solid fa-globe"></i></div>
+        <h3 class="text-xl sm:text-2xl font-extrabold mb-2">International Scholarships and Internships Are Coming</h3>
+        <p class="text-sm sm:text-base text-emerald-50">We are preparing this section. Please check back soon for updates.</p>
       </div>
-      <div id="learnershipsResults" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
     </div>
 
     <div id="view-bursaries" class="hidden space-y-6">
@@ -534,14 +535,7 @@
     // Separate, searchable opportunity spaces. Add verified listings to the matching arrays as they are published.
     const opportunityListings = {
       internships: [],
-      learnerships: [
-        { title: "DHET International Scholarships — Official Opportunities", provider: "Department of Higher Education and Training (DHET)", location: "Multiple countries", description: "The official South African government portal for international scholarships offered through partner countries. Browse current calls, eligibility requirements, application instructions and contact details. Opportunities and deadlines change; check the latest notices before applying.", url: "https://internationalscholarships.dhet.gov.za/" },
-        { title: "DHET International Scholarship Calls — Application Documents", provider: "DHET", location: "Multiple countries", description: "Official DHET resource page for scholarship calls and application documents, including undergraduate, Master's, one-tier Master's and non-degree programme information where available. Read the current call carefully to confirm which countries and study levels are eligible for South African applicants.", url: "https://www.internationalscholarships.dhet.gov.za/index.php/resources/1-resources/5-general?download=18%3Acall-for-applications-for-bachelor-s-master-s-one-tier-master-s-and-non-degree-programmes&start=20" },
-        { title: "DHET Calendar of International Scholarship Calls", provider: "DHET", location: "Multiple countries", description: "A planning calendar showing the usual months when international scholarship calls may open, based on previous cycles. The calendar is dated 29 June 2022 and is guidance only; dates may change. Always use the latest live call on the DHET portal.", url: "https://internationalscholarships.dhet.gov.za/index.php/resources/1-resources/5-general?download=134%3Aannual-calendar-of-international-scholarship-calls-for-south-africans" },
-        { title: "Japan — Tokyo Metropolitan University Scholarship 2027", provider: "DHET / Tokyo Metropolitan University", location: "Tokyo, Japan", description: "DHET has publicised a fully funded postgraduate opportunity for South African citizens for study from October 2027. The published closing date is 8 January 2027. Confirm the current application form, eligible fields and submission instructions on the DHET International Scholarships portal before applying.", url: "https://internationalscholarships.dhet.gov.za/" },
-        { title: "Germany — Helmut-Schmidt Master's Scholarships", provider: "DAAD / DHET information notice", location: "Germany", description: "A DHET information notice describes Master's scholarships in public policy and good governance. The 2026 call shown on the notice closed on 31 July 2025, so this is included for programme information only—not as an open application. Check DHET and DAAD for the next call.", url: "https://internationalscholarships.dhet.gov.za/index.php?download=0&id=471&option=com_content&print=1&tmpl=component&view=article" },
-        { title: "United Kingdom — Commonwealth Master's Scholarships", provider: "Commonwealth Scholarship Commission / DHET", location: "United Kingdom", description: "DHET has published information about Commonwealth Master's Scholarships for South African applicants. The linked notice is for the 2024/25 cycle and is closed; use it as background only and check the DHET portal for a new call before applying.", url: "https://internationalscholarships.dhet.gov.za/index.php?download=0&id=341&option=com_content&print=1&tmpl=component&view=article" }
-      ],
+      learnerships: [],
       bursaries: []
     };
     function filterOpportunitySpace(type) {
