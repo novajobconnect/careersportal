@@ -65,7 +65,7 @@
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     }
 
-    .subject-options { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    .subject-options { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; touch-action: pan-y; }
     .subject-option { display:block; width:100%; padding:0.75rem 0.85rem; text-align:left; font-size:0.875rem; color:#334155; background:#fff; }
     .subject-option:active, .subject-option:hover, .subject-option[aria-selected="true"] { background:#eff6ff; color:#1d4ed8; }
     @media (max-width:640px) { .subject-options { max-height: min(45vh, 18rem); } .subject-option { padding:0.9rem 0.85rem; } }
@@ -846,7 +846,7 @@
 
 <script>
 (function () {
-  const subjects = ["Accounting","Agricultural Management Practices","Agricultural Sciences","Agricultural Technology","Business Studies","Civil Technology","Computer Applications Technology","Consumer Studies","Dance Studies","Design","Dramatic Arts","Economics","Electrical Technology","Engineering Graphics and Design","Geography","History","Hospitality Studies","Information Technology","IsiNdebele Home Language","IsiNdebele First Additional Language","IsiXhosa Home Language","IsiXhosa First Additional Language","IsiZulu Home Language","IsiZulu First Additional Language","Life Orientation","Life Sciences","Mathematical Literacy","Mathematics","Mechanical Technology","Music","Physical Sciences","Religion Studies","Sepedi Home Language","Sepedi First Additional Language","Sesotho Home Language","Sesotho First Additional Language","Setswana Home Language","Setswana First Additional Language","Siswati Home Language","Siswati First Additional Language","Tshivenda Home Language","Tshivenda First Additional Language","Tourism","Visual Arts","English Home Language","English First Additional Language","Afrikaans Home Language","Afrikaans First Additional Language","French Second Additional Language","German Second Additional Language","Portuguese Second Additional Language","Arabic Second Additional Language","Chinese Second Additional Language","Gujarati Second Additional Language","Hebrew Second Additional Language","Hindi Second Additional Language","Tamil Second Additional Language","Telugu Second Additional Language","Urdu Second Additional Language","isiXhosa Second Additional Language"];
+  const subjects = ["Accounting","Agricultural Management Practices","Agricultural Sciences","Agricultural Technology","Business Studies","Civil Technology","Computer Applications Technology","Consumer Studies","Dance Studies","Design","Dramatic Arts","Economics","Electrical Technology","Engineering Graphics and Design","Geography","History","Hospitality Studies","Information Technology","IsiNdebele Home Language","IsiNdebele First Additional Language","IsiXhosa Home Language","IsiXhosa First Additional Language","IsiZulu Home Language","IsiZulu First Additional Language","Life Orientation","Life Sciences","Mathematical Literacy","Mathematics","Mechanical Technology","Music","Physical Sciences","Religion Studies","Sepedi Home Language","Sepedi First Additional Language","Sesotho Home Language","Sesotho First Additional Language","Setswana Home Language","Setswana First Additional Language","Siswati Home Language","Siswati First Additional Language","Tshivenda Home Language","Tshivenda First Additional Language","Technical Mathematics","Technical Sciences","Tourism","Visual Arts","English Home Language","English First Additional Language","Afrikaans Home Language","Afrikaans First Additional Language","French Second Additional Language","German Second Additional Language","Portuguese Second Additional Language","Arabic Second Additional Language","Chinese Second Additional Language","Gujarati Second Additional Language","Hebrew Second Additional Language","Hindi Second Additional Language","Tamil Second Additional Language","Telugu Second Additional Language","Urdu Second Additional Language","isiXhosa Second Additional Language"];
   document.querySelectorAll('#apsForm input[id^="subjectName"]').forEach(function (input) {
     const menu = document.getElementById('subjectOptions' + input.id.replace('subjectName', ''));
     if (!menu) return;
@@ -868,7 +868,7 @@
           option.className = 'subject-option';
           option.setAttribute('role', 'option');
           option.textContent = subject;
-          option.addEventListener('pointerdown', function (event) { event.preventDefault(); input.value = subject; closeMenu(); input.dispatchEvent(new Event('change', { bubbles: true })); });
+          option.addEventListener('click', function () { input.value = subject; closeMenu(); input.dispatchEvent(new Event('change', { bubbles: true })); });
           menu.appendChild(option);
         });
       }
