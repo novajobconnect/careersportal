@@ -410,19 +410,19 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
-            <label for="subjectName1" class="block text-sm font-semibold text-slate-700 mb-2">Subject 1 · Home language</label>
+            <label for="subjectName1" class="block text-sm font-semibold text-slate-700 mb-2">Subject 1 · Home Language (languages only)</label>
             <div class="relative"><input id="subjectName1" name="subjectName1" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions1" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj1" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj1" name="subj1" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
-            <label for="subjectName2" class="block text-sm font-semibold text-slate-700 mb-2">Subject 2 · Additional language</label>
+            <label for="subjectName2" class="block text-sm font-semibold text-slate-700 mb-2">Subject 2 · Additional Language (languages only)</label>
             <div class="relative"><input id="subjectName2" name="subjectName2" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions2" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj2" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj2" name="subj2" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-white p-3 min-w-0">
-            <label for="subjectName3" class="block text-sm font-semibold text-slate-700 mb-2">Subject 3 · Mathematics / Mathematical Literacy</label>
+            <label for="subjectName3" class="block text-sm font-semibold text-slate-700 mb-2">Subject 3 · Mathematics (Mathematics, Mathematical Literacy or Technical Mathematics)</label>
             <div class="relative"><input id="subjectName3" name="subjectName3" type="text" autocomplete="off" required placeholder="Search NSC subjects…" class="w-full min-w-0 border border-slate-300 rounded-lg p-3 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500" /><div id="subjectOptions3" class="subject-options hidden absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-y-auto rounded-lg border border-slate-300 bg-white shadow-xl" role="listbox" aria-label="NSC subject suggestions"></div></div>
             <label for="subj3" class="block text-xs font-medium text-slate-500 mb-1">Final percentage</label>
             <div class="relative"><input id="subj3" name="subj3" type="number" min="0" max="100" step="1" required inputmode="numeric" placeholder="e.g. 76" class="w-full border border-slate-300 rounded-lg p-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"><span class="absolute right-3 top-3 text-slate-400 text-sm">%</span></div>
@@ -930,14 +930,61 @@
 
 <script>
 (function () {
-  const subjects = ["Accounting","Agricultural Management Practices","Agricultural Sciences","Agricultural Technology","Business Studies","Civil Technology","Computer Applications Technology","Consumer Studies","Dance Studies","Design","Dramatic Arts","Economics","Electrical Technology","Engineering Graphics and Design","Geography","History","Hospitality Studies","Information Technology","IsiNdebele Home Language","IsiNdebele First Additional Language","IsiXhosa Home Language","IsiXhosa First Additional Language","IsiZulu Home Language","IsiZulu First Additional Language","Life Orientation","Life Sciences","Mathematical Literacy","Mathematics","Mechanical Technology","Music","Physical Sciences","Religion Studies","Sepedi Home Language","Sepedi First Additional Language","Sesotho Home Language","Sesotho First Additional Language","Setswana Home Language","Setswana First Additional Language","Siswati Home Language","Siswati First Additional Language","Tshivenda Home Language","Tshivenda First Additional Language","Technical Mathematics","Technical Sciences","Tourism","Visual Arts","English Home Language","English First Additional Language","Afrikaans Home Language","Afrikaans First Additional Language","French Second Additional Language","German Second Additional Language","Portuguese Second Additional Language","Arabic Second Additional Language","Chinese Second Additional Language","Gujarati Second Additional Language","Hebrew Second Additional Language","Hindi Second Additional Language","Tamil Second Additional Language","Telugu Second Additional Language","Urdu Second Additional Language","isiXhosa Second Additional Language"];
+  // South African NSC/CAPS subjects. Language choices are filtered by the subject slot below.
+  const subjects = [
+    "Afrikaans Home Language","Afrikaans First Additional Language",
+    "English Home Language","English First Additional Language",
+    "IsiNdebele Home Language","IsiNdebele First Additional Language",
+    "IsiXhosa Home Language","IsiXhosa First Additional Language",
+    "IsiZulu Home Language","IsiZulu First Additional Language",
+    "Sepedi Home Language","Sepedi First Additional Language",
+    "Sesotho Home Language","Sesotho First Additional Language",
+    "Setswana Home Language","Setswana First Additional Language",
+    "SiSwati Home Language","SiSwati First Additional Language",
+    "Tshivenda Home Language","Tshivenda First Additional Language",
+    "itsonga Home Language","itsonga First Additional Language",
+    "South African Sign Language Home Language",
+    "Accounting","Agricultural Management Practices","Agricultural Sciences",
+    "Agricultural Technology","Business Studies","Civil Technology",
+    "Computer Applications Technology","Consumer Studies","Dance Studies",
+    "Design","Dramatic Arts","Economics","Electrical Technology",
+    "Engineering Graphics and Design","Geography","History","Hospitality Studies",
+    "Information Technology","Life Orientation","Life Sciences","Mechanical Technology",
+    "Music","Physical Sciences","Religion Studies","Technical Sciences",
+    "Tourism","Visual Arts","Equine Studies","Marine Sciences",
+    "Maritime Economics","Nautical Science","Sports and Exercise Science",
+    "Arabic Second Additional Language","French Second Additional Language",
+    "German Home Language","German Second Additional Language",
+    "Gujarati Home Language","Gujarati First Additional Language",
+    "Gujarati Second Additional Language","Hebrew Second Additional Language",
+    "Hindi Home Language","Hindi First Additional Language","Hindi Second Additional Language",
+    "Italian Second Additional Language","Latin Second Additional Language",
+    "Mandarin Second Additional Language","Modern Greek Second Additional Language",
+    "Portuguese Home Language","Portuguese Second Additional Language",
+    "Serbian Home Language","Serbian Second Additional Language",
+    "Spanish Second Additional Language","Tamil Home Language",
+    "Tamil First Additional Language","Tamil Second Additional Language",
+    "Telugu Home Language","Telugu First Additional Language",
+    "Telugu Second Additional Language","Urdu Home Language",
+    "Urdu First Additional Language","Urdu Second Additional Language"
+  ];
+  const homeLanguages = subjects.filter(subject => / Home Language$/.test(subject));
+  const additionalLanguages = subjects.filter(subject => / (First|Second) Additional Language$/.test(subject));
+  const mathematicsSubjects = ["Mathematical Literacy","Mathematics","Technical Mathematics"];
+  function subjectsForSlot(input) {
+    const slot = Number(input.id.replace("subjectName", ""));
+    if (slot === 1) return homeLanguages;
+    if (slot === 2) return additionalLanguages;
+    if (slot === 3) return mathematicsSubjects;
+    return subjects;
+  }
   document.querySelectorAll('#apsForm input[id^="subjectName"]').forEach(function (input) {
     const menu = document.getElementById('subjectOptions' + input.id.replace('subjectName', ''));
     if (!menu) return;
     let activeIndex = -1;
     function renderOptions() {
       const query = input.value.trim().toLocaleLowerCase();
-      const matches = subjects.filter(function (subject) { return !query || subject.toLocaleLowerCase().includes(query); }).slice(0, 60);
+      const matches = subjectsForSlot(input).filter(function (subject) { return !query || subject.toLocaleLowerCase().includes(query); }).slice(0, 60);
       menu.innerHTML = '';
       activeIndex = -1;
       if (!matches.length) {
