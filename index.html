@@ -520,6 +520,140 @@
 
   <!-- WEBSITE DATA AND FUNCTIONS -->
   <script>
+    // Complete registry of the 26 public universities. Programme rules remain pending until officially verified.
+    const southAfricanPublicUniversities = [
+  {
+    "name": "Cape Peninsula University of Technology (CPUT)",
+    "site": "https://www.cput.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Central University of Technology (CUT)",
+    "site": "https://www.cut.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Durban University of Technology (DUT)",
+    "site": "https://www.dut.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Mangosuthu University of Technology (MUT)",
+    "site": "https://www.mut.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Nelson Mandela University (NMU)",
+    "site": "https://www.mandela.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "North-West University (NWU)",
+    "site": "https://www.nwu.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Rhodes University",
+    "site": "https://www.ru.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Sefako Makgatho Health Sciences University (SMU)",
+    "site": "https://www.smu.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Sol Plaatje University (SPU)",
+    "site": "https://www.spu.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Stellenbosch University",
+    "site": "https://www.sun.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Tshwane University of Technology (TUT)",
+    "site": "https://www.tut.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of Cape Town (UCT)",
+    "site": "https://www.uct.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of Fort Hare (UFH)",
+    "site": "https://www.ufh.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of Johannesburg (UJ)",
+    "site": "https://www.uj.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of KwaZulu-Natal (UKZN)",
+    "site": "https://ukzn.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of Limpopo (UL)",
+    "site": "https://www.ul.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of Mpumalanga (UMP)",
+    "site": "https://www.ump.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of Pretoria (UP)",
+    "site": "https://www.up.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of South Africa (UNISA)",
+    "site": "https://www.unisa.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of the Free State (UFS)",
+    "site": "https://www.ufs.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of the Western Cape (UWC)",
+    "site": "https://www.uwc.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of the Witwatersrand (Wits)",
+    "site": "https://www.wits.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of Venda (UNIVEN)",
+    "site": "https://www.univen.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "University of Zululand (UNIZULU)",
+    "site": "https://www.unizulu.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Vaal University of Technology (VUT)",
+    "site": "https://www.vut.ac.za/",
+    "status": "pending_verification"
+  },
+  {
+    "name": "Walter Sisulu University (WSU)",
+    "site": "https://www.wsu.ac.za/",
+    "status": "pending_verification"
+  }
+];
+
     const studentPortals = [
       { name: "Tshwane University of Technology (TUT)", category: "university", fee: "R240", link: "https://applications-prod.tut.ac.za/", statusLink: "https://ienabler.tut.ac.za/pls/prodi41/wtut012pkg.startup", desc: "Direct online application portal for TUT undergraduate and postgraduate programs.", prospectusLink: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf" },
       { name: "University of Pretoria (UP)", category: "university", fee: "R300 (Free if Income < R150k)", link: "https://upnet.up.ac.za/psc/upapply/EMPLOYEE/SA/c/UP_OAP_MENU.UP_OAP_LOGIN_FL.GBL?&", statusLink: "https://www1.up.ac.za/uplogin/faces/login.jspx", desc: "Direct UP Student Online Application portal (UPNet PeopleSoft system).", prospectusLink: "https://universityqualifications.co.za/pdf-prospectus/university-of-pretoria-up-prospectus-2027" },
@@ -889,7 +1023,7 @@
       };
       const selectedInterest = document.getElementById("courseInterest").value;
       const selectedUniversity = document.getElementById("courseUniversity");
-      const university = studentPortals.find(portal => portal.name === selectedUniversity.value && portal.category === "university");
+      const university = southAfricanPublicUniversities.find(item => item.name === selectedUniversity.value);
       let pathwaysHtml = `
         <div class="bg-white border border-slate-200 rounded-xl p-4">
           <h5 class="font-bold text-slate-900 text-sm mb-2">Your subject breakdown</h5>${breakdown}
@@ -899,8 +1033,8 @@
           <h5 class="font-bold text-emerald-950 text-sm mb-2">Your course exploration profile</h5>
           <p class="text-sm text-slate-700"><strong>Study interest:</strong> ${selectedInterest ? interestLabels[selectedInterest] : "Not selected"}</p>
           <p class="text-sm text-slate-700 mt-1"><strong>University:</strong> ${university ? university.name : "Not selected"}</p>
-          <p class="text-xs text-slate-600 mt-3">Use your marks and subject combination to investigate programmes in this area. Check each programme's exact subject, APS, language and other requirements in the institution's current prospectus or admissions website.</p>
-          ${university ? `<a href="${university.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 mt-3 rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-emerald-700">Visit ${university.name} application website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ""}
+          <p class="text-xs text-slate-600 mt-3">Verified qualification matching is being built from official 2027 university requirements. No course will be marked as qualifying until its APS method, required subjects, minimum marks and selection rules have been checked against an official source. Check each programme's exact subject, APS, language and other requirements in the institution's current prospectus or admissions website.</p>
+          ${university ? `<a href="${university.site}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 mt-3 rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-emerald-700">Visit ${university.name} application website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ""}
         </div>`;
       if (total >= 35) pathwaysHtml += `<div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl"><h5 class="font-bold text-emerald-900 text-sm">Strong APS range (35–42)</h5><p class="text-xs text-emerald-800 mt-1">Explore competitive degree programmes. Check subject-specific and selection requirements.</p></div>`;
       else if (total >= 22) pathwaysHtml += `<div class="p-4 bg-blue-50 border border-blue-200 rounded-xl"><h5 class="font-bold text-blue-900 text-sm">Explore degree, diploma and higher-certificate options</h5><p class="text-xs text-blue-800 mt-1">Check each programme's specific entry requirements.</p></div>`;
@@ -915,10 +1049,10 @@
       renderStudents();
       const universitySelect = document.getElementById("courseUniversity");
       if (universitySelect) {
-        studentPortals.filter(portal => portal.category === "university").forEach(portal => {
+        southAfricanPublicUniversities.forEach(university => {
           const option = document.createElement("option");
-          option.value = portal.name;
-          option.textContent = portal.name;
+          option.value = university.name;
+          option.textContent = university.name;
           universitySelect.appendChild(option);
         });
       }
