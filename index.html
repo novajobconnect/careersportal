@@ -459,6 +459,34 @@
           </div>
         </div>
         <p class="text-xs text-slate-500">The estimate uses the best six eligible subjects. Life Orientation is identified by its selected name and excluded from this common estimate. University APS rules may differ.</p>
+        <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4 space-y-3">
+          <div>
+            <h4 class="font-bold text-emerald-950 text-sm">Explore courses at a university</h4>
+            <p class="text-xs text-emerald-800 mt-1">Choose an area you are interested in and a university. Nova will prepare a course-research checklist using your marks. This is guidance, not an admission decision.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label for="courseInterest" class="block text-xs font-semibold text-slate-700 mb-1">Your study interest</label>
+              <select id="courseInterest" class="w-full border border-slate-300 rounded-lg p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <option value="">Choose an area (optional)</option>
+                <option value="health">Health and medical sciences</option>
+                <option value="engineering">Engineering and technology</option>
+                <option value="business">Business, accounting and management</option>
+                <option value="education">Education and teaching</option>
+                <option value="law">Law and public administration</option>
+                <option value="science">Natural and computer sciences</option>
+                <option value="humanities">Humanities, social sciences and arts</option>
+                <option value="agriculture">Agriculture and environmental studies</option>
+              </select>
+            </div>
+            <div>
+              <label for="courseUniversity" class="block text-xs font-semibold text-slate-700 mb-1">University to explore</label>
+              <select id="courseUniversity" class="w-full border border-slate-300 rounded-lg p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <option value="">Choose a university (optional)</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <div class="flex flex-col sm:flex-row gap-2">
           <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow text-sm"><i class="fa-solid fa-calculator mr-1"></i> Calculate My APS</button>
           <button type="reset" onclick="document.getElementById('apsResultsContainer').classList.add('hidden')" class="sm:w-auto border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold px-5 py-3 rounded-lg text-sm">Clear Marks</button>
@@ -849,10 +877,30 @@
           <span class="text-slate-700">${subject.name}${subject.isLO ? " (not counted)" : ""}</span>
           <span class="font-semibold text-slate-800">${subject.percentage}% · Level ${subject.level} · ${subject.points} pt${subject.points === 1 ? "" : "s"}</span>
         </div>`).join("");
+      const interestLabels = {
+        health: "Health and medical sciences",
+        engineering: "Engineering and technology",
+        business: "Business, accounting and management",
+        education: "Education and teaching",
+        law: "Law and public administration",
+        science: "Natural and computer sciences",
+        humanities: "Humanities, social sciences and arts",
+        agriculture: "Agriculture and environmental studies"
+      };
+      const selectedInterest = document.getElementById("courseInterest").value;
+      const selectedUniversity = document.getElementById("courseUniversity");
+      const university = studentPortals.find(portal => portal.name === selectedUniversity.value && portal.category === "university");
       let pathwaysHtml = `
         <div class="bg-white border border-slate-200 rounded-xl p-4">
           <h5 class="font-bold text-slate-900 text-sm mb-2">Your subject breakdown</h5>${breakdown}
-          <p class="text-xs text-slate-500 mt-3">The six highest-scoring subjects excluding Life Orientation are used for this estimate.</p>
+          <p class="text-xs text-slate-500 mt-3">The six highest-scoring subjects excluding Life Orientation are used for this common estimate.</p>
+        </div>
+        <div class="bg-white border border-emerald-200 rounded-xl p-4">
+          <h5 class="font-bold text-emerald-950 text-sm mb-2">Your course exploration profile</h5>
+          <p class="text-sm text-slate-700"><strong>Study interest:</strong> ${selectedInterest ? interestLabels[selectedInterest] : "Not selected"}</p>
+          <p class="text-sm text-slate-700 mt-1"><strong>University:</strong> ${university ? university.name : "Not selected"}</p>
+          <p class="text-xs text-slate-600 mt-3">Use your marks and subject combination to investigate programmes in this area. Check each programme's exact subject, APS, language and other requirements in the institution's current prospectus or admissions website.</p>
+          ${university ? `<a href="${university.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 mt-3 rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-emerald-700">Visit ${university.name} application website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ""}
         </div>`;
       if (total >= 35) pathwaysHtml += `<div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl"><h5 class="font-bold text-emerald-900 text-sm">Strong APS range (35–42)</h5><p class="text-xs text-emerald-800 mt-1">Explore competitive degree programmes. Check subject-specific and selection requirements.</p></div>`;
       else if (total >= 22) pathwaysHtml += `<div class="p-4 bg-blue-50 border border-blue-200 rounded-xl"><h5 class="font-bold text-blue-900 text-sm">Explore degree, diploma and higher-certificate options</h5><p class="text-xs text-blue-800 mt-1">Check each programme's specific entry requirements.</p></div>`;
@@ -865,6 +913,15 @@
 
     window.onload = function() {
       renderStudents();
+      const universitySelect = document.getElementById("courseUniversity");
+      if (universitySelect) {
+        studentPortals.filter(portal => portal.category === "university").forEach(portal => {
+          const option = document.createElement("option");
+          option.value = portal.name;
+          option.textContent = portal.name;
+          universitySelect.appendChild(option);
+        });
+      }
       showWelcomeModal();
     };
   </script>
